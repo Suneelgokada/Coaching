@@ -1,0 +1,31 @@
+/* 1. Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* 2. Keyframes for Brands Motion - Idhi lekapothe Brands kadalavu */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 3. Poppins Font on Everything */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+    width: 100%;
+  background-color: #ffffff;
+}
+
+/* Material UI Components ki Poppins force cheyadam */
+button, input, select, textarea, span, p, h1, h2, h3, h4, h5, h6, a {
+  font-family: 'Poppins', sans-serif !important;
+}
