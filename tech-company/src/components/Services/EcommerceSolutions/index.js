@@ -72,7 +72,7 @@ export default function EcommerceSolutionsLayout() {
  
           <Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
             The eCommerce platform is one of the most effective ways to sell your
-            products online directly to your customers. At Technoxis, we provide
+            products online directly to your customers. At Coding Roots, we provide
             innovative and modern eCommerce solutions by combining our technical
             expertise with your business ideas.
           </Typography>

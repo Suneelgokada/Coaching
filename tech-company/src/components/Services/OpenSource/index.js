@@ -80,7 +80,7 @@ export default function OpenSourceLayout() {
 
           <Typography sx={{ mb: 4, lineHeight: 1.8, maxWidth: "800px" }}>
             Deploying applications using open source systems allows websites to
-            go live faster and more efficiently. At Technoxis, we analyze your
+            go live faster and more efficiently. At Coding Roots, we analyze your
             requirements and suggest the best open source platform suited to
             your business goals.
           </Typography>

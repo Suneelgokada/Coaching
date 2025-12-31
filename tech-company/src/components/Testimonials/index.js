@@ -15,37 +15,37 @@ import Link from "next/link";
 const testimonials = [
   {
     text:
-      "Technoxis has been helping us with C#, SQL Server and JQuery development for over two years and it has been a true pleasure to work with them....",
+      "Coding Roots has been helping us with C#, SQL Server and JQuery development for over two years and it has been a true pleasure to work with them....",
     name: "John Bartolucci",
   },
   {
     text:
-      "Technoxis is one of the most professional companies we have worked with. What make them different from other organization are their commitment, patience,...",
+      "Coding Roots is one of the most professional companies we have worked with. What make them different from other organization are their commitment, patience,...",
     name: "Amir",
   },
   {
     text:
-      "Working with Technoxis has been a great experience. These guys made a genuine effort in understanding all our needs and requirements, and the end result ...",
+      "Working with Coding Roots has been a great experience. These guys made a genuine effort in understanding all our needs and requirements, and the end result ...",
     name: "Rahul Dubey",
   },
   {
     text:
-      "Technoxis has provided my organization great services in .Net development and web design. I highly recommend this group to anyone needing expertise in cu...",
+      "Coding Roots has provided my organization great services in .Net development and web design. I highly recommend this group to anyone needing expertise in cu...",
     name: "Brett Feagans",
   },
   {
     text:
-      "Working with Technoxis has been great, they have worked on our project for over 7 months. The project was developed from the start to the final stage and...",
+      "Working with Coding Roots has been great, they have worked on our project for over 7 months. The project was developed from the start to the final stage and...",
     name: "Ridvan Jakupi",
   },
   {
     text:
-      "I have been working with Technoxis for the past 1 year. Our working environment has been primarily SQL Server with ASP .NET & C#. I have found Technoxis ...",
+      "I have been working with Coding Roots for the past 1 year. Our working environment has been primarily SQL Server with ASP .NET & C#. I have found Coding Roots ...",
     name: "Ram Kodhandaraman",
   },
   {
     text:
-      "I have been working with Technoxis for almost two months on a medium sized internet start up where he has provided unparalleled development work and incr...",
+      "I have been working with Coding Roots for almost two months on a medium sized internet start up where he has provided unparalleled development work and incr...",
     name: "Matt Bradfield",
   },
 ];

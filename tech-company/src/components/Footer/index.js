@@ -46,7 +46,7 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          {/* 3. About Technoxis - Width md=5.5 (Approx 45%) - Side by side fix */}
+         
           <Grid item xs={12} md={5.5}>
             <Typography variant="h6" sx={{ color: "#fff", fontWeight: 700, mb: 3, fontSize: '22px' }}>
               About Coding Roots

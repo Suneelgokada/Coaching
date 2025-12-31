@@ -72,7 +72,7 @@ export default function FrontendWebAppsLayout() {
           </Typography>
 
           <Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "820px" }}>
-            At Technoxis, we understand how challenging it can be for businesses
+            At Coding Roots, we understand how challenging it can be for businesses
             to hire and scale skilled frontend developers. Whether you are a
             startup or a large organization, we help you expand your frontend
             development capabilities for new products and evolving business
@@ -154,7 +154,7 @@ export default function FrontendWebAppsLayout() {
           </Typography>
 
           <Typography sx={{ mb: 4, lineHeight: 1.8, maxWidth: "820px" }}>
-            Technoxis is a trusted offshore frontend development company with
+            Coding Roots is a trusted offshore frontend development company with
             expertise in AngularJS, ReactJS, VueJS and Node.js, delivering
             scalable and modern applications worldwide.
           </Typography>

@@ -71,7 +71,7 @@ export default function MobileApplicationLayout() {
           </Typography>
 
           <Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
-            Technoxis is an experienced mobile app development company based in
+            Coding Roots is an experienced mobile app development company based in
             Vizag, Visakhapatnam. With over 12 years of experience, we help
             startups and enterprises launch successful mobile products and
             boost their KPIs.
@@ -145,7 +145,7 @@ export default function MobileApplicationLayout() {
           </Typography>
 
           <Typography sx={{ fontWeight: 700 }}>
-            Collaborate with Technoxis today
+            Collaborate with Coding Roots today
           </Typography>
           <Typography sx={{ mt: 1 }}>
             Let’s Get Started!

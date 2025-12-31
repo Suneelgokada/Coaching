@@ -93,7 +93,7 @@ export default function WebApplicationLayout() {
           </Typography>
           <Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
             Whether you need a custom web application or a customer-facing
-            portal, Technoxis designs and develops scalable solutions aligned
+            portal, Coding Roots designs and develops scalable solutions aligned
             with your business goals across global markets.
           </Typography>
 

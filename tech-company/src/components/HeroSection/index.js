@@ -16,7 +16,7 @@
 //       sx={{
 //         position: "relative",
 //         minHeight: { xs: "520px", md: "650px" },
-//         backgroundColor: "#1769d2", // exact Technoxis blue
+//         backgroundColor: "#1769d2", // exact  blue
 //         overflow: "hidden",
 //         color: "#fff",
 //       }}
@@ -108,175 +108,118 @@
 
 import { Box, Typography, Container } from "@mui/material";
 
-
-
 export default function HeroSection() {
-
   return (
-
     <Box
-
       sx={{
-
         position: "relative",
-
         height: "100vh",
-
         width: "100%",
-
         display: "flex",
-
-        // alignItems: "center" nundi "flex-start" ki marchanu content paiki velladaniki
-
         alignItems: "flex-start",
-
-        // Padding top add cheyadam valla content mari moolaki vellakunda adjust avthundi
-
-        pt: { xs: "120px", md: "180px" },
-
-        color: "#fff",
-
-       
-
-        backgroundImage: `url('/assets/hero1.png')`,
-
-          backgroundImage: `url('/assets/hero-bg.jpg')`,
-
-        backgroundSize: "cover",
-
-        backgroundPosition: "center center",
-
-        backgroundRepeat: "no-repeat",
-
-       
-
-        m: 0,
-
-        p: 0,
-
-        overflow: "hidden",
-
-
-
-        "&::before": {
-
-          content: '""',
-
-          position: "absolute",
-
-          top: 0,
-
-          left: 0,
-
-          right: 0,
-
-          bottom: 0,
-
-          backgroundColor: "rgba(0, 0, 0, 0)",
-
-          zIndex: 1,
-
+        // రెస్పాన్సివ్ ప్యాడింగ్ టాప్ - స్క్రీన్ సైజును బట్టి మారుతుంది
+        pt: { 
+          xs: "100px",   // 425px & Mobile
+          sm: "120px",   // 768px
+          md: "150px",   // 1024px
+          lg: "180px"    // 1400px+
         },
-
+        color: "#fff",
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/assets/hero-bg.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        m: 0,
+        p: 0,
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          zIndex: 1,
+        },
       }}
-
     >
-
       <Container
-
         maxWidth="xl"
-
         sx={{
-
           position: "relative",
-
           zIndex: 2,
-
         }}
-
       >
-
         <Box
-
           sx={{
-
-            maxWidth: { xs: "100%", md: "800px" },
-
-            ml: { md: "5%", lg: "8%" },
-
-            px: { xs: 2, md: 0 }
-
+            // టెక్స్ట్ విడ్త్ కంట్రోల్
+            maxWidth: { 
+              xs: "100%", 
+              sm: "600px", 
+              md: "700px", 
+              lg: "800px" 
+            },
+            // ఎడమ వైపు నుండి మార్జిన్ అలైన్‌మెంట్
+            ml: { 
+              xs: 0,      // Mobile లో సెంటర్ లేదా లెఫ్ట్
+              sm: "2%",   // 768px
+              md: "5%",   // 1024px
+              lg: "8%"    // 1400px
+            },
+            px: { xs: 2, md: 0 },
+            textAlign: "left" // అన్ని స్క్రీన్స్‌లో ఒకే అలైన్‌మెంట్ కోసం
           }}
-
         >
-
           <Typography
-
             sx={{
-
-              fontSize: { xs: "32px", md: "56px" },
-
+              // స్క్రీన్ సైజును బట్టి ఫాంట్ సైజు మార్పు
+              fontSize: { 
+                xs: "28px",   // 425px
+                sm: "38px",   // 768px
+                md: "48px",   // 1024px
+                lg: "56px"    // 1400px
+              },
               fontWeight: 800,
-
               mb: 3,
-
-              lineHeight: 1.1,
-
+              lineHeight: 1.2,
               fontFamily: "Poppins, sans-serif",
-
             }}
-
           >
-
             IT Development Services
-
           </Typography>
-
-
 
           <Typography
-
             sx={{
-
-              fontSize: { xs: "16px", md: "20px" },
-
+              // డిస్క్రిప్షన్ ఫాంట్ సైజు మార్పు
+              fontSize: { 
+                xs: "14px",   // 425px
+                sm: "16px",   // 768px
+                md: "18px",   // 1024px
+                lg: "20px"    // 1400px
+              },
               lineHeight: 1.8,
-
               fontWeight: 400,
-
               opacity: 0.9,
-
               fontFamily: "Poppins, sans-serif",
-
             }}
-
           >
-
             Our offshore Web Development Services offer a range of solutions
-
             over multiple platforms like custom website development,
-
             design, mobile development, Windows, Web Services,
-
             REST APIs, and e-commerce solutions designed to suit your needs.
-
             <br /><br />
-
             Providing our clients with optimum quality based solutions
-
             to cater to the ever changing requirements is our priority.
-
           </Typography>
-
         </Box>
-
       </Container>
-
     </Box>
-
   );
-
 }
+
+
+
 
 // "use client"; 
 // import { useEffect, useState } from "react";

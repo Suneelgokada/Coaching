@@ -87,7 +87,7 @@ export default function AboutUsLayout() {
   </Typography>
  
   <Typography sx={{ mb: 2, fontWeight: 600   }}>
-    Hello, we're Technoxis!
+    Hello, we're Coding Roots!
   </Typography>
  
   <Typography sx={{ mb: 3, lineHeight: 1.8 ,maxWidth: "800px"}}>
