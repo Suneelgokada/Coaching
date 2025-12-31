@@ -31,21 +31,21 @@ const LOGO_BLUE = "#004D71";
 
 /* ================= MENUS ================= */
 const companyMenu = [
-  { name: "About Us", link: "/company/about-us" },
-  { name: "Methodology", link: "/company/methodology" },
-  { name: "Our Clients", link: "/company/our-clients" },
-  { name: "Our Mission", link: "/company/our-mission" },
-  { name: "Testimonials", link: "/company/testimonials" },
+  { name: "About Us", link: "/about-us" },
+  { name: "Methodology", link: "/methodology" },
+  { name: "Our Clients", link: "/ourclients" },
+  { name: "Our Mission", link: "/our-mission" },
+  { name: "Testimonials2", link: "/testimonials" },
 ];
 
 const servicesMenu = [
-  { name: "Web Applications", link: "/services/web-applications" },
-  { name: "Mobile Applications", link: "/services/mobile-applications" },
+  { name: "Web Application", link: "/services/web-application" },
+  { name: "Mobile Application", link: "/services/mobile-application" },
   { name: "Open Source", link: "/services/open-source" },
-  { name: "E-commerce Solutions", link: "/services/e-commerce-solutions" },
-  { name: "Front End Web Apps", link: "/services/front-end-web-apps" },
+  { name: "e-Commerce Solutions", link: "/services/ecommerce-solutions" },
+  { name: "Frontend Web Apps", link: "/services/frontend-web-apps" },
   { name: "AI Agents", link: "/services/ai-agents" },
-];
+]
 
 export const navItems = [
   { name: "HOME", link: "/", dropDown: false },

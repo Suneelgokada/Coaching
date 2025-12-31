@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
  
-export default function AboutUsLayout() {
+export default function MethodologyLayout() {
+ 
   return (
     <Box
       sx={{
@@ -65,81 +66,46 @@ export default function AboutUsLayout() {
             padding: { xs: 4, md: 8 },
           }}
         >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-              mb: 2,
-            }}
-          >
-            About Us
-          </Typography>
-<Box sx={{ flex: 2 }}>
-  <Typography
-    sx={{
-      fontStyle: "italic",
-      fontWeight: 500,
-      mb: 3,
-      color: "#91aad3ff",
-    }}
-  >
-    We got the attitude, skills, and experience to deliver the right solutions.
-  </Typography>
+          <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
+  Methodology
+</Typography>
  
-  <Typography sx={{ mb: 2, fontWeight: 600   }}>
-    Hello, we're Technoxis!
-  </Typography>
+<Typography
+  sx={{
+    fontStyle: "italic",
+    fontWeight: 500,
+    mb: 3,
+    color: "#91aad3ff",
+  }}
+>
+  Our proven methodology ensures consistent quality and measurable results.
+</Typography>
  
-  <Typography sx={{ mb: 3, lineHeight: 1.8 ,maxWidth: "800px"}}>
-    We are an award winning tech focused web design and development company based
-    in Vizag, Visakhapatnam, India. We have a team of dynamic, exuberant and highly
-    talented developers and provide bespoke web and mobile solutions across
-    India, the US, Canada and other countries. Our goal is to meet the growing
-    demands of web and app solutions worldwide, providing exceptional quality and
-    fun clientele around the world from varying industries.
-  </Typography>
+<Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
+  Our methodology is designed to deliver scalable, secure, and high-performance
+  solutions. We follow a structured and transparent development process that
+  aligns technology with business goals.
+</Typography>
  
-  <Typography sx={{ mb: 3, lineHeight: 1.8 ,maxWidth: "800px"}}>
-    We have worked with both small and big-sized corporations and delivered
-    result-oriented services that help your business achieve extraordinary
-    growth and tremendous accomplishments in your industry. We bring creative
-    innovations and unique ideas to life.
-  </Typography>
+<Typography sx={{ fontWeight: 600, mb: 1 }}>
+  Our Process:
+</Typography>
  
-  <Typography sx={{ mb: 4, fontWeight: 500 ,maxWidth: "800px"}}>
-    Get in touch with us to know about services and your requirements!
-  </Typography>
+<List sx={{ pl: 2 }}>
+  {[
+    "Requirement Analysis",
+    "Planning & Strategy",
+    "Design & Prototyping",
+    "Development",
+    "Testing & Quality Assurance",
+    "Deployment & Support",
+  ].map((step) => (
+    <ListItem key={step} sx={{ py: 0.5 }}>
+      <Typography>• {step}</Typography>
+    </ListItem>
+  ))}
+</List>
  
-  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-    Your Digital Partner
-  </Typography>
- 
-  <Typography sx={{ mb: 2, lineHeight: 1.8 ,maxWidth: "800px"}}>
-    We offer IT services from web design, development and mobile apps to tech
-    software and solutions. We develop solutions tailored to your needs and are
-    optimized for performance and usability. We have worked for ambitious
-    startups to big organizations across the world. Our web development team can
-    build any application that you require with a range of languages including
-    .NET, Ruby, PHP and more.
-  </Typography>
- 
-  <Typography sx={{ fontWeight: 600, mb: 1 }}>
-    Our Services:
-  </Typography>
- 
-  <List sx={{ pl: 2 }}>
-    {[
-      "Web Development",
-      "Mobile Apps",
-      "e-Commerce Solutions",
-      "Custom Web Solutions",
-    ].map((service) => (
-      <ListItem key={service} sx={{ py: 0.5 }}>
-        <Typography>• {service}</Typography>
-      </ListItem>
-    ))}
-  </List>
-</Box>
  
         </Box>
  
@@ -194,3 +160,4 @@ export default function AboutUsLayout() {
     </Box>
   );
 }
+ 
