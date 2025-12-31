@@ -27,7 +27,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 /* ================= COLORS (LOGO BASED) ================= */
 const LOGO_GREEN = "#2D7D2D"; 
-const LOGO_BLUE = "#004D71";  
+const LOGO_BLUE = "##00ED64";  
 
 /* ================= MENUS ================= */
 const companyMenu = [
@@ -35,7 +35,7 @@ const companyMenu = [
   { name: "Methodology", link: "/methodology" },
   { name: "Our Clients", link: "/ourclients" },
   { name: "Our Mission", link: "/our-mission" },
-  { name: "Testimonials2", link: "/testimonials" },
+  { name: "Testimonials", link: "/testimonials" },
 ];
 
 const servicesMenu = [
@@ -81,6 +81,7 @@ const Header = () => {
   return (
     <>
       {/* ================= TOP HEADER ================= */}
+      <Box sx={{ position: "sticky", top: 0, zIndex: 1300, boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
       <AppBar position="static" elevation={0} sx={{ backgroundColor: "#fff", borderBottom: "1px solid #f0f0f0" }}>
         <Container maxWidth="lg">
           <Toolbar sx={{ display: "flex", justifyContent: "space-between", py: 1.5, px: "0 !important" }}>
@@ -97,7 +98,7 @@ const Header = () => {
               />
             </Box>
 
-            <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", gap: 4, }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <EmailIcon sx={{ color: LOGO_BLUE, fontSize: 26 }} />
                 <Box>
@@ -247,6 +248,7 @@ const Header = () => {
           </List>
         </Box>
       </Drawer>
+    </Box>
     </>
   );
 };

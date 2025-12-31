@@ -24,6 +24,7 @@ export default function Footer() {
             </Typography>
             <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 2 }}>
               2nd Floor, 9-29-14/2, Balaji Nagar,<br />
+              VIP Road, Beside Canara Bank, <br/>
               Siripuram, Visakhapatnam,<br />
               Andhra Pradesh 530003, INDIA.
             </Typography>

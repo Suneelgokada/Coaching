@@ -4,17 +4,19 @@ import { Box, Typography } from "@mui/material";
 
 const OurExpertise = () => {
   const expertiseLogos = [
-    { src: "/assets/aspnet.png", alt: "ASP.NET" },
+     { src: "/assets/html1.png", alt: "HTML5" },
+    { src: "/assets/css.png", alt: "css" },
+    { src: "/assets/js.png", alt: "JavaScript" },
+    { src: "/assets/react.png", alt: "React" },
+    { src: "/assets/node.png", alt: "Node.js" },
+     { src: "/assets/mongoose.png", alt: "MongoDB" },
     { src: "/assets/sqlserver.png", alt: "SQL Server" },
     { src: "/assets/jquery.png", alt: "jQuery" },
-    { src: "/assets/html.png", alt: "HTML5" },
     { src: "/assets/mysql.png", alt: "MySQL" },
-    { src: "/assets/mongodb.png", alt: "MongoDB" },
-    { src: "/assets/android.png", alt: "Android" },
-    { src: "/assets/paypal.png", alt: "PayPal" },
-    { src: "/assets/ionic.png", alt: "Ionic" },
-    { src: "/assets/sailsforce.png", alt: "Salesforce" },
-    { src: "/assets/twitter.png", alt: "Twitter" },
+    { src: "/assets/java.png", alt: "java" },
+    { src: "/assets/springboot.png", alt: "Spring Boot" },
+    { src: "/assets/net.png", alt: ".net" },
+    { src: "/assets/react-native.png", alt: "React Native" },
   ];
 
   const marqueeRef = useRef(null);

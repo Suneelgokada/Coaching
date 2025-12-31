@@ -5,46 +5,46 @@ import { Box, Container, Typography, Avatar, Stack } from "@mui/material";
 
 const testimonials = [
   {
-    quote:
-      "Technoxis has been helping us with C#, SQL Server and JQuery development for over two years and it has been a true pleasure to work with them.",
-    name: "JOHN BARTOLUCCI | FOUNDER",
-    company: "Griffon Systems, LLC",
+    quote: "Coding Roots has been exceptional in training our team in MERN stack development. Their practical approach and industry-focused curriculum prepared us perfectly for real-world projects. The placement support was outstanding!",
+    name: "RAHUL SHARMA | SOFTWARE ENGINEER",
+    company: "Tech Innovators Pvt Ltd",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
   {
-    quote:
-      "Technoxis is one of the most professional companies we have worked with. What make them different from other organization are their commitment, patience, tenacity, and dedication to client's satisfaction. They have handled all our projects most professionally and efficiently. Technoxis have taken ownership in every task assigned to them and delivered beyond expectations. We highly recommend them to any one for any of their projects.",
-    name: "AMIR | PRESIDENT",
-    company: "Balianti",
+    quote: "What makes Coding Roots different from other institutes is their commitment, patience, and dedication to student success. They provided comprehensive training in IoT and .NET, followed by placement in their own company based on performance. Highly recommend for anyone serious about a tech career!",
+    name: "PRIYA REDDY | FULL STACK DEVELOPER",
+    company: "Digital Solutions Inc",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
   {
-    quote:
-      "Working with Technoxis has been a great experience. These guys made a genuine effort in understanding all our needs and requirements, and the end result was a product that surpassed all our initial expectations. I truly wish the Technoxis team a very good luck in their future assignments.",
-    name: "RAHUL DUBEY | DIRECTOR",
-    company: "UnKnown",
+    quote: "Working with Coding Roots has been a transformative experience. The trainers made genuine efforts in understanding our learning needs, and the hands-on projects surpassed all expectations. The opportunity to work in their company post-training based on performance is truly unique!",
+    name: "ADITYA KUMAR | IOT DEVELOPER",
+    company: "Smart Systems Pvt Ltd",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
   {
-    quote:
-      "Technoxis has provided my organization great services in .Net development and web design. I highly recommend this group to anyone needing expertise in custom software development and website design.",
-    name: "BRETT FEAGANS | PRESIDENT",
-    company: "Feagans Systems Development",
+    quote: "Coding Roots has provided excellent training in .NET development and modern web technologies. The placement assistance and opportunity to join their team made all the difference. I highly recommend this institute to anyone seeking expertise in software development.",
+    name: "SNEHA PATEL | .NET DEVELOPER",
+    company: "Enterprise Tech Solutions",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
   {
-    quote:
-      "Working with Technoxis has been great, they have worked on our project for over 7 months. The project was developed from the start to the final stage and it was a success. Working with Technoxis team was easy and reliable. Communication was great, deadlines were meet all the time. If you are looking for self motivated programmers to build your system or website don't look any further. Technoxis would be a smart choice. We highly recommend them for any development job.",
-    name: "RIDVAN JAKUPI | PRESIDENT",
-    company: "Real Creative Studio",
+    quote: "Training at Coding Roots was exceptional. The 6-month MERN stack program covered everything from basics to advanced concepts. Communication was excellent, deadlines were met, and the real-world project experience was invaluable. If you're looking for quality tech training with placement support, Coding Roots is the perfect choice!",
+    name: "VIKRAM SINGH | MERN STACK DEVELOPER",
+    company: "Web Dynamics",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
   {
-    quote:
-      "I have been working with Technoxis for the past 1 year. Our working environment has been primarily SQL Server with ASP .NET & C#. I have found Technoxis team extremely professional and have delivered our projects within budget and on time. They have an excellent team with skills in Microsoft technologies. I am very happy with the services provided by Technoxis.",
-    name: "RAM KODHANDARAMAN | IT TECHNICAL APPS MANAGEMENT",
-    company: "Tecknowsystems",
+    quote: "I completed my IoT and .NET training at Coding Roots and couldn't be happier. The trainers are extremely professional and delivered content that was both comprehensive and industry-relevant. The performance-based placement in their company is an excellent opportunity. Very satisfied with Coding Roots!",
+    name: "ANANYA KRISHNAN | IOT SPECIALIST",
+    company: "Connected Devices Ltd",
     image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    rating: 5,
   },
 ];
 
