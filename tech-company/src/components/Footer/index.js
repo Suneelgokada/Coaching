@@ -23,12 +23,12 @@ export default function Footer() {
               Head office
             </Typography>
             <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 2 }}>
-              Ramatalkies Road, Srinagar<br />
-              Visakhapatnam, Pincode-530016,<br />
-              Andhra Pradesh, INDIA.
+              2nd Floor, 9-29-14/2, Balaji Nagar,<br />
+              Siripuram, Visakhapatnam,<br />
+              Andhra Pradesh 530003, INDIA.
             </Typography>
-            <Typography variant="body2"><strong>Phone:</strong> +91 83673 88088</Typography>
-            <Typography variant="body2"><strong>Email:</strong> info@technoxis.com</Typography>
+            <Typography variant="body2"><strong>Phone:</strong> +91 8639176137</Typography>
+            <Typography variant="body2"><strong>Email:</strong> codingroots.in@gmail.com</Typography>
           </Grid>
 
           {/* 2. Get To Know Us - Width md=2.5 (Approx 20%) */}
@@ -48,11 +48,11 @@ export default function Footer() {
           {/* 3. About Technoxis - Width md=5.5 (Approx 45%) - Side by side fix */}
           <Grid item xs={12} md={5.5}>
             <Typography variant="h6" sx={{ color: "#fff", fontWeight: 700, mb: 3, fontSize: '22px' }}>
-              About Technoxis
+              About Coding Roots
             </Typography>
             <Typography variant="body2" sx={{ lineHeight: 1.7, mb: 4, textAlign: 'left', maxWidth: '400px' }}>
-              Technoxis is an offshore application development service <br />
-              based in India. We at Technoxis, strive to <br />
+              Coding Roots is an offshore application development service <br />
+              based in India. We at Coding Roots, strive to <br />
               deliver quality solutions involving high end <br />
               technology at reasonable price. We Design and <br />
               Develop Web, Mobile and Enterprise Applications.
@@ -83,7 +83,7 @@ export default function Footer() {
         {/* Bottom Bar Alignment */}
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 2 }}>
           <Box>
-            <Typography variant="caption" sx={{ color: '#888' }}>Copyright ©2025 All Rights Reserved by Technoxis</Typography>
+            <Typography variant="caption" sx={{ color: '#888' }}>Copyright ©2025 All Rights Reserved by Coding Roots</Typography>
             <Stack direction="row" spacing={1} sx={{ mt: 0.5 }}>
               <Link href="#" sx={{ color: "#888", fontSize: '12px', textDecoration: 'none' }}>Terms of Use</Link>
               <Typography variant="caption" sx={{ color: '#444' }}>/</Typography>
@@ -91,8 +91,8 @@ export default function Footer() {
             </Stack>
           </Box>
           <Stack direction="row" spacing={3} sx={{ color: '#888' }}>
-            <Stack direction="row" alignItems="center" spacing={1}><EmailIcon sx={{ fontSize: 16 }} /><Typography variant="caption">info@technoxis.com</Typography></Stack>
-            <Stack direction="row" alignItems="center" spacing={1}><PhoneIcon sx={{ fontSize: 16 }} /><Typography variant="caption">+91 83673 88088</Typography></Stack>
+            <Stack direction="row" alignItems="center" spacing={1}><EmailIcon sx={{ fontSize: 16 }} /><Typography variant="caption">codingroots.in@gmail.com</Typography></Stack>
+            <Stack direction="row" alignItems="center" spacing={1}><PhoneIcon sx={{ fontSize: 16 }} /><Typography variant="caption">+91 8639176137</Typography></Stack>
           </Stack>
         </Box>
       </Container>

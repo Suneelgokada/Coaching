@@ -20,11 +20,6 @@ export default function Home() {
       <WelcomeSection/>
       <OurProducts/>
       <Brands/>
-      <SectorsWeServe/>
-      <Clients/>
-      <Testimonials/>
-       <Count/>
-       <Form/>
        <Footer/>
       {/* Hero Section or Page Content */}
       {/* <AboutUs/>  <-- Deenni ikkada remove cheyandi */}

@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "VTC Corporation - Building Materials Supplier",
-  description: "Quality building materials at best prices",
+  title: "Coding Roots - Your Trusted Tech Partner",
+  description: "Coding Roots is a leading technology solutions provider specializing in web and mobile application development, delivering innovative and customized software solutions to businesses worldwide.",
 };
 
 export default function RootLayout({ children }) {

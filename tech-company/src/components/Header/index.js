@@ -16,8 +16,8 @@ import {
   Paper,
   Popper,
   ListItemButton,
-  Fade,
   Collapse,
+  Fade,
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
@@ -25,8 +25,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-/* ================= COLORS ================= */
-const HEADER_BLUE = "#1769d2";
+/* ================= COLORS (LOGO BASED) ================= */
+const LOGO_GREEN = "#2D7D2D"; 
+const LOGO_BLUE = "#004D71";  
 
 /* ================= MENUS ================= */
 const companyMenu = [
@@ -48,13 +49,13 @@ const servicesMenu = [
 
 export const navItems = [
   { name: "HOME", link: "/", dropDown: false },
-  { name: "CompaNY", link: "/about-us", dropDown: true, subMenu: companyMenu },
+  { name: "COMPANY", link: "/about-us", dropDown: true, subMenu: companyMenu },
   { name: "Services", link: "/categories", dropDown: true, subMenu: servicesMenu },
   { name: "TECHNOLOGIES", link: "/products", dropDown: false },
-  { name: "Products", link: "", dropDown: false },
-  { name: "Portfolio", link: "", dropDown: false },
-  { name: "careers", link: "", dropDown: false },
-  { name: "contact us", link: "", dropDown: false },
+  { name: "PRODUCTS", link: "/products", dropDown: false },
+  { name: "PORTFOLIO", link: "/portfolio", dropDown: false },
+  { name: "CAREERS", link: "/careers", dropDown: false },
+  { name: "CONTACT US", link: "/contact", dropDown: false },
 ];
 
 const Header = () => {
@@ -70,52 +71,54 @@ const Header = () => {
     fontFamily: "Poppins",
     fontSize: 14,
     fontWeight: 500,
+    color: "#333",
+    "&:hover": {
+      backgroundColor: "rgba(45, 125, 45, 0.08)",
+      color: LOGO_GREEN,
+    },
   };
 
   return (
     <>
-      {/* ================= TOP HEADER (UNCHANGED) ================= */}
-      <AppBar position="static" elevation={1} sx={{ backgroundColor: "#fff" }}>
+      {/* ================= TOP HEADER ================= */}
+      <AppBar position="static" elevation={0} sx={{ backgroundColor: "#fff", borderBottom: "1px solid #f0f0f0" }}>
         <Container maxWidth="lg">
-          <Toolbar sx={{ display: "block", py: 2 }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: { xs: "center", sm: "space-between" },
-                alignItems: "center",
-                gap: 2,
-              }}
+          <Toolbar sx={{ display: "flex", justifyContent: "space-between", py: 1.5, px: "0 !important" }}>
+            <Box 
+              component={Link} 
+              href="/" 
+              sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
             >
-              <Box component={Link} href="/">
-                <Box
-                  component="img"
-                  src="/assets/logo-removebg-preview.png"
-                  alt="Buildex Logo"
-                  sx={{ height: 80, cursor: "pointer" }}
-                />
+              <Box
+                component="img"
+                src="/assets/logo.png"
+                alt="Coding Roots Logo"
+                sx={{ height: { xs: 50, md: 70 }, cursor: "pointer" }}
+              />
+            </Box>
+
+            <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", gap: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                <EmailIcon sx={{ color: LOGO_BLUE, fontSize: 26 }} />
+                <Box>
+                  <Typography variant="caption" sx={{ fontWeight: 700, color: "#999", display: 'block', lineHeight: 1 }}>
+                    EMAIL US
+                  </Typography>
+                  <Link href="mailto:codingroots.in@gmail.com" sx={{ textDecoration: "none", color: LOGO_BLUE, fontWeight: 600, fontSize: '0.9rem' }}>
+                    codingroots.in@gmail.com
+                  </Link>
+                </Box>
               </Box>
 
-              <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", gap: 3 }}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <EmailIcon sx={{ color: "#0B2343", fontSize: 30 }} />
-                  <Box>
-                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                      Email us now
-                    </Typography>
-                    <Link href="mailto:vtc_corporation@yahoo.com">
-                      vtc_corporation@yahoo.com
-                    </Link>
-                  </Box>
-                </Box>
-
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <CallIcon sx={{ color: "#0B2343", fontSize: 30 }} />
-                  <Box>
-                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                      Call us now
-                    </Typography>
-                    <Link href="tel:+918367388088">+91 8367388088</Link>
-                  </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                <CallIcon sx={{ color: LOGO_GREEN, fontSize: 26 }} />
+                <Box>
+                  <Typography variant="caption" sx={{ fontWeight: 700, color: "#999", display: 'block', lineHeight: 1 }}>
+                    CALL NOW
+                  </Typography>
+                  <Link href="tel:+918639176137" sx={{ textDecoration: "none", color: LOGO_GREEN, fontWeight: 600, fontSize: '0.9rem' }}>
+                    +91 8639176137
+                  </Link>
                 </Box>
               </Box>
             </Box>
@@ -124,11 +127,10 @@ const Header = () => {
       </AppBar>
 
       {/* ================= NAV HEADER ================= */}
-      <AppBar position="sticky" sx={{ top: 0, backgroundColor: HEADER_BLUE, zIndex: 1200 }}>
+      <AppBar position="sticky" sx={{ top: 0, backgroundColor: LOGO_BLUE, zIndex: 1200, elevation: 4 }}>
         <Container maxWidth="lg">
-          <Toolbar sx={{ minHeight: 56, justifyContent: "space-between" }}>
-            {/* DESKTOP NAV */}
-            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3, mx: "auto" }}>
+          <Toolbar variant="dense" sx={{ justifyContent: "center" }}>
+            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5 }}>
               {navItems.map((item) => (
                 <Box
                   key={item.name}
@@ -140,42 +142,52 @@ const Header = () => {
                   }}
                   onMouseLeave={() => setHoveredCategory(null)}
                 >
-                  <Button sx={{ color: "#fff", fontWeight: 500 }}>
+                  <Button
+                    component={item.dropDown ? "button" : Link}
+                    href={item.dropDown ? undefined : item.link}
+                    sx={{ 
+                      color: "#fff", 
+                      fontWeight: 600, 
+                      px: 2,
+                      py: 1.5,
+                      fontSize: '0.85rem',
+                      borderRadius: 0,
+                      "&:hover": { backgroundColor: LOGO_GREEN }
+                    }}
+                  >
                     {item.name}
-                    {item.dropDown &&
-                      (hoveredCategory === item.name ? (
-                        <ExpandLessIcon />
-                      ) : (
-                        <ExpandMoreIcon />
-                      ))}
+                    {item.dropDown && (hoveredCategory === item.name ? <ExpandLessIcon sx={{ fontSize: 18, ml: 0.5 }} /> : <ExpandMoreIcon sx={{ fontSize: 18, ml: 0.5 }} />)}
                   </Button>
 
                   {item.dropDown && (
-                    <Popper open={hoveredCategory === item.name} anchorEl={anchorEl}>
-                      <Paper>
-                        <List dense>
-                          {item.subMenu.map((sub) => (
-                            <ListItemButton
-                              key={sub.name}
-                              component={Link}
-                              href={sub.link}
-                              sx={dropdownItemStyles}
-                            >
-                              {sub.name}
-                            </ListItemButton>
-                          ))}
-                        </List>
-                      </Paper>
+                    <Popper open={hoveredCategory === item.name} anchorEl={anchorEl} transition disablePortal>
+                      {({ TransitionProps }) => (
+                        <Fade {...TransitionProps} timeout={200}>
+                          <Paper sx={{ mt: 0, borderRadius: "0 0 4px 4px", boxShadow: 5, borderTop: `3px solid ${LOGO_GREEN}` }}>
+                            <List dense sx={{ py: 1, minWidth: 220 }}>
+                              {item.subMenu.map((sub) => (
+                                <ListItemButton
+                                  key={sub.name}
+                                  component={Link}
+                                  href={sub.link}
+                                  sx={dropdownItemStyles}
+                                >
+                                  <ListItemText primary={sub.name} primaryTypographyProps={{ fontSize: '0.9rem' }} />
+                                </ListItemButton>
+                              ))}
+                            </List>
+                          </Paper>
+                        </Fade>
+                      )}
                     </Popper>
                   )}
                 </Box>
               ))}
             </Box>
 
-            {/* MOBILE MENU ICON (≤768px) */}
             <IconButton
               onClick={() => setOpen(true)}
-              sx={{ display: { xs: "flex", md: "none" }, color: "#fff" }}
+              sx={{ display: { xs: "flex", md: "none" }, color: "#fff", ml: 'auto' }}
             >
               <MenuIcon />
             </IconButton>
@@ -185,30 +197,52 @@ const Header = () => {
 
       {/* ================= MOBILE DRAWER ================= */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-        <Box sx={{ width: 280, p: 2 }}>
-          <List>
+        <Box sx={{ width: 280 }}>
+          <Box sx={{ p: 2, backgroundColor: LOGO_BLUE, color: '#fff', textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ fontWeight: 800 }}>NAVIGATION</Typography>
+          </Box>
+          <List sx={{ p: 1 }}>
             {navItems.map((item) => (
-              <Box key={item.name}>
-                <ListItem
-                  onClick={() => item.dropDown && toggleMobileDropdown(item.name)}
-                  component={!item.dropDown ? Link : "div"}
-                  href={!item.dropDown ? item.link : undefined}
-                >
-                  <ListItemText primary={item.name} />
-                  {item.dropDown &&
-                    (mobileDropdownOpen[item.name] ? <ExpandLessIcon /> : <ExpandMoreIcon />)}
+              <React.Fragment key={item.name}>
+                <ListItem disablePadding sx={{ mb: 0.5 }}>
+                  {item.dropDown ? (
+                    <ListItemButton 
+                      onClick={() => toggleMobileDropdown(item.name)}
+                      sx={{ borderRadius: 1, color: LOGO_BLUE }}
+                    >
+                      <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
+                      {mobileDropdownOpen[item.name] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </ListItemButton>
+                  ) : (
+                    <ListItemButton 
+                      component={Link} 
+                      href={item.link} 
+                      onClick={() => setOpen(false)}
+                      sx={{ borderRadius: 1, color: LOGO_BLUE }}
+                    >
+                      <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
+                    </ListItemButton>
+                  )}
                 </ListItem>
 
                 {item.dropDown && (
-                  <Collapse in={mobileDropdownOpen[item.name]}>
-                    {item.subMenu.map((sub) => (
-                      <ListItemButton key={sub.name} component={Link} href={sub.link}>
-                        {sub.name}
-                      </ListItemButton>
-                    ))}
+                  <Collapse in={mobileDropdownOpen[item.name]} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ backgroundColor: '#f9f9f9', borderRadius: 1, mx: 1 }}>
+                      {item.subMenu.map((sub) => (
+                        <ListItemButton 
+                          key={sub.name} 
+                          component={Link} 
+                          href={sub.link}
+                          onClick={() => setOpen(false)}
+                          sx={{ pl: 4 }}
+                        >
+                          <ListItemText primary={sub.name} primaryTypographyProps={{ fontSize: '0.85rem', color: '#555' }} />
+                        </ListItemButton>
+                      ))}
+                    </List>
                   </Collapse>
                 )}
-              </Box>
+              </React.Fragment>
             ))}
           </List>
         </Box>
