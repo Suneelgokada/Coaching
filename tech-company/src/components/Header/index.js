@@ -128,7 +128,7 @@ const Header = () => {
       </AppBar>
 
       {/* ================= NAV HEADER ================= */}
-      <AppBar position="sticky" sx={{ top: 0, backgroundColor: LOGO_BLUE, zIndex: 1200, elevation: 4 }}>
+      <AppBar position="sticky" sx={{ top: 0, backgroundColor: '#085482', zIndex: 1200, elevation: 4 }}>
         <Container maxWidth="lg">
           <Toolbar variant="dense" sx={{ justifyContent: "center" }}>
             <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5 }}>

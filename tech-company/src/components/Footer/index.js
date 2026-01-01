@@ -12,7 +12,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <Box sx={{ backgroundColor: "#333333", color: "#b0b0b0", pt: 8, pb: 4, position: "relative" }}>
+    <Box sx={{ backgroundColor: "#085482", color: "#b0b0b0", pt: 8, pb: 4, position: "relative" }}>
       <Container maxWidth="lg">
         {/* Grid Container - 12 column system ni correct ga divide chesam */}
         <Grid container spacing={2} justifyContent="space-between">
