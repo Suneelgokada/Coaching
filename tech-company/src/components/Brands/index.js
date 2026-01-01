@@ -4,18 +4,18 @@ import { Box, Typography } from "@mui/material";
 
 const OurExpertise = () => {
   const expertiseLogos = [
-     { src: "/assets/html1.png", alt: "HTML5" },
-    { src: "/assets/css.png", alt: "css" },
+    { src: "/assets/html1.png", alt: "HTML5" },
+    { src: "/assets/css.png", alt: "CSS" },
     { src: "/assets/js.png", alt: "JavaScript" },
     { src: "/assets/react.png", alt: "React" },
     { src: "/assets/node.png", alt: "Node.js" },
-     { src: "/assets/mongoose.png", alt: "MongoDB" },
+    { src: "/assets/mongoose.png", alt: "MongoDB" },
     { src: "/assets/sqlserver.png", alt: "SQL Server" },
     { src: "/assets/jquery.png", alt: "jQuery" },
     { src: "/assets/mysql.png", alt: "MySQL" },
-    { src: "/assets/java.png", alt: "java" },
+    { src: "/assets/java.png", alt: "Java" },
     { src: "/assets/springboot.png", alt: "Spring Boot" },
-    { src: "/assets/net.png", alt: ".net" },
+    { src: "/assets/net.png", alt: ".NET" },
     { src: "/assets/react-native.png", alt: "React Native" },
   ];
 
@@ -40,36 +40,42 @@ const OurExpertise = () => {
   return (
     <Box sx={{ py: "80px", backgroundColor: "#fff" }}>
       <style>{marqueeKeyframes}</style>
+
       <Box sx={{ maxWidth: "1400px", margin: "0 auto", overflow: "hidden" }}>
         
-        <Box textAlign={"center"} sx={{ mb: 8 }}>
+        {/* ================= HEADING ================= */}
+        <Box textAlign="center" sx={{ mb: 8 }}>
           <Typography
-            variant="h3" // Heading size koncham penchanu
-            sx={{
-              fontWeight: 700,
-              letterSpacing: "3px",
-              color: "#222",
-              fontFamily: "Poppins, sans-serif",
-              textTransform: "uppercase"
-            }}
+            variant="h4"
+              align="center"
+             sx={{
+            fontWeight: 600,
+            fontFamily: 'montserrat',
+            mb: 8,
+            color: "#085482",
+            textTransform: "uppercase",
+            letterSpacing: 2,
+          }}
           >
             Our Expertise
           </Typography>
         </Box>
-
+        {/* ================= MARQUEE ================= */}
         <Box sx={{ overflow: "hidden", whiteSpace: "nowrap", position: "relative" }}>
           <Box
             ref={marqueeRef}
             sx={{
               display: "inline-block",
-              animation: "marquee 35s linear infinite", 
+              animation: "marquee 35s linear infinite",
               animationPlayState: "paused",
             }}
             onMouseEnter={() => {
-              if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "paused";
+              if (marqueeRef.current)
+                marqueeRef.current.style.animationPlayState = "paused";
             }}
             onMouseLeave={() => {
-              if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "running";
+              if (marqueeRef.current)
+                marqueeRef.current.style.animationPlayState = "running";
             }}
           >
             {[...expertiseLogos, ...expertiseLogos].map((item, index) => (
@@ -79,8 +85,8 @@ const OurExpertise = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  mx: 6, // Logos madhya gap penchanu
-                  minWidth: "180px" // Minimum width penchanu
+                  mx: 3,              // ✅ GAP REDUCED (earlier 6)
+                  minWidth: "140px",  // tighter & cleaner
                 }}
               >
                 <Box
@@ -88,14 +94,13 @@ const OurExpertise = () => {
                   src={item.src}
                   alt={item.alt}
                   sx={{
-                    width: "auto",
-                    height: "85px", // Height 60px nundi 85px ki penchanu (Zoom Effect)
-                    maxWidth: "220px",
+                    height: "85px",
+                    maxWidth: "180px",
                     objectFit: "contain",
                     transition: "transform 0.4s ease",
-                    "&:hover": { 
-                      transform: "scale(1.2)" // Hover chesinappudu inka zoom avthundi
-                    }
+                    "&:hover": {
+                      transform: "scale(1.2)",
+                    },
                   }}
                 />
               </Box>

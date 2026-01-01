@@ -359,11 +359,14 @@ const services = [
 ];
 
 export default function ServicesCards() {
+  const PRIMARY_COLOR = "#085482";
+  const MONTSERRAT = "'Montserrat', sans-serif";
+
   return (
     <Box 
       sx={{ 
         py: { xs: 8, md: 12 }, 
-        // background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)", 
+        bgcolor: "#F8FAFC", // స్వల్పమైన గ్రే బ్యాక్‌గ్రౌండ్ వైట్ కార్డ్స్ బాగా కనిపించడానికి
         position: "relative",
       }}
     >
@@ -371,28 +374,29 @@ export default function ServicesCards() {
         {/* Header Section */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
           <Chip
-            icon={<RocketLaunchIcon sx={{ fontSize: 18, color: "#004D71 !important" }} />}
+            icon={<RocketLaunchIcon sx={{ fontSize: 18, color: `${PRIMARY_COLOR} !important` }} />}
             label="TECH EXPERTISE"
             sx={{
               mb: 3, px: 2, py: 2.5, height: "auto",
-              background: "rgba(0, 77, 113, 0.1)",
-              border: "1px solid rgba(0, 77, 113, 0.2)",
-              borderRadius: "50px", color: "#004D71", fontWeight: 700,
+              background: "rgba(8, 84, 130, 0.1)",
+              border: `1px solid rgba(8, 84, 130, 0.2)`,
+              borderRadius: "50px", color: PRIMARY_COLOR, fontWeight: 700,
+              fontFamily: MONTSERRAT,
             }}
           />
           <Typography
             variant="h2"
             sx={{
               fontSize: { xs: "32px", md: "42px" },
-              fontWeight: 900,
-              color: "#004D71",
-              fontFamily: "Poppins, sans-serif",
+              fontWeight: 600,
+              color: PRIMARY_COLOR,
+              fontFamily: MONTSERRAT,
               mb: 2,
             }}
           >
             Innovative Solutions for <span style={{ color: "#2D7D2D" }}>Modern Businesses</span>
           </Typography>
-          <Typography sx={{ color: "rgba(0, 77, 113, 0.7)", maxWidth: "700px", mx: "auto", fontSize: "16px" }}>
+          <Typography sx={{ color: "rgba(8, 84, 130, 0.7)", maxWidth: "700px", mx: "auto", fontSize: "16px", fontWeight:500, fontFamily: MONTSERRAT }}>
             Delivering high-performance digital transformation services to accelerate your industry growth.
           </Typography>
         </Box>
@@ -410,38 +414,39 @@ export default function ServicesCards() {
             <Box
               key={index}
               sx={{
-                // Responsive Width
                 width: { xs: "100%", sm: "calc(50% - 24px)", md: "calc(33.33% - 24px)" },
-                backgroundColor: "#004D71", 
+                backgroundColor: "#ffffff", // వైట్ బ్యాక్‌గ్రౌండ్
                 borderRadius: "20px",
                 p: 4,
-                boxShadow: "0 15px 35px rgba(0, 77, 113, 0.2)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center", // ఐకాన్ మరియు టెక్స్ట్ సెంటర్ చేయడానికి
+                textAlign: "center", // టెక్స్ట్ సెంటర్ చేయడానికి
                 transition: "all 0.3s ease-in-out",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                // అన్ని కార్డ్స్ సమానంగా ఉండటానికి కనీస ఎత్తు
-                minHeight: "320px",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
+                minHeight: "350px",
                 "&:hover": {
                   transform: "translateY(-10px)",
-                  backgroundColor: "",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+                  boxShadow: `0 20px 40px rgba(8, 84, 130, 0.15)`,
+                  borderColor: PRIMARY_COLOR,
                 },
               }}
             >
               {/* Icon Container */}
               <Box
                 sx={{
-                  width: 54,
-                  height: 54,
-                  borderRadius: "14px",
-                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                  width: 80, // ఐకాన్ బాక్స్ సైజ్ పెంచాను
+                  height: 80,
+                  borderRadius: "50%", // సర్కిల్ షేప్
+                  backgroundColor: "rgba(8, 84, 130, 0.05)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#4ade80", 
+                  color: PRIMARY_COLOR, 
                   mb: 3,
-                  "& svg": { fontSize: 28 },
+                  transition: "all 0.3s ease",
+                  "& svg": { fontSize: 40 }, // ఐకాన్ సైజ్ పెంచాను
                 }}
               >
                 {item.icon}
@@ -450,11 +455,11 @@ export default function ServicesCards() {
               <Typography
                 variant="h6"
                 sx={{
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: 700,
-                  color: "#ffffff",
+                  color: PRIMARY_COLOR, // బ్లూ కలర్ టెక్స్ట్
                   mb: 2,
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: MONTSERRAT,
                 }}
               >
                 {item.title}
@@ -462,11 +467,10 @@ export default function ServicesCards() {
 
               <Typography
                 sx={{
-                  fontSize: "14.5px",
+                  fontSize: "15px",
                   lineHeight: 1.7,
-                  color: "rgba(255, 255, 255, 0.8)",
-                  fontFamily: "Inter, sans-serif",
-                  // Content సమానంగా సర్దుబాటు అవ్వడానికి
+                  color: "#54738c", // సాఫ్ట్ బ్లూ-గ్రే టెక్స్ట్ రీడబిలిటీ కోసం
+                  fontFamily: MONTSERRAT,
                   flexGrow: 1,
                 }}
               >

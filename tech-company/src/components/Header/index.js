@@ -187,7 +187,7 @@ const Header = () => {
             </Box>
 
             <IconButton
-              onClick={() => setOpen(true)}
+              onClick={() => setOpen(prev => !prev)}
               sx={{ display: { xs: "flex", md: "none" }, color: "#fff", ml: 'auto' }}
             >
               <MenuIcon />

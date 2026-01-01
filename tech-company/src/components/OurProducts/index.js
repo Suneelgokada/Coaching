@@ -415,154 +415,196 @@
 //     </Box>
 //   );
 // }
-
-
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Box, Container, Typography, Stack, Chip } from "@mui/material";
-import { keyframes } from "@mui/system";
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import StarIcon from '@mui/icons-material/Star';
+import React, { useState } from "react";
+import { Box, Container, Typography, Avatar, Stack } from "@mui/material";
+import { motion } from "framer-motion";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
-// స్లైడింగ్ యానిమేషన్
-const fadeIn = keyframes`
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-`;
-
+/* ================= TESTIMONIAL DATA ================= */
 const testimonials = [
   {
-    quote: "We were looking for a web design company that could capture the essence of our brand and provide an exceptional user experience. Coding Roots did just that. They are a reliable partner who consistently delivers outstanding results.",
+    quote:
+      "We were looking for a web design company that could capture the essence of our brand. Coding Roots did just that. They are a reliable partner who consistently delivers outstanding results.",
     name: "Megha Infra Projects",
-    rating: 5,
+    designation: "Infrastructure Partner",
+    logo: "/assets/mip.png",
   },
   {
-    quote: "I commend the company for their excellent work service. They always go the extra mile to make sure that their customers are satisfied. I would highly recommend them to anyone in need of their services.",
+    quote:
+      "I commend the company for their excellent work service. They always go the extra mile to make sure that their customers are satisfied. I would highly recommend them.",
     name: "DCCB",
-    rating: 5,
+    designation: "Banking Solutions",
+    logo: "/assets/dcb.png",
   },
   {
-    quote: "Working with Coding Roots has been a great experience. These guys made a genuine effort in understanding all our needs and requirements, and the end result was a product that surpassed all our initial expectations.",
+    quote:
+      "Working with Coding Roots has been a great experience. These guys made a genuine effort in understanding all our needs and requirements, surpassing our expectations.",
     name: "Hibiscus Consulting",
-    rating: 5,
+    designation: "Business Strategy",
+    logo: "/assets/hibilogo.png",
   },
 ];
 
-export default function TestimonialSection() {
-  const [activeStep, setActiveStep] = useState(0);
+const rowTestimonials = [...testimonials, ...testimonials];
 
-  // ఆటోమేటిక్ స్క్రోలింగ్ లాజిక్ (ప్రతి 5 సెకన్లకు మారుతుంది)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+const TestimonialMarquee = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const montserrat = "'Montserrat', sans-serif";
 
   return (
-    <Box
-      sx={{
-        py: { xs: 8, md: 12 },
-        // background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)",
-        overflow: "hidden",
-      }}
-    >
+    <Box sx={{ py: 10, bgcolor: "#fff", overflow: "hidden" }}>
+      {/* ================= HEADING ================= */}
       <Container maxWidth="lg">
-        {/* Header */}
-        <Box sx={{ textAlign: "center", mb: 8 }}>
-          <Chip
-            label="CLIENT TESTIMONIALS"
-            sx={{
-              mb: 3, px: 2, py: 2.5, height: "auto",
-              background: "rgba(0, 77, 113, 0.1)",
-              border: "1px solid rgba(0, 77, 113, 0.2)",
-              borderRadius: "50px", color: "#004D71", fontWeight: 700,
-            }}
-          />
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: "32px", md: "48px" },
-              fontWeight: 900,
-              fontFamily: "Poppins, sans-serif",
-              mb: 2, color: "#004D71",
-            }}
-          >
-            TRUSTED BY <span style={{ color: "#2D7D2D" }}>LEADING</span> COMPANIES
-          </Typography>
-        </Box>
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{
+            fontWeight: 600,
+            fontFamily: montserrat,
+            mb: 8,
+            color: "#085482",
+            textTransform: "uppercase",
+            letterSpacing: 2,
+          }}
+        >
+          What Our Clients Say
+        </Typography>
+      </Container>
 
-        {/* Testimonial Container with Animation */}
-        <Box sx={{ position: "relative", maxWidth: "850px", mx: "auto", mb: 6 }}>
-          {testimonials.map((item, index) => (
+      {/* ================= MARQUEE ================= */}
+      <Box
+        sx={{ display: "flex", width: "max-content" }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <motion.div
+          animate={{ x: isHovered ? undefined : [0, -1920] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 35,
+              ease: "linear",
+            },
+          }}
+          style={{ display: "flex", gap: "32px" }}
+        >
+          {rowTestimonials.map((item, index) => (
             <Box
               key={index}
               sx={{
-                display: activeStep === index ? "block" : "none",
-                animation: `${fadeIn} 0.8s ease-in-out`,
-                background: "#004D71",
-                borderRadius: "24px",
-                p: { xs: 4, md: 8 },
-                position: "relative",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
-                textAlign: "center",
+                width: { xs: "320px", md: "450px" },
+                bgcolor: "#F3F4F6",
+                p: 4,
+                borderRadius: "16px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                cursor: "pointer",
+                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                "&:hover": {
+                  bgcolor: "#004D71",
+                  transform: "translateY(-15px) scale(1.02)",
+                  boxShadow: "0 20px 40px rgba(0, 77, 113, 0.25)",
+                  "& .quote-icon, & .quote-text, & .name, & .desig": {
+                    color: "#fff",
+                  },
+                  "& .company-logo": {
+                    transform: "scale(1.25)",
+                    boxShadow: "0 0 0 8px rgba(255,255,255,0.25)",
+                  },
+                },
               }}
             >
-              <FormatQuoteIcon sx={{ fontSize: 60, color: "rgba(255,255,255,0.2)", mb: 2 }} />
-              
-              <Typography
-                sx={{
-                  fontSize: { xs: "16px", md: "20px" },
-                  fontStyle: "italic",
-                  color: "#fff",
-                  lineHeight: 1.8,
-                  mb: 4,
-                  fontFamily: "Poppins, sans-serif",
-                }}
-              >
-                "{item.quote}"
-              </Typography>
+              {/* ================= QUOTE ================= */}
+              <Box>
+                <FormatQuoteIcon
+                  className="quote-icon"
+                  sx={{
+                    fontSize: 40,
+                    color: "#9CA3AF",
+                    mb: 2,
+                    transition: "0.3s",
+                  }}
+                />
 
-              <Stack direction="row" spacing={0.5} justifyContent="center" sx={{ mb: 2 }}>
-                {[...Array(item.rating)].map((_, i) => (
-                  <StarIcon key={i} sx={{ color: "#fbbf24", fontSize: "24px" }} />
-                ))}
+                <Typography
+                  className="quote-text"
+                  sx={{
+                    fontFamily: montserrat,
+                    fontSize: "0.95rem",
+                    lineHeight: 1.8,
+                    color: "#4B5563",
+                    mb: 3,
+                    transition: "0.3s",
+                  }}
+                >
+                  "{item.quote}"
+                </Typography>
+              </Box>
+
+              {/* ================= FOOTER ================= */}
+              <Stack direction="row" alignItems="center" spacing={3}>
+                {/* ===== COMPANY LOGO (FIXED & ZOOMED) ===== */}
+                <Avatar
+                  src={item.logo}
+                  alt={item.name}
+                  className="company-logo"
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    bgcolor: "#fff",
+                    p: 0.5,
+                    borderRadius: "16px",
+                    border: "1px solid #E5E7EB",
+                    boxShadow: "0 10px 24px rgba(0,0,0,0.15)",
+                    transition: "all 0.4s ease",
+                    "& img": {
+                      objectFit: "contain",
+                      transform: "scale(1.5)",
+                    },
+                  }}
+                />
+
+                {/* ===== NAME & DESIGNATION ===== */}
+                <Box>
+                  <Typography
+                    variant="subtitle1"
+                    className="name"
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat,
+                      color: "#111827",
+                      transition: "0.3s",
+                    }}
+                  >
+                    {item.name}
+                  </Typography>
+
+                  <Typography
+                    variant="caption"
+                    className="desig"
+                    sx={{
+                      fontWeight: 600,
+                      fontFamily: montserrat,
+                      color: "#6B7280",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      transition: "0.3s",
+                    }}
+                  >
+                    {item.designation}
+                  </Typography>
+                </Box>
               </Stack>
-
-              <Typography
-                sx={{
-                  fontWeight: 800,
-                  color: "#4ade80",
-                  fontSize: "22px",
-                  textTransform: "uppercase",
-                  letterSpacing: "1px",
-                }}
-              >
-                {item.name}
-              </Typography>
             </Box>
           ))}
-        </Box>
-
-        {/* Navigation Dots */}
-        <Stack direction="row" spacing={2} justifyContent="center">
-          {testimonials.map((_, index) => (
-            <Box
-              key={index}
-              onClick={() => setActiveStep(index)}
-              sx={{
-                width: activeStep === index ? 30 : 12,
-                height: 12,
-                borderRadius: "10px",
-                background: activeStep === index ? "#004D71" : "rgba(0, 77, 113, 0.2)",
-                cursor: "pointer",
-                transition: "all 0.4s ease",
-              }}
-            />
-          ))}
-        </Stack>
-      </Container>
+        </motion.div>
+      </Box>
     </Box>
   );
-}
+};
+
+export default TestimonialMarquee;
