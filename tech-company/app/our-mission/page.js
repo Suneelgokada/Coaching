@@ -1,18 +1,19 @@
 import Header from "../../src/components/Header";
 import Footer from "../../src/components/Footer";
-import OurMissionLayout from "../../src/components/OurMission";
+import AboutUsLayout from "../../src/components/AboutsUs/index";
+import OurMission from "../../src/components/OurMission";
 
 export const metadata = {
-  title: "Our Mission | VTC Corporation",
+  title: "About VTC",
   description:
-    "VTC Corporation mission and values – delivering innovative, reliable, and cost-effective digital solutions for global enterprises.",
+    "VTC Corporation – Excellence in Building Materials. 15+ years of legacy, 40+ global brand partners, and a commitment to quality that lasts generations",
 };
 
-export default function OurMissionPage() {
+export default function AboutUsPage() {
   return (
     <>
       <Header />
-      <OurMissionLayout />
+      <OurMission />
       <Footer />
     </>
   );

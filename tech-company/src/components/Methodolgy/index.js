@@ -1,163 +1,214 @@
 "use client";
  
-import React from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
+  Card,
   Typography,
-  List,
-  ListItem,
-  ListItemButton,
-  Paper,
+  IconButton,
+  Stack,
 } from "@mui/material";
-import Link from "next/link";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
  
-export default function MethodologyLayout() {
+const slides = [
+  {
+    title: "Client-Centric Approach",
+    desc: "We place your business goals at the core of our methodology, ensuring every solution is aligned with real-world needs.",
+  },
+  {
+    title: "Transparent Communication",
+    desc: "You receive clear updates, defined milestones, and complete visibility throughout the project lifecycle.",
+  },
+  {
+    title: "Scalable & Future-Ready Solutions",
+    desc: "Our systems are designed to scale effortlessly, supporting long-term growth and evolving requirements.",
+  },
+  {
+    title: "Proven Delivery Framework",
+    desc: "We follow a tested delivery model that minimizes risks and ensures predictable outcomes.",
+  },
+  {
+    title: "Focus on Quality & Performance",
+    desc: "Every solution undergoes rigorous quality checks for performance, security, and reliability.",
+  },
+];
+ 
+export default function MethodologyCarousel() {
+  const [index, setIndex] = useState(0);
+ 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+ 
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+ 
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % slides.length);
+  };
  
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        backgroundColor: "#0b2343",
-        position: "relative", // REQUIRED for top curve
-        overflow: "hidden",   // hide extra SVG
-        padding: { xs: 3, md: 8 },
-     
+        width: "100%",
+        background:
+          "linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)",
+        py: { xs: 6, md: 10 },
+        px: { xs: 2, md: 6 },
       }}
     >
-      {/* ================= TOP CURVE ================= */}
-      <Box
+      {/* SECTION TITLE */}
+      <Typography
+        align="center"
         sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          maxWidth:"50%",
-          lineHeight: 0,
-          zIndex: 0,
+          fontSize: { xs: 26, md: 34 },
+          fontWeight: 800,
+          color: "#0f2a44",
+          mb: 1,
         }}
       >
-        <svg
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          width="100%"
-          height="120"
-        >
-          <path
-            d="M0,96L80,85.3C160,75,320,53,480,48C640,43,800,53,960,64C1120,75,1280,85,1360,90.7L1440,96L1440,0L0,0Z"
-            fill="#0b2343"
-          />
-        </svg>
-      </Box>
-      {/* ============================================ */}
+        Why Our Methodology Works
+      </Typography>
  
+      <Typography
+        align="center"
+        sx={{
+          maxWidth: 720,
+          mx: "auto",
+          fontSize: 16,
+          color: "#475569",
+          mb: 6,
+        }}
+      >
+        A structured, transparent, and scalable approach designed to deliver
+        measurable business outcomes.
+      </Typography>
+ 
+      {/* CARD WRAPPER */}
       <Box
         sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 6,
-          alignItems: "flex-start",
           position: "relative",
-          zIndex: 1, // keep content above curve
+          maxWidth: "1100px",
+          mx: "auto",
         }}
       >
-        {/* LEFT CONTENT */}
-        <Box
+        {/* LEFT ARROW */}
+        <IconButton
+          onClick={prevSlide}
           sx={{
-            color: "#ffffff",
-            padding: { xs: 4, md: 8 },
+            position: "absolute",
+            top: "50%",
+            left: { xs: -10, md: -36 },
+            transform: "translateY(-50%)",
+            backgroundColor: "#ffffff",
+            border: "1px solid #e5e7eb",
+            boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+            color: "#1a73e8",
+            "&:hover": { backgroundColor: "#e8f0fe" },
           }}
         >
-          <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-  Methodology
-</Typography>
+          <ArrowBackIosNewIcon fontSize="small" />
+        </IconButton>
  
-<Typography
-  sx={{
-    fontStyle: "italic",
-    fontWeight: 500,
-    mb: 3,
-    color: "#91aad3ff",
-  }}
->
-  Our proven methodology ensures consistent quality and measurable results.
-</Typography>
- 
-<Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
-  Our methodology is designed to deliver scalable, secure, and high-performance
-  solutions. We follow a structured and transparent development process that
-  aligns technology with business goals.
-</Typography>
- 
-<Typography sx={{ fontWeight: 600, mb: 1 }}>
-  Our Process:
-</Typography>
- 
-<List sx={{ pl: 2 }}>
-  {[
-    "Requirement Analysis",
-    "Planning & Strategy",
-    "Design & Prototyping",
-    "Development",
-    "Testing & Quality Assurance",
-    "Deployment & Support",
-  ].map((step) => (
-    <ListItem key={step} sx={{ py: 0.5 }}>
-      <Typography>• {step}</Typography>
-    </ListItem>
-  ))}
-</List>
- 
- 
-        </Box>
- 
-        {/* RIGHT SIDE COMPANY LINKS */}
-        <Paper
-          elevation={3}
+        {/* MAIN CARD */}
+        <Card
           sx={{
-            flex: 1,
-            padding: 3,
-            borderRadius: "12px",
-            maxWidth: "250px",
-            marginTop: "200px",
- 
+            p: { xs: 4, md: 6 },
+            borderRadius: "18px",
+            background:
+              "linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%)",
+            border: "1px solid #e5e7eb",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
           }}
         >
-          <List>
-            {[
-              { name: "About Us", link: "/about-us" },
-              { name: "Methodology", link: "/methodology" },
-              { name: "Our Clients", link: "/our-clients" },
-              { name: "Our Mission", link: "/our-mission" },
-              { name: "Testimonials", link: "/testimonials" },
-            ].map((item) => (
-              <ListItem key={item.name} disablePadding>
-                <ListItemButton
-                  component={Link}
-                  href={item.link}
-                  sx={{
-                    borderRadius: "6px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 1,
-                    fontWeight: 500,
-                    color: "#0b2343",
-                    transition: "0.3s",
-                 
-                    "&:hover": {
-                      backgroundColor: "#f1f5f9",
-                      color: "#16a34a",
-                    },
-                  }}
-                >
-                  <Typography component="span">➜</Typography>
-                  <Typography component="span">{item.name}</Typography>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Paper>
+          <Stack spacing={3} alignItems="center">
+            {/* ICON BADGE */}
+            <Box
+              sx={{
+                width: 64,
+                height: 64,
+                borderRadius: "50%",
+                background:
+                  "linear-gradient(135deg, #22c55e, #16a34a)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 10px 30px rgba(34,197,94,0.4)",
+              }}
+            >
+              <CheckCircleIcon sx={{ fontSize: 34, color: "#ffffff" }} />
+            </Box>
+ 
+            {/* TITLE */}
+            <Typography
+              sx={{
+                fontSize: { xs: 20, md: 24 },
+                fontWeight: 700,
+                color: "#0f2a44",
+                textAlign: "center",
+              }}
+            >
+              {slides[index].title}
+            </Typography>
+ 
+            {/* DESCRIPTION */}
+            <Typography
+              sx={{
+                maxWidth: 860,
+                fontSize: 16,
+                color: "#374151",
+                textAlign: "center",
+                lineHeight: 1.9,
+              }}
+            >
+              {slides[index].desc}
+            </Typography>
+          </Stack>
+        </Card>
+ 
+        {/* RIGHT ARROW */}
+        <IconButton
+          onClick={nextSlide}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            right: { xs: -10, md: -36 },
+            transform: "translateY(-50%)",
+            backgroundColor: "#ffffff",
+            border: "1px solid #e5e7eb",
+            boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+            color: "#1a73e8",
+            "&:hover": { backgroundColor: "#e8f0fe" },
+          }}
+        >
+          <ArrowForwardIosIcon fontSize="small" />
+        </IconButton>
       </Box>
+ 
+      {/* DOTS */}
+      <Stack direction="row" justifyContent="center" spacing={1.2} sx={{ mt: 4 }}>
+        {slides.map((_, i) => (
+          <Box
+            key={i}
+            onClick={() => setIndex(i)}
+            sx={{
+              width: i === index ? 22 : 10,
+              height: 10,
+              borderRadius: "20px",
+              cursor: "pointer",
+              transition: "0.3s ease",
+              backgroundColor:
+                i === index ? "#22c55e" : "#cbd5e1",
+            }}
+          />
+        ))}
+      </Stack>
     </Box>
   );
 }
- 

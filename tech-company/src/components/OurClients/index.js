@@ -1,178 +1,203 @@
 "use client";
  
-import React from "react";
+import { useEffect, useRef } from "react";
 import {
   Box,
   Typography,
-  List,
-  ListItem,
-  ListItemButton,
-  Paper,
+  Card,
+  Avatar,
 } from "@mui/material";
-import Link from "next/link";
  
-export default function OurClientsLayout() {
+const clients = [
+  {
+    name: "Holden Caulfield",
+    company: "E-commerce Brand",
+  },
+  {
+    name: "Henry Letham",
+    company: "FinTech Startup",
+  },
+  {
+    name: "Oskar Blinde",
+    company: "SaaS Company",
+  },
+  {
+    name: "John Doe",
+    company: "Healthcare Solutions",
+  },
+  {
+    name: "Martin Eden",
+    company: "EdTech Platform",
+  },
+  {
+    name: "Boris Kitua",
+    company: "Enterprise IT Services",
+  },
+  {
+    name: "Atticus Finch",
+    company: "Logistics Company",
+  },
+  {
+    name: "Alper Kamu",
+    company: "Cloud Infrastructure",
+  },
+  {
+    name: "Rodrigo Monchi",
+    company: "Product Company",
+  },
+];
+ 
+// Duplicate for infinite effect
+const infiniteClients = [...clients, ...clients];
+ 
+export default function OurClientsCarousel() {
+  const sliderRef = useRef(null);
+ 
+  useEffect(() => {
+    const slider = sliderRef.current;
+    let animationId;
+    let position = 0;
+ 
+    const speed = 0.5; // adjust scroll speed
+ 
+    const animate = () => {
+      position += speed;
+      if (position >= slider.scrollWidth / 2) {
+        position = 0;
+      }
+      slider.scrollLeft = position;
+      animationId = requestAnimationFrame(animate);
+    };
+ 
+    animationId = requestAnimationFrame(animate);
+ 
+    // Pause on hover
+    const stop = () => cancelAnimationFrame(animationId);
+    const start = () => requestAnimationFrame(animate);
+ 
+    slider.addEventListener("mouseenter", stop);
+    slider.addEventListener("mouseleave", start);
+ 
+    return () => {
+      cancelAnimationFrame(animationId);
+      slider.removeEventListener("mouseenter", stop);
+      slider.removeEventListener("mouseleave", start);
+    };
+  }, []);
+ 
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        backgroundColor: "#0b2343",
-        position: "relative",
-        overflow: "hidden",
-        padding: { xs: 3, md: 8 },
+        width: "100%",
+        backgroundColor: "#ffffff",
+        py: { xs: 6, md: 10 },
+        px: { xs: 2, md: 6 },
       }}
     >
-      {/* ================= TOP CURVE ================= */}
-      <Box
+      {/* Title */}
+      <Typography
+        variant="h4"
+        align="center"
         sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          maxWidth: "50%",
-          lineHeight: 0,
-          zIndex: 0,
+          fontWeight: 700,
+          color: "#1a73e8",
+          mb: 2,
         }}
       >
-        <svg
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          width="100%"
-          height="120"
-        >
-          <path
-            d="M0,96L80,85.3C160,75,320,53,480,48C640,43,800,53,960,64C1120,75,1280,85,1360,90.7L1440,96L1440,0L0,0Z"
-            fill="#0b2343"
-          />
-        </svg>
-      </Box>
-      {/* ============================================ */}
+        Our Clients
+      </Typography>
  
-      <Box
+      <Typography
+        align="center"
         sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 6,
-          alignItems: "flex-start",
-          position: "relative",
-          zIndex: 1,
+          maxWidth: 900,
+          mx: "auto",
+          mb: 6,
+          color: "#4b5563",
+          fontSize: 16,
         }}
       >
-        {/* LEFT CONTENT */}
-        <Box
-          sx={{
-            color: "#ffffff",
-            padding: { xs: 4, md: 8 },
-          }}
-        >
-          <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-            Our Clients
-          </Typography>
+        We partner with startups, enterprises, and global brands across industries
+        to deliver scalable, high-impact digital solutions.
+      </Typography>
  
-          <Typography
+      {/* Infinite Slider */}
+      <Box
+  ref={sliderRef}
+  sx={{
+    display: "flex",
+    gap: 3,
+    overflowX: "hidden",   // keep horizontal hidden
+    overflowY: "visible",  // ✅ allow cards to come out
+    whiteSpace: "nowrap",
+     py: 4,  
+    position: "relative",
+  }}
+>
+ 
+        {infiniteClients.map((client, index) => (
+          <Card
+            key={index}
             sx={{
-              fontStyle: "italic",
-              fontWeight: 500,
-              mb: 3,
-              color: "#91aad3ff",
+              minWidth: 260,
+              maxWidth: 260,
+              p: 4,
+              textAlign: "center",
+               zIndex: 9999,
+              borderRadius: "16px",
+              border: "1px solid #0a1935ff",
+              boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+              flexShrink: 0,
+              transition: "0.3s ease",
+              "&:hover": {
+                transform: "translateY(-6px)",
+                boxShadow: "0 14px 40px rgba(0,0,0,0.15)",
+              },
             }}
           >
-            Trusted by businesses across the globe for delivering reliable and
-            high-quality digital solutions.
-          </Typography>
+            {/* Profile Image */}
+            <Avatar
+              sx={{
+                width: 72,
+                height: 72,
+                mx: "auto",
+                mb: 2,
+                bgcolor: "#e8f0fe",
+                color: "#1a73e8",
+                fontSize: 28,
+                fontWeight: 600,
+              }}
+            >
+              {client.name.charAt(0)}
+            </Avatar>
  
-          <Typography sx={{ mb: 3, lineHeight: 1.8, maxWidth: "800px" }}>
-            We have 50+ clients spread across the globe, mainly from the United
-            States of America, Canada, and India. Our clientele includes startups,
-            enterprises, and government organizations across diverse industries.
-          </Typography>
+            {/* Name */}
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 600,
+                color: "#1f2937",
+              }}
+            >
+              {client.name}
+            </Typography>
  
-          <Typography sx={{ fontWeight: 600, mb: 2 }}>
-            Some of our valued clients include:
-          </Typography>
- 
-          {/* CLIENTS LIST */}
-          <List sx={{ pl: 2 }}>
-            {[
-              "Griffon Systems, LLC",
-              "MyBizMailer",
-              "NariCare Inc.",
-              "KAB Consultants",
-              "Manideepa Infra Structures",
-              "Concious Solutions",
-              "ScreenCheck India",
-              "Siri Nirman",
-              "Green Solar Power Systems",
-              "TriFame™, LLC",
-              "tumril",
-              "letsgovegas",
-              "Visakhapatnam Municipal Corporation",
-              "La Bella Spa",
-              "Virtue Software Solutions LLC",
-              "resolify",
-              "Mission Road Pharmacy",
-              "REHAU Inc.",
-              "Auto ID India Systems",
-              "Hastin Technologies Inc.",
-              "RWin Technologies, LLC",
-              "Diabetic Medical Supply",
-            ].map((client) => (
-              <ListItem key={client} sx={{ py: 0.5 }}>
-                <Typography>• {client}</Typography>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
- 
-        {/* RIGHT SIDE COMPANY LINKS */}
-        <Paper
-          elevation={3}
-          sx={{
-            flex: 1,
-            padding: 3,
-            borderRadius: "12px",
-            maxWidth: "250px",
-            marginTop: "200px",
-          }}
-        >
-          <List>
-            {[
-              { name: "About Us", link: "/about-us" },
-              { name: "Methodology", link: "/methodology" },
-              { name: "Our Clients", link: "/ourclients" },
-              { name: "Our Mission", link: "/our-mission" },
-              { name: "Testimonials", link: "/testimonials" },
-            ].map((item) => (
-              <ListItem key={item.name} disablePadding>
-                <ListItemButton
-                  component={Link}
-                  href={item.link}
-                  sx={{
-                    borderRadius: "6px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 1,
-                    fontWeight:
-                      item.name === "Our Clients" ? 600 : 500,
-                    color:
-                      item.name === "Our Clients"
-                        ? "#16a34a"
-                        : "#0b2343",
-                    transition: "0.3s",
-                    "&:hover": {
-                      backgroundColor: "#f1f5f9",
-                      color: "#16a34a",
-                    },
-                  }}
-                >
-                  <Typography component="span">➜</Typography>
-                  <Typography component="span">{item.name}</Typography>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Paper>
+            {/* Company */}
+            <Typography
+              sx={{
+                mt: 1,
+                color: "#1a73e8",
+                fontSize: 14,
+               
+                fontWeight: 500,
+              }}
+            >
+              {client.company}
+            </Typography>
+          </Card>
+        ))}
       </Box>
     </Box>
   );
 }
+ 
