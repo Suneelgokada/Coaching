@@ -327,34 +327,34 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const services = [
   {
-    icon: <BrushIcon />,
-    title: "UI/UX Design",
-    desc: "Crafting user-centric interfaces with wireframes and high-fidelity prototypes. We focus on conversion-driven design and seamless user journeys to enhance digital engagement.",
+    icon: "/assets/graphic.png",
+    title: "UI / UX Design",
+    desc: "Designing intuitive, user-friendly interfaces that enhance user experience.",
   },
   {
-    icon: <LanguageIcon />,
-    title: "Web & WebApp Development",
-    desc: "Building scalable, SEO-optimized, and high-performance websites using modern frameworks. We deliver secure, responsive web solutions tailored for business growth.",
-  },
-  {
-    icon: <TabletMacIcon />,
-    title: "Mobile App Development",
-    desc: "Specializing in cross-platform (iOS & Android) mobility solutions. Our apps ensure high performance, intuitive navigation, and robust security for modern users.",
-  },
-  {
-    icon: <ColorLensIcon />,
+    icon: "/assets/ui.png",
     title: "Graphic Designing",
-    desc: "Strategic branding and visual storytelling that defines your business identity. From professional logos to marketing collateral, we create designs that stand out.",
+    desc: "Creating visually compelling designs that strengthen brand identity.",
   },
   {
-    icon: <PsychologyIcon />,
+    icon: "/assets/web.png",
+    title: "Web & WebApp Development",
+    desc: "Building scalable, SEO-friendly, high-performance web applications.",
+  },
+  {
+    icon: "/assets/mobile.png",
+    title: "Mobile App Development",
+    desc: "Developing secure and high-performance mobile applications across platforms.",
+  },
+  {
+    icon: "/assets/ai.png",
     title: "AI Agents",
-    desc: "Harnessing Artificial Intelligence to automate workflows and enhance decision-making. We build smart AI agents for data analysis, chatbots, and autonomous task handling.",
+    desc: "Intelligent AI agents for automation, analytics, and smart workflows.",
   },
   {
-    icon: <MemoryIcon />,
+    icon: "/assets/iot.png",
     title: "IoT Solutions",
-    desc: "Connecting devices with advanced sensor integration and real-time cloud analytics. We develop smart ecosystems for automated operations and industrial efficiency.",
+    desc: "Smart connected systems with real-time data processing and automation.",
   },
 ];
 
@@ -434,22 +434,30 @@ export default function ServicesCards() {
               }}
             >
               {/* Icon Container */}
-              <Box
+               <Box
                 sx={{
-                  width: 80, // ఐకాన్ బాక్స్ సైజ్ పెంచాను
-                  height: 80,
-                  borderRadius: "50%", // సర్కిల్ షేప్
-                  backgroundColor: "rgba(8, 84, 130, 0.05)",
                   display: "flex",
-                  alignItems: "center",
                   justifyContent: "center",
-                  color: PRIMARY_COLOR, 
+                  alignItems: "center",
                   mb: 3,
-                  transition: "all 0.3s ease",
-                  "& svg": { fontSize: 40 }, // ఐకాన్ సైజ్ పెంచాను
                 }}
               >
-                {item.icon}
+                <Box
+                  component="img"
+                  src={item.icon}
+                  alt={item.title}
+                  sx={{
+                    width:
+                      item.title === "Mobile App Development" || item.title === "UI / UX Design"
+                        ? "180px"
+                        : "140px",
+                    height:
+                      item.title === "Mobile App Development" || item.title === "UI / UX Design"
+                        ? "180px"
+                        : "140px",
+                    objectFit: "contain",
+                  }}
+                />
               </Box>
 
               <Typography
