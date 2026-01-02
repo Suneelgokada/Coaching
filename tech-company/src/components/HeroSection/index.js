@@ -375,6 +375,8 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Link from "next/link";
+
 
 export default function HeroSection() {
   const [offsetY, setOffsetY] = useState(0);
@@ -484,6 +486,8 @@ export default function HeroSection() {
 
           <Button
             variant="contained"
+            component={Link}
+            href="/technologies"
             endIcon={<ArrowForwardIcon />}
             sx={{
               backgroundColor: PRIMARY_COLOR,
@@ -504,7 +508,7 @@ export default function HeroSection() {
               },
             }}
           >
-            Get Started
+            Explore Training Programs
           </Button>
         </Box>
       </Container>
