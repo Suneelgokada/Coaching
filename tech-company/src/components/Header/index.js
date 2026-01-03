@@ -38,13 +38,22 @@ const companyMenu = [
   { name: "Testimonials", link: "/testimonials" },
 ];
 
+// const servicesMenu = [
+//   { name: "Web Application", link: "/services/web-application" },
+//   { name: "Mobile Application", link: "/services/mobile-application" },
+//   { name: "Open Source", link: "/services/open-source" },
+//   { name: "e-Commerce Solutions", link: "/services/ecommerce-solutions" },
+//   { name: "Frontend Web Apps", link: "/services/frontend-web-apps" },
+//   { name: "AI Agents", link: "/services/ai-agents" },
+// ];
+
 const servicesMenu = [
-  { name: "Web Application", link: "/services/web-application" },
-  { name: "Mobile Application", link: "/services/mobile-application" },
-  { name: "Open Source", link: "/services/open-source" },
-  { name: "e-Commerce Solutions", link: "/services/ecommerce-solutions" },
-  { name: "Frontend Web Apps", link: "/services/frontend-web-apps" },
-  { name: "AI Agents", link: "/services/ai-agents" },
+  { name: "UI/UX Design" },
+  { name: "Graphic Design" },
+  { name: "Web & WebApp Development" },
+  { name: "Mobile App Development" },
+  { name: "AI Agents" },
+  { name: "IoT Solutions"},
 ];
 
 export const navItems = [

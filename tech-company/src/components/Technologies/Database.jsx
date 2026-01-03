@@ -7,10 +7,10 @@ const databaseTechnologies = [
     name: "",
     icon: "/assets/mysql.png",
   },
-  {
-    name: "",
-    icon: "/assets/postgresql.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/postgresql.png",
+  // },
   {
     name: "",
     icon: "/assets/mongodb.png",
@@ -19,22 +19,22 @@ const databaseTechnologies = [
     name: "",
     icon: "/assets/sqlserver.png",
   },
-  {
-    name: "",
-    icon: "/assets/oracle.png",
-  },
-  {
-    name: "",
-    icon: "/assets/redis.png",
-  },
-  {
-    name: "",
-    icon: "/assets/firebase.png",
-  },
-  {
-    name: "",
-    icon: "/assets/cassandra.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/oracle.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/redis.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/firebase.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/cassandra.png",
+  // },
 ];
 
 export default function Database() {

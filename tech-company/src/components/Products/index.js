@@ -36,7 +36,7 @@ export default function Products() {
           },
         }}
       >
-        Hi 👋 Welcome to Products
+        Hi 👋 Welcome We are coming soon
       </Typography>
     </Box>
   );

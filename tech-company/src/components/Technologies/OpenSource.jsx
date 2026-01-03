@@ -7,34 +7,34 @@ const openSourceTechnologies = [
     name: "",
     icon: "/assets/tabelulegs.png",
   },
-  {
-    name: "",
-    icon: "/assets/git.png",
-  },
-  {
-    name: "",
-    icon: "/assets/github.png",
-  },
-  {
-    name: "",
-    icon: "/assets/docker.png",
-  },
-  {
-    name: "",
-    icon: "/assets/kubernetes.png",
-  },
-  {
-    name: "",
-    icon: "/assets/linux.png",
-  },
-  {
-    name: "",
-    icon: "/assets/jenkins.png",
-  },
-  {
-    name: "",
-    icon: "/assets/cicd.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/git.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/github.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/docker.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/kubernetes.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/linux.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/jenkins.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/cicd.png",
+  // },
 ];
 
 export default function OpenSource() {

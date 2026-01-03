@@ -33,7 +33,7 @@ const technologies = [
   { name: "", icon: "/assets/sqlserver.png" },
 
   // AI / Others
-  { name: "AI", icon: "/assets/ai.png" },
+  { name: "", icon: "/assets/ai.png" },
   { name: "", icon: "/assets/iot.png" },
   { name: "", icon: "/assets/paypal.png" },
 

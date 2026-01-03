@@ -7,34 +7,34 @@ const javaTechnologies = [
     name: "",
     icon: "/assets/java.png",
   },
-  {
-    name: "",
-    icon: "/assets/spring.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/spring.png",
+  // },
   {
     name: "",
     icon: "/assets/springboot.png",
   },
-  {
-    name: "",
-    icon: "/assets/hibernate.png",
-  },
-  {
-    name: "",
-    icon: "/assets/jpa.png",
-  },
-  {
-    name: "",
-    icon: "/assets/maven.png",
-  },
-  {
-    name: "",
-    icon: "/assets/microservices.png",
-  },
-  {
-    name: "",
-    icon: "/assets/api.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/hibernate.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/jpa.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/maven.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/microservices.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/api.png",
+  // },
 ];
 
 export default function Java() {

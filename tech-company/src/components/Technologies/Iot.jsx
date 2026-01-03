@@ -7,34 +7,34 @@ const iotTechnologies = [
     name: "",
     icon: "/assets/iot.png",
   },
-  {
-    name: "",
-    icon: "/assets/arduino.png",
-  },
-  {
-    name: "",
-    icon: "/assets/raspberrypi.png",
-  },
-  {
-    name: "",
-    icon: "/assets/embedded.png",
-  },
-  {
-    name: "",
-    icon: "/assets/sensors.png",
-  },
-  {
-    name: "",
-    icon: "/assets/mqtt.png",
-  },
-  {
-    name: "",
-    icon: "/assets/aws-iot.png",
-  },
-  {
-    name: "",
-    icon: "/assets/azure-iot.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/arduino.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/raspberrypi.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/embedded.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/sensors.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/mqtt.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/aws-iot.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/azure-iot.png",
+  // },
 ];
 
 export default function IoT() {

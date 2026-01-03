@@ -7,34 +7,34 @@ const otherTechnologies = [
     name: "",
     icon: "/assets/paypal.png",
   },
-  {
-    name: "",
-    icon: "/assets/stripe.png",
-  },
-  {
-    name: "",
-    icon: "/assets/firebase.png",
-  },
-  {
-    name: "",
-    icon: "/assets/aws.png",
-  },
-  {
-    name: "",
-    icon: "/assets/azure.png",
-  },
-  {
-    name: "",
-    icon: "/assets/gcp.png",
-  },
-  {
-    name: "",
-    icon: "/assets/api.png",
-  },
-  {
-    name: "",
-    icon: "/assets/integration.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/stripe.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/firebase.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/aws.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/azure.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/gcp.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/api.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/integration.png",
+  // },
 ];
 
 export default function Others() {

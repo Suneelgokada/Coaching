@@ -3,14 +3,14 @@
 import { Box, Grid, Typography } from "@mui/material";
 
 const mernTechnologies = [
-  {
-    name: "",
-    icon: "/assets/mongodb.png",
-  },
-  {
-    name: "",
-    icon: "/assets/express.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/mongodb.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/express.png",
+  // },
   {
     name: "",
     icon: "/assets/react.png",
@@ -23,10 +23,10 @@ const mernTechnologies = [
     name: "",
     icon: "/assets/mongoose.png",
   },
-  {
-    name: "",
-    icon: "/assets/api.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/api.png",
+  // },
 ];
 
 export default function Mern() {

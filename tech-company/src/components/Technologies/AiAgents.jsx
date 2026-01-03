@@ -7,34 +7,34 @@ const aiTechnologies = [
     name: "",
     icon: "/assets/ai.png",
   },
-  {
-    name: "",
-    icon: "/assets/ml.png",
-  },
-  {
-    name: "",
-    icon: "/assets/deeplearning.png",
-  },
-  {
-    name: "",
-    icon: "/assets/openai.png",
-  },
-  {
-    name: "",
-    icon: "/assets/langchain.png",
-  },
-  {
-    name: "",
-    icon: "/assets/tensorflow.png",
-  },
-  {
-    name: "",
-    icon: "/assets/pytorch.png",
-  },
-  {
-    name: "",
-    icon: "/assets/chatbot.png",
-  },
+  // {
+  //   name: "",
+  //   icon: "/assets/ml.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/deeplearning.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/openai.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/langchain.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/tensorflow.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/pytorch.png",
+  // },
+  // {
+  //   name: "",
+  //   icon: "/assets/chatbot.png",
+  // },
 ];
 
 export default function AiAgents() {
