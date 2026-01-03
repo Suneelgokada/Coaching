@@ -39,13 +39,37 @@ const javaTechnologies = [
 
 export default function Java() {
   return (
-   <Box sx={{ mt: 6, mx:8, justifyContent: "center" ,}}>
-      <Grid container spacing={10}>
+    <Box
+      sx={{
+        mt: 6,
+        mx: { xs: 0, sm: 4, md: 8 }, // ✅ SAME as All.jsx
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Grid
+        container
+        justifyContent="center"
+        spacing={{ xs: 1, sm: 4, md: 6 }} // ✅ SAME spacing logic
+      >
         {javaTechnologies.map((tech, index) => (
-          <Grid item xs={6} sm={4} md={3} lg={2.4} key={index}>
+          <Grid
+            item
+            xs={6}   // 📱 2 cards on mobile
+            sm={4}   // 📲 3 cards at 768px
+            md={3}   // 💻 desktop unchanged
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              minWidth: 0, // ✅ critical for small screens
+            }}
+          >
             <Box
               sx={{
-                height: 170,
+                height: { xs: 120, sm: 160, md: 170 },
+                width: "100%",              // ❗ NO fixed width
+                padding: { xs: 0.5, sm: 1 },
                 borderRadius: "18px",
                 backgroundColor: "#ffffff",
                 boxShadow: "0 10px 28px rgba(0,0,0,0.08)",
@@ -53,12 +77,7 @@ export default function Java() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "all 0.35s ease",
                 cursor: "pointer",
-                "&:hover": {
-                  transform: "translateY(-8px)",
-                  boxShadow: "0 20px 45px rgba(0,0,0,0.16)",
-                },
               }}
             >
               {/* ICON */}
@@ -67,13 +86,13 @@ export default function Java() {
                 src={tech.icon}
                 alt={tech.name}
                 sx={{
-                  width: 180,
-                  height: 180,
+                  width: { xs: 100, sm: 120, md: 150 },
+                  height: { xs: 100, sm: 120, md: 150 },
                   objectFit: "contain",
-                  mb: 2,
+                  mb: 1,
                 }}
               />
-
+ 
               {/* TITLE */}
               <Typography
                 sx={{
