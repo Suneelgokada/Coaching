@@ -3,6 +3,9 @@ import React, { useRef, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 
 const OurExpertise = () => {
+  const MONTSERRAT = "'Montserrat', sans-serif";
+  const LOGO_BLUE = "#085482";
+
   const expertiseLogos = [
     { src: "/assets/html1.png", alt: "HTML5" },
     { src: "/assets/css.png", alt: "CSS" },
@@ -38,7 +41,7 @@ const OurExpertise = () => {
   `;
 
   return (
-    <Box sx={{ py: "80px", backgroundColor: "#fff" }}>
+    <Box sx={{ py: "80px", backgroundColor: "#fff", fontFamily: MONTSERRAT }}>
       <style>{marqueeKeyframes}</style>
 
       <Box sx={{ maxWidth: "1400px", margin: "0 auto", overflow: "hidden" }}>
@@ -47,26 +50,30 @@ const OurExpertise = () => {
         <Box textAlign="center" sx={{ mb: 8 }}>
           <Typography
             variant="h4"
-              align="center"
-             sx={{
-            fontWeight: 600,
-            fontFamily: 'montserrat',
-            mb: 8,
-            color: "#085482",
-            textTransform: "uppercase",
-            letterSpacing: 2,
-          }}
+            align="center"
+            sx={{
+              fontWeight: 600,
+              fontFamily: MONTSERRAT,
+              color: LOGO_BLUE,
+              textTransform: "uppercase",
+              letterSpacing: 2,
+            }}
           >
             Our Expertise
           </Typography>
         </Box>
+
         {/* ================= MARQUEE ================= */}
         <Box sx={{ overflow: "hidden", whiteSpace: "nowrap", position: "relative" }}>
           <Box
             ref={marqueeRef}
             sx={{
               display: "inline-block",
-              animation: "marquee 35s linear infinite",
+              /* Speed Control: 
+                 35s నుండి 60s కి మార్చాను. 
+                 ఇంకా స్లో కావాలంటే 80s లేదా 100s పెట్టుకోండి.
+              */
+              animation: "marquee 60s linear infinite", 
               animationPlayState: "paused",
             }}
             onMouseEnter={() => {
@@ -85,8 +92,8 @@ const OurExpertise = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  mx: 3,              // ✅ GAP REDUCED (earlier 6)
-                  minWidth: "140px",  // tighter & cleaner
+                  mx: 4, 
+                  minWidth: "150px",
                 }}
               >
                 <Box
@@ -94,12 +101,14 @@ const OurExpertise = () => {
                   src={item.src}
                   alt={item.alt}
                   sx={{
-                    height: "85px",
-                    maxWidth: "180px",
+                    height: "80px",
+                    maxWidth: "160px",
                     objectFit: "contain",
-                    transition: "transform 0.4s ease",
+                    filter: "grayscale(20%)", // Optional: Slight professional look
+                    transition: "transform 0.4s ease, filter 0.4s ease",
                     "&:hover": {
-                      transform: "scale(1.2)",
+                      transform: "scale(1.15)",
+                      filter: "grayscale(0%)",
                     },
                   }}
                 />
