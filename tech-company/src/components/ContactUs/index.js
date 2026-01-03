@@ -9,7 +9,7 @@ import {
   Snackbar,
   Container,
 } from "@mui/material";
-import { Grid } from "@mui/material"; // Material UI Grid v2 use chestunnam
+import Grid from "@mui/material/Grid"; // Using Material UI Grid v2 style
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
@@ -22,6 +22,7 @@ export default function ContactUs() {
 
   const LOGO_GREEN = "#2D7D2D";
   const LOGO_BLUE = "#004D71";
+  const MONTSERRAT = "'Montserrat', sans-serif";
 
   const formik = useFormik({
     initialValues: {
@@ -39,7 +40,7 @@ export default function ContactUs() {
     onSubmit: async (values, { resetForm }) => {
       setLoading(true);
       try {
-        const WHATSAPP_NUMBER = "+91 8639176137";
+        const WHATSAPP_NUMBER = "918639176137"; // Cleaned number for URL
         const encodedText = encodeURIComponent(
           `*New Contact Inquiry*\n\n` +
           `*Name:* ${values.name}\n` +
@@ -63,8 +64,15 @@ export default function ContactUs() {
     },
   });
 
+  // Reusable style for TextFields to ensure Montserrat is applied everywhere
+  const textFieldStyles = {
+    "& .MuiInputBase-input": { fontFamily: MONTSERRAT },
+    "& .MuiInputLabel-root": { fontFamily: MONTSERRAT },
+    "& .MuiFormHelperText-root": { fontFamily: MONTSERRAT },
+  };
+
   return (
-    <Box sx={{ bgcolor: "#fff", pb: 10 }}>
+    <Box sx={{ bgcolor: "#fff", pb: 10, fontFamily: MONTSERRAT }}>
       {/* Header with Blue Wave Effect */}
       <Box
         sx={{
@@ -73,11 +81,11 @@ export default function ContactUs() {
           pt: 10,
           pb: 15,
           textAlign: "center",
-          borderRadius: "0 0 50% 50% / 0 0 15% 15%", // Simple curve effect
+          borderRadius: "0 0 50% 50% / 0 0 15% 15%",
           mb: -10,
         }}
       >
-        <Typography variant="h3" sx={{ fontWeight: 700, fontFamily: "Poppins" }}>
+        <Typography variant="h3" sx={{ fontWeight: 600, fontFamily: MONTSERRAT }}>
           Contact Us
         </Typography>
       </Box>
@@ -86,7 +94,7 @@ export default function ContactUs() {
         <Grid container spacing={4} sx={{ background: "#fff", p: 2, borderRadius: 2 }}>
           
           {/* Left Side: Google Map Integration */}
-      <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Box
               sx={{
                 width: "100%",
@@ -97,10 +105,9 @@ export default function ContactUs() {
                 border: "1px solid #eee",
               }}
             >
-              {/* Pointing directly to your Balaji Nagar, Siripuram address */}
               <iframe
                 title="Office Location"
-                src="https://www.google.com/maps?q=9-29-14/2,+Balaji+Nagar,+Siripuram,+Visakhapatnam,+Andhra+Pradesh+530003&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.123456789!2d83.3156!3d17.7225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQzJzIxLjAiTiA4M8KwMTgnNTYuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -109,7 +116,7 @@ export default function ContactUs() {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </Box>
-            <Typography variant="body2" sx={{ mt: 2, color: "#666", textAlign: "center" }}>
+            <Typography variant="body2" sx={{ mt: 2, color: "#666", textAlign: "center", fontFamily: MONTSERRAT }}>
               2nd Floor, 9-29-14/2, Balaji Nagar, Siripuram, Visakhapatnam - 530003
             </Typography>
           </Grid>
@@ -117,14 +124,14 @@ export default function ContactUs() {
           {/* Right Side: Contact Form */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Box sx={{ p: { xs: 2, md: 4 } }}>
-              <Typography variant="h5" sx={{ mb: 3, fontWeight: 600, color: "#333" }}>
+              <Typography variant="h5" sx={{ mb: 3, fontWeight: 600, color: "#333", fontFamily: MONTSERRAT }}>
                 Send us an Email
               </Typography>
 
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid size={{ xs: 12, sm: 6 }}>
-                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600 }}>Name*</Typography>
+                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600, fontFamily: MONTSERRAT }}>Name*</Typography>
                     <TextField
                       fullWidth
                       name="name"
@@ -133,11 +140,12 @@ export default function ContactUs() {
                       onChange={formik.handleChange}
                       error={formik.touched.name && Boolean(formik.errors.name)}
                       helperText={formik.touched.name && formik.errors.name}
+                      sx={textFieldStyles}
                     />
                   </Grid>
 
                   <Grid size={{ xs: 12, sm: 6 }}>
-                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600 }}>Phone Number*</Typography>
+                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600, fontFamily: MONTSERRAT }}>Phone Number*</Typography>
                     <TextField
                       fullWidth
                       name="phone"
@@ -146,11 +154,12 @@ export default function ContactUs() {
                       onChange={formik.handleChange}
                       error={formik.touched.phone && Boolean(formik.errors.phone)}
                       helperText={formik.touched.phone && formik.errors.phone}
+                      sx={textFieldStyles}
                     />
                   </Grid>
 
                   <Grid size={{ xs: 12 }}>
-                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600 }}>Email*</Typography>
+                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600, fontFamily: MONTSERRAT }}>Email*</Typography>
                     <TextField
                       fullWidth
                       name="email"
@@ -159,11 +168,12 @@ export default function ContactUs() {
                       onChange={formik.handleChange}
                       error={formik.touched.email && Boolean(formik.errors.email)}
                       helperText={formik.touched.email && formik.errors.email}
+                      sx={textFieldStyles}
                     />
                   </Grid>
 
                   <Grid size={{ xs: 12 }}>
-                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600 }}>Message*</Typography>
+                    <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 600, fontFamily: MONTSERRAT }}>Message*</Typography>
                     <TextField
                       fullWidth
                       name="message"
@@ -174,6 +184,7 @@ export default function ContactUs() {
                       onChange={formik.handleChange}
                       error={formik.touched.message && Boolean(formik.errors.message)}
                       helperText={formik.touched.message && formik.errors.message}
+                      sx={textFieldStyles}
                     />
                   </Grid>
                 </Grid>
@@ -188,9 +199,10 @@ export default function ContactUs() {
                     px: 5,
                     py: 1.2,
                     bgcolor: LOGO_GREEN,
-                   "&:hover": { bgcolor: LOGO_GREEN, opacity: 0.9 },
+                    "&:hover": { bgcolor: LOGO_GREEN, opacity: 0.9 },
                     textTransform: "none",
                     fontWeight: 600,
+                    fontFamily: MONTSERRAT,
                   }}
                 >
                   Submit
@@ -207,7 +219,7 @@ export default function ContactUs() {
         onClose={() => setOpenSnackbar(false)}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <Alert severity="success" sx={{ width: "100%",bgcolor: LOGO_GREEN, color: '#fff' }}>
+        <Alert severity="success" sx={{ width: "100%", bgcolor: LOGO_GREEN, color: '#fff', fontFamily: MONTSERRAT }}>
           Your inquiry has been sent to WhatsApp!
         </Alert>
       </Snackbar>
