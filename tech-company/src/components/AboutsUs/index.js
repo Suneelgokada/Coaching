@@ -80,7 +80,6 @@ export default function AboutUs() {
               marketing expertise to hundreds of <TabletBR /> companies around the world.
             </Typography>
 
-            {/* Buttons for Tablet and Desktop */}
             <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2, mt: 4 }}>
               <PrimaryButtons
                 PRIMARY_BLUE={PRIMARY_BLUE}
@@ -99,20 +98,36 @@ export default function AboutUs() {
               display: "flex",
               justifyContent: { xs: "center", sm: "flex-end" },
               mt: { xs: 4, sm: 0 },
-              // కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
+              // మొబైల్ స్క్రీన్లలో ఇమేజ్ పొజిషన్ సర్దుబాటు
+
               "@media (min-width:375px)": {
-                transform: "translateX(50px)",
+                transform: "translateX(35px)", // కొంచెం సెంటర్ చేయడానికి వాల్యూ తగ్గించాను
               },
-              "@media (max-width:425px)": {
-                transform: "translateX(50px)",
+              "@media (min-width:425px)": {
+                transform: "translateX(20px)",
+                "& .MuiBox-root": {
+                  maxWidth: "350px", // ఇక్కడ మీకు కావాల్సినంత విడ్త్ పెంచుకోండి
+                  height: "350px",   // హైట్ కూడా కావాలంటే అడ్జస్ట్ చేయవచ్చు
+                } // కొంచెం సెంటర్ చేయడానికి వాల్యూ తగ్గించాను
               },
             }}
           >
             <Box
               sx={{
                 width: "100%",
-                maxWidth: { xs: "340px", sm: "100%", md: "520px" },
-                height: { xs: "220px", sm: "300px", md: "320px", lg: "420px" },
+                // ✅ ఇక్కడ కేవలం 375px - 425px స్క్రీన్ల కోసం సైజు పెంచాను
+                maxWidth: {
+                  xs: "390px", // ఇమేజ్ సైజు 340px నుండి 390px కి పెంచాను
+                  sm: "100%",
+                  md: "520px",
+                  
+                },
+                height: {
+                  xs: "260px", // హైట్ కూడా 220px నుండి 260px కి పెంచాను
+                  sm: "300px",
+                  md: "320px",
+                  lg: "420px"
+                },
                 borderRadius: "20px",
                 overflow: "hidden",
                 boxShadow: "0 20px 50px rgba(0,0,0,0.08)",
@@ -131,7 +146,7 @@ export default function AboutUs() {
             </Box>
           </Grid>
 
-          {/* Mobile Buttons (xs only) */}
+          {/* Mobile Buttons */}
           <Grid
             item
             xs={12}
@@ -139,10 +154,13 @@ export default function AboutUs() {
               display: { xs: "flex", sm: "none" },
               justifyContent: "center",
               mt: 4,
-              // కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
-              "@media (max-width:425px)": {
-                transform: "translateX(50px)",
-              }
+
+              "@media (min-width:375px)": {
+                transform: "translateX(25px)",
+              },
+              "@media (min-width:425px)": {
+                transform: "translateX(40px)",
+              },
             }}
           >
             <PrimaryButtons
