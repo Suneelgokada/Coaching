@@ -1,11 +1,22 @@
 "use client";
 
-import { Box, Typography, Container, Grid, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Button,
+} from "@mui/material";
 
 export default function AboutUs() {
   const PRIMARY_BLUE = "#004D6D";
   const BRAND_GREEN = "#16A34A";
   const TEXT_MUTED = "#475569";
+
+  // Tablet (768px) లో మాత్రమే కనిపించేలా Break Tag Component
+  const TabletBR = () => (
+    <Box component="br" sx={{ display: { xs: "none", sm: "block", md: "none" } }} />
+  );
 
   return (
     <Box
@@ -16,20 +27,16 @@ export default function AboutUs() {
       }}
     >
       <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={{ xs: 4, md: 4, lg: 6 }} 
-          alignItems="center"
-          sx={{ flexWrap: "wrap" }}
-        >
+        <Grid container spacing={4} alignItems="center">
+
           {/* ================= COLUMN 1: CONTENT ================= */}
           <Grid
             item
             xs={12}
-            md={6} // 900px కంటే ఎక్కువ ఉంటేనే పక్కన వస్తుంది
-            sx={{ 
-              textAlign: { xs: "center", md: "left" },
-              // 768px (md కంటే తక్కువ) లో టెక్స్ట్ సెంటర్ అవ్వడానికి
+            sm={6}
+            md={6}
+            sx={{
+              textAlign: { xs: "center", sm: "left" },
             }}
           >
             <Typography
@@ -37,7 +44,6 @@ export default function AboutUs() {
                 fontSize: { xs: "26px", sm: "30px", md: "34px", lg: "42px" },
                 fontWeight: 700,
                 color: PRIMARY_BLUE,
-                lineHeight: 1.2,
                 mb: 3,
                 fontFamily: "Poppins, sans-serif",
               }}
@@ -47,42 +53,35 @@ export default function AboutUs() {
 
             <Typography
               sx={{
-                fontSize: { xs: "15px", md: "16px" },
+                fontSize: "16px",
                 color: TEXT_MUTED,
                 lineHeight: 1.8,
                 mb: 3,
-                maxWidth: { xs: "100%", md: "500px", lg: "560px" },
-                mx: { xs: "auto", md: "unset" },
+                maxWidth: "560px",
+                mx: { xs: "auto", sm: "unset" },
               }}
             >
-              At our Design Blocks, we are a collective of talented individuals
-              ignited by our unwavering passion for transforming ideas into
-              reality. With a harmonious blend of diverse backgrounds and a vast
-              array of skill sets, we join forces to create compelling solutions
-              for our esteemed clients.
+              At our Design Blocks, we are a collective <TabletBR />
+              of talented individuals ignited by our <TabletBR />
+              unwavering passion for transforming <TabletBR /> ideas into
+              reality.
             </Typography>
 
             <Typography
               sx={{
-                fontSize: { xs: "15px", md: "16px" },
+                fontSize: "16px",
                 color: TEXT_MUTED,
                 lineHeight: 1.8,
-                maxWidth: { xs: "100%", md: "500px", lg: "560px" },
-                mx: { xs: "auto", md: "unset" },
+                maxWidth: "560px",
+                mx: { xs: "auto", sm: "unset" },
               }}
             >
-              We have provided premium website designing, software solutions, and
-              marketing expertise to hundreds of companies around the world.
+              We have provided premium website <TabletBR /> designing, software solutions, and <TabletBR />
+              marketing expertise to hundreds of <TabletBR /> companies around the world.
             </Typography>
 
-            {/* బటన్లు ఇక్కడ కేవలం 900px (md) కంటే పెద్ద స్క్రీన్లలోనే కనిపిస్తాయి */}
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: 2,
-                mt: 4,
-              }}
-            >
+            {/* Buttons for Tablet and Desktop */}
+            <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2, mt: 4 }}>
               <PrimaryButtons
                 PRIMARY_BLUE={PRIMARY_BLUE}
                 BRAND_GREEN={BRAND_GREEN}
@@ -94,32 +93,30 @@ export default function AboutUs() {
           <Grid
             item
             xs={12}
+            sm={6}
             md={6}
             sx={{
               display: "flex",
-              justifyContent: "center", 
-              mt: { xs: 4, md: 0 }
+              justifyContent: { xs: "center", sm: "flex-end" },
+              mt: { xs: 4, sm: 0 },
+              // ✅ కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 30px ట్రాన్స్‌లేట్
+              "@media (min-width:375px)": {
+                transform: "translateX(50px)",
+              },
+               "@media (max-width:425px)": {
+                transform: "translateX(50px)",
+              },
             }}
           >
             <Box
               sx={{
                 width: "100%",
-                maxWidth: {
-                  xs: "340px", 
-                  sm: "450px", // 768px స్క్రీన్ లో ఇమేజ్ సైజు
-                  md: "400px",
-                  lg: "520px",
-                },
-                height: {
-                  xs: "220px", 
-                  sm: "280px", 
-                  md: "320px",
-                  lg: "420px",
-                },
+                // ✅ మీరు కోరిన విధంగా మొబైల్ సైజును స్థిరంగా ఉంచాను
+                maxWidth: { xs: "340px", sm: "100%", md: "520px" },
+                height: { xs: "220px", sm: "300px", md: "320px", lg: "420px" },
                 borderRadius: "20px",
                 overflow: "hidden",
                 boxShadow: "0 20px 50px rgba(0,0,0,0.08)",
-                mx: "auto", 
               }}
             >
               <Box
@@ -129,21 +126,24 @@ export default function AboutUs() {
                 sx={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover", // 768px లో ఖాళీలు లేకుండా ఉండటానికి
+                  objectFit: "cover",
                 }}
               />
             </Box>
           </Grid>
 
-          {/* ================= MOBILE & TABLET (768px) BUTTONS ================= */}
-          {/* ఇమేజ్ కింద బటన్లు రావడానికి md: none మరియు ఇక్కడ Grid ఉపయోగించాను */}
+          {/* Mobile Buttons (xs only) */}
           <Grid
             item
             xs={12}
             sx={{
-              display: { xs: "flex", md: "none" }, // 900px లోపు ఉన్న అన్ని స్క్రీన్లలో ఇక్కడ కనిపిస్తాయి
+              display: { xs: "flex", sm: "none" },
               justifyContent: "center",
-              mt: 4, // ఇమేజ్ కింద స్పేస్ కోసం
+              mt: 4,
+              // ✅ కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
+              "@media (min-width:425px)": {
+                transform: "translateX(50px)",
+              }
             }}
           >
             <PrimaryButtons
@@ -159,16 +159,16 @@ export default function AboutUs() {
 
 function PrimaryButtons({ PRIMARY_BLUE, BRAND_GREEN }) {
   return (
-    <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>
+    <Box sx={{ display: "flex", gap: 2 }}>
       <Button
         variant="contained"
         sx={{
           backgroundColor: BRAND_GREEN,
-          color: "#ffffff",
-          textTransform: "none",
-          fontWeight: 600,
+          color: "#fff",
           px: 3.5,
           py: 1.2,
+          fontWeight: 600,
+          textTransform: "none",
           borderRadius: "8px",
           "&:hover": { backgroundColor: "#15803D" },
         }}
@@ -180,16 +180,12 @@ function PrimaryButtons({ PRIMARY_BLUE, BRAND_GREEN }) {
         variant="outlined"
         sx={{
           borderColor: "#CBD5E1",
-          color: "#004D6D",
-          textTransform: "none",
-          fontWeight: 600,
+          color: PRIMARY_BLUE,
           px: 3.5,
           py: 1.2,
+          fontWeight: 600,
+          textTransform: "none",
           borderRadius: "8px",
-          "&:hover": {
-            borderColor: "#004D6D",
-            backgroundColor: "#F8FAFC",
-          },
         }}
       >
         Learn More

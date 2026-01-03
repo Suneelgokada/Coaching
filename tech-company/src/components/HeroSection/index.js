@@ -487,7 +487,7 @@ export default function HeroSection() {
           <Button
             variant="contained"
             component={Link}
-            href="/technologies"
+            href="/training"
             endIcon={<ArrowForwardIcon />}
             sx={{
               backgroundColor: PRIMARY_COLOR,
