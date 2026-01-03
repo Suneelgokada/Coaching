@@ -485,7 +485,7 @@ const TestimonialMarquee = () => {
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 35,
+              duration: 40,
               ease: "linear",
             },
           }}

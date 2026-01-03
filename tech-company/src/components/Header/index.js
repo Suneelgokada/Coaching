@@ -162,7 +162,7 @@ const Header = () => {
                     },
                   }}
                 >
-                  Get Started
+                  Courses
                 </Button>
               </Box>
             </Toolbar>
@@ -251,7 +251,7 @@ const Header = () => {
                     {item.dropDown ? (
                       <ListItemButton
                         onClick={() => toggleMobileDropdown(item.name)}
-                        sx={{ borderRadius: 1, color: LOGO_BLUE }}
+                        sx={{ borderRadius: 1, color: '#085482' }}
                       >
                         <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
                         {mobileDropdownOpen[item.name] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
@@ -261,7 +261,7 @@ const Header = () => {
                         component={Link}
                         href={item.link}
                         onClick={() => setOpen(false)}
-                        sx={{ borderRadius: 1, color: LOGO_BLUE }}
+                        sx={{ borderRadius: 1, color: '#085482' }}
                       >
                         <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
                       </ListItemButton>
