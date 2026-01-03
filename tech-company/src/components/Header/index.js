@@ -25,12 +25,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-
-
-
 /* ================= COLORS (LOGO BASED) ================= */
 const LOGO_GREEN = "#2D7D2D";
-const LOGO_BLUE = "##00ED64";
+const LOGO_BLUE = "#00ED64";
 
 /* ================= MENUS ================= */
 const companyMenu = [
@@ -48,7 +45,7 @@ const servicesMenu = [
   { name: "e-Commerce Solutions", link: "/services/ecommerce-solutions" },
   { name: "Frontend Web Apps", link: "/services/frontend-web-apps" },
   { name: "AI Agents", link: "/services/ai-agents" },
-]
+];
 
 export const navItems = [
   { name: "HOME", link: "/", dropDown: false },
@@ -100,13 +97,14 @@ const Header = () => {
                   sx={{ height: { xs: 50, md: 70 }, cursor: "pointer" }}
                 />
               </Box>
+
               {/* RIGHT SIDE GROUP */}
               <Box
                 sx={{
                   display: { xs: "none", sm: "flex" },
                   alignItems: "center",
                   gap: { sm: 2, md: 3, lg: 4 },
-                  ml: "auto",                 // 🔑 pushes this group to right
+                  ml: "auto",
                 }}
               >
                 {/* EMAIL */}
@@ -148,7 +146,7 @@ const Header = () => {
                   component={Link}
                   href="/training"
                   sx={{
-                    ml: { md: 2, lg: 3 },        // 🔑 spacing from phone
+                    ml: { md: 2, lg: 3 },
                     backgroundColor: "#F5B700",
                     color: "#1F2937",
                     fontWeight: 700,
@@ -167,9 +165,6 @@ const Header = () => {
                   Get Started
                 </Button>
               </Box>
-
-
-
             </Toolbar>
           </Container>
         </AppBar>

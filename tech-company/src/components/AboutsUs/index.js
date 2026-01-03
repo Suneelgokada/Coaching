@@ -99,11 +99,11 @@ export default function AboutUs() {
               display: "flex",
               justifyContent: { xs: "center", sm: "flex-end" },
               mt: { xs: 4, sm: 0 },
-              // ✅ కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 30px ట్రాన్స్‌లేట్
+              // కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
               "@media (min-width:375px)": {
                 transform: "translateX(50px)",
               },
-               "@media (max-width:425px)": {
+              "@media (max-width:425px)": {
                 transform: "translateX(50px)",
               },
             }}
@@ -111,7 +111,6 @@ export default function AboutUs() {
             <Box
               sx={{
                 width: "100%",
-                // ✅ మీరు కోరిన విధంగా మొబైల్ సైజును స్థిరంగా ఉంచాను
                 maxWidth: { xs: "340px", sm: "100%", md: "520px" },
                 height: { xs: "220px", sm: "300px", md: "320px", lg: "420px" },
                 borderRadius: "20px",
@@ -140,8 +139,8 @@ export default function AboutUs() {
               display: { xs: "flex", sm: "none" },
               justifyContent: "center",
               mt: 4,
-              // ✅ కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
-              "@media (min-width:425px)": {
+              // కేవలం 425px మరియు అంతకంటే తక్కువ స్క్రీన్ల కోసం 50px ట్రాన్స్‌లేట్
+              "@media (max-width:425px)": {
                 transform: "translateX(50px)",
               }
             }}
