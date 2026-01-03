@@ -254,8 +254,13 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from "next/link";
+<<<<<<< HEAD
  
  
+=======
+
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
 export default function HeroSection() {
   const [offsetY, setOffsetY] = useState(0);
  

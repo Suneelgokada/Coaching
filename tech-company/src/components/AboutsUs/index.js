@@ -1,5 +1,9 @@
 "use client";
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
 import {
   Box,
   Typography,
@@ -7,17 +11,29 @@ import {
   Grid,
   Button,
 } from "@mui/material";
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
 export default function AboutUs() {
   const PRIMARY_BLUE = "#004D6D";
   const BRAND_GREEN = "#16A34A";
   const TEXT_MUTED = "#475569";
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
   // Tablet (768px) లో మాత్రమే కనిపించేలా Break Tag Component
   const TabletBR = () => (
     <Box component="br" sx={{ display: { xs: "none", sm: "block", md: "none" } }} />
   );
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
   return (
     <Box
       id="about-us"
@@ -28,7 +44,11 @@ export default function AboutUs() {
     >
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
           {/* ================= COLUMN 1: CONTENT ================= */}
           <Grid
             item
@@ -50,7 +70,7 @@ export default function AboutUs() {
             >
               About Us
             </Typography>
- 
+
             <Typography
               sx={{
                 fontSize: "16px",
@@ -66,7 +86,7 @@ export default function AboutUs() {
               unwavering passion for transforming <TabletBR /> ideas into
               reality.
             </Typography>
- 
+
             <Typography
               sx={{
                 fontSize: "16px",
@@ -79,7 +99,11 @@ export default function AboutUs() {
               We have provided premium website <TabletBR /> designing, software solutions, and <TabletBR />
               marketing expertise to hundreds of <TabletBR /> companies around the world.
             </Typography>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
             {/* Buttons for Tablet and Desktop */}
             <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2, mt: 4 }}>
               <PrimaryButtons
@@ -88,7 +112,11 @@ export default function AboutUs() {
               />
             </Box>
           </Grid>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
           {/* ================= COLUMN 2: IMAGE ================= */}
           <Grid
             item
@@ -131,7 +159,11 @@ export default function AboutUs() {
               />
             </Box>
           </Grid>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
           {/* Mobile Buttons (xs only) */}
           <Grid
             item
@@ -156,7 +188,11 @@ export default function AboutUs() {
     </Box>
   );
 }
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
 function PrimaryButtons({ PRIMARY_BLUE, BRAND_GREEN }) {
   return (
     <Box sx={{ display: "flex", gap: 2 }}>
@@ -175,7 +211,11 @@ function PrimaryButtons({ PRIMARY_BLUE, BRAND_GREEN }) {
       >
         Get Started
       </Button>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
       <Button
         variant="outlined"
         sx={{

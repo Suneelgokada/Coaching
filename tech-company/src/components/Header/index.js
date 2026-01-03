@@ -24,6 +24,7 @@ import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+<<<<<<< HEAD
  
  
  
@@ -32,6 +33,16 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 const LOGO_GREEN = "#2D7D2D";
 const LOGO_BLUE = "##00ED64";
  
+=======
+
+
+
+
+/* ================= COLORS (LOGO BASED) ================= */
+const LOGO_GREEN = "#2D7D2D";
+const LOGO_BLUE = "##00ED64";
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
 /* ================= MENUS ================= */
 const companyMenu = [
   { name: "About Us", link: "/about-us" },
@@ -125,7 +136,11 @@ const Header = () => {
                     </Link>
                   </Box>
                 </Box>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
                 {/* PHONE */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <CallIcon sx={{ color: "#2D7D2D", fontSize: 22 }} />
@@ -142,7 +157,11 @@ const Header = () => {
                     </Link>
                   </Box>
                 </Box>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
                 {/* CTA BUTTON */}
                 <Button
                   component={Link}
@@ -167,6 +186,7 @@ const Header = () => {
                   Get Started
                 </Button>
               </Box>
+<<<<<<< HEAD
  
  
  
@@ -174,6 +194,15 @@ const Header = () => {
           </Container>
         </AppBar>
  
+=======
+
+
+
+            </Toolbar>
+          </Container>
+        </AppBar>
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
         {/* ================= NAV HEADER ================= */}
         <AppBar position="sticky" sx={{ top: 0, backgroundColor: '#085482', zIndex: 1200, elevation: 4 }}>
           <Container maxWidth="lg">
@@ -206,7 +235,11 @@ const Header = () => {
                       {item.name}
                       {item.dropDown && (hoveredCategory === item.name ? <ExpandLessIcon sx={{ fontSize: 18, ml: 0.5 }} /> : <ExpandMoreIcon sx={{ fontSize: 18, ml: 0.5 }} />)}
                     </Button>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
                     {item.dropDown && (
                       <Popper open={hoveredCategory === item.name} anchorEl={anchorEl} transition disablePortal>
                         {({ TransitionProps }) => (
@@ -232,7 +265,11 @@ const Header = () => {
                   </Box>
                 ))}
               </Box>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
               <IconButton
                 onClick={() => setOpen(prev => !prev)}
                 sx={{ display: { xs: "flex", md: "none" }, color: "#fff", ml: 'auto' }}
@@ -242,7 +279,11 @@ const Header = () => {
             </Toolbar>
           </Container>
         </AppBar>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
         {/* ================= MOBILE DRAWER ================= */}
         <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
           <Box sx={{ width: 280 }}>
@@ -272,7 +313,11 @@ const Header = () => {
                       </ListItemButton>
                     )}
                   </ListItem>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f6c407533a31e6a4b658dc46c8d37cbf7a6aae8e
                   {item.dropDown && (
                     <Collapse in={mobileDropdownOpen[item.name]} timeout="auto" unmountOnExit>
                       <List component="div" disablePadding sx={{ backgroundColor: '#f9f9f9', borderRadius: 1, mx: 1 }}>

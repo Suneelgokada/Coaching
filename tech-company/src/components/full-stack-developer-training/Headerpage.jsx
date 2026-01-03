@@ -5,10 +5,11 @@ import {
   Container,
   Stack,
   Typography,
-  Link,
+  Link as MuiLink,
 } from "@mui/material";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Link from "next/link";
  
 export default function Header() {
   return (
@@ -18,6 +19,10 @@ export default function Header() {
         backgroundColor: "#ffffff",
         borderBottom: "1px solid #E5E7EB",
         py: 1.5,
+        position: "sticky",
+        top: 0,
+        zIndex: 1200,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
       }}
     >
       <Container maxWidth="xl">
@@ -26,18 +31,26 @@ export default function Header() {
           alignItems="center"
           justifyContent="space-between"
         >
-          {/* LEFT SIDE – LOGO */}
-          <Box>
-            <Box
-              component="img"
-              src="/assets/logo.png"   // 🔁 replace with your logo path
-              alt="Company Logo"
+          {/* LEFT SIDE – LOGO (CLICK → HOME) */}
+          <Link href="/" passHref legacyBehavior>
+            <MuiLink
               sx={{
-                height: 48,
-                width: "auto",
+                display: "inline-flex",
+                alignItems: "center",
+                cursor: "pointer",
               }}
-            />
-          </Box>
+            >
+              <Box
+                component="img"
+                src="/assets/logo.png"
+                alt="Company Logo"
+                sx={{
+                  height: 48,
+                  width: "auto",
+                }}
+              />
+            </MuiLink>
+          </Link>
  
           {/* RIGHT SIDE – CONTACT INFO */}
           <Stack
@@ -45,21 +58,18 @@ export default function Header() {
             spacing={{ xs: 1, md: 4 }}
             alignItems={{ xs: "flex-start", md: "center" }}
           >
-            {/* ONLINE ENQUIRY */}
             <ContactBlock
               icon={<PhoneInTalkIcon />}
               label="Online Enquiry"
               value="+91-8464859848"
             />
  
-            {/* CHENNAI */}
             <ContactBlock
               icon={<LocationOnIcon />}
               label="Vishakapatnam"
               value="+91-8464859848"
             />
  
-            {/* BANGALORE */}
             <ContactBlock
               icon={<LocationOnIcon />}
               label="VIP Road"
@@ -95,7 +105,7 @@ function ContactBlock({ icon, label, value }) {
           {label}
         </Typography>
  
-        <Link
+        <MuiLink
           href={`tel:${value.replace(/\s+/g, "")}`}
           underline="none"
           sx={{
@@ -108,7 +118,7 @@ function ContactBlock({ icon, label, value }) {
           }}
         >
           {value}
-        </Link>
+        </MuiLink>
       </Stack>
     </Stack>
   );
