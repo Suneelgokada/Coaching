@@ -143,7 +143,7 @@ export default function OurClientsCarousel() {
               maxWidth: 260,
               p: 4,
               textAlign: "center",
-               zIndex: 9999,
+               zIndex: 999,
               borderRadius: "16px",
               border: "1px solid #0a1935ff",
               boxShadow: "0 8px 24px rgba(0,0,0,0.08)",

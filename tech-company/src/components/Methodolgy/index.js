@@ -104,7 +104,7 @@ export default function MethodologyCarousel() {
           sx={{
             position: "absolute",
             top: "50%",
-            left: { xs: -10, md: -36 },
+            left: { xs: -10, md: 100 },
             transform: "translateY(-50%)",
             backgroundColor: "#ffffff",
             border: "1px solid #e5e7eb",
@@ -178,7 +178,7 @@ export default function MethodologyCarousel() {
           sx={{
             position: "absolute",
             top: "50%",
-            right: { xs: -10, md: -36 },
+            right: { xs: -18, md: 100,},
             transform: "translateY(-50%)",
             backgroundColor: "#ffffff",
             border: "1px solid #e5e7eb",

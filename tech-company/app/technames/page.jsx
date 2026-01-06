@@ -1,6 +1,6 @@
 import Header from "../../src/components/Header";
 import Footer from "../../src/components/Footer";
-import Technologies from "../../src/components/Technologies";
+import Technologies from "../../src/components/Technames/Technologies";
 
 export const metadata = {
   title: "Full Stack Developer Training in Visakhapatnam | Job-Oriented Course",
@@ -12,7 +12,7 @@ export default function FullStackDeveloperTrainingPage() {
   return (
     <>
       <Header />
-      <Technologies />
+     <Technologies/>
       <Footer />
     </>
   );

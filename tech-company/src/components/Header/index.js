@@ -24,12 +24,17 @@ import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-
+import { servicesData } from "../service/servicedata";
+import ServicesSection from "../service/ServicesSection";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 /* ================= COLORS (LOGO BASED) ================= */
 const LOGO_GREEN = "#2D7D2D";
 const LOGO_BLUE = "#00ED64";
+const NAV_BLUE = "#085482";
 
 /* ================= MENUS ================= */
+
+
 const companyMenu = [
   { name: "About Us", link: "/about-us" },
   { name: "Methodology", link: "/methodology" },
@@ -38,29 +43,18 @@ const companyMenu = [
   { name: "Testimonials", link: "/testimonials" },
 ];
 
-// const servicesMenu = [
-//   { name: "Web Application", link: "/services/web-application" },
-//   { name: "Mobile Application", link: "/services/mobile-application" },
-//   { name: "Open Source", link: "/services/open-source" },
-//   { name: "e-Commerce Solutions", link: "/services/ecommerce-solutions" },
-//   { name: "Frontend Web Apps", link: "/services/frontend-web-apps" },
-//   { name: "AI Agents", link: "/services/ai-agents" },
-// ];
-
 const servicesMenu = [
-  { name: "UI/UX Design" },
-  { name: "Graphic Design" },
-  { name: "Web & WebApp Development" },
-  { name: "Mobile App Development" },
-  { name: "AI Agents" },
-  { name: "IoT Solutions"},
+  { name: "Web Application", link: "/services/web-application" },
+  { name: "Mobile Application", link: "/services/mobile-application" },
+
 ];
+
 
 export const navItems = [
   { name: "HOME", link: "/", dropDown: false },
   { name: "COMPANY", link: "/about-us", dropDown: true, subMenu: companyMenu },
-  { name: "Services", link: "/categories", dropDown: true, subMenu: servicesMenu },
-  { name: "TECHNOLOGIES", link: "/technologies", dropDown: false },
+  { name: "Services", link: "/services", dropDown: true, subMenu: servicesMenu },
+  { name: "TECHNOLOGIES", link: "/technames", dropDown: false },
   { name: "PRODUCTS" },
   { name: "PORTFOLIO" },
   { name: "CAREERS", link: "/careers", dropDown: false },
@@ -72,6 +66,9 @@ const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState({});
+  const [menuLevel, setMenuLevel] = useState("main");
+  const [activeService, setActiveService] = useState(null);
+
 
   const toggleMobileDropdown = (name) =>
     setMobileDropdownOpen((prev) => ({ ...prev, [name]: !prev[name] }));
@@ -212,22 +209,49 @@ const Header = () => {
                     </Button>
 
                     {item.dropDown && (
-                      <Popper open={hoveredCategory === item.name} anchorEl={anchorEl} transition disablePortal>
+                      <Popper
+                        open={hoveredCategory === item.name}
+                        anchorEl={anchorEl}
+                        transition
+                        disablePortal
+                        // Services ki mathram pedda width set cheyyi
+                        sx={{
+                          zIndex: 1400,
+                          width: item.name === "Services" ? '100vw' : 'auto',
+                          left: item.name === "Services" ? '0 !important' : 'auto',
+                          display: 'flex',
+                          justifyContent: 'center'
+                        }}
+                      >
                         {({ TransitionProps }) => (
-                          <Fade {...TransitionProps} timeout={200}>
-                            <Paper sx={{ mt: 0, borderRadius: "0 0 4px 4px", boxShadow: 5, borderTop: `3px solid ${LOGO_GREEN}` }}>
-                              <List dense sx={{ py: 1, minWidth: 220 }}>
-                                {item.subMenu.map((sub) => (
-                                  <ListItemButton
-                                    key={sub.name}
-                                    component={Link}
-                                    href={sub.link}
-                                    sx={dropdownItemStyles}
-                                  >
-                                    <ListItemText primary={sub.name} primaryTypographyProps={{ fontSize: '0.9rem' }} />
-                                  </ListItemButton>
-                                ))}
-                              </List>
+                          <Fade {...TransitionProps} timeout={item.name === "Services" ? 350 : 200}>
+                            <Paper sx={{
+                              mt: 1,
+                              // Services ki 1200px maxWidth, verevatiki normal minWidth
+                              width: item.name === "Services" ? '90vw' : 'auto',
+                              maxWidth: item.name === "Services" ? '1200px' : '220px',
+                              boxShadow: 10,
+                              borderRadius: "0 0 12px 12px",
+                              overflow: "hidden",
+                              borderTop: `4px solid ${LOGO_BLUE}`
+                            }}>
+
+                              {/* CONDITION: Services click chesthe Mega Menu raavali */}
+                              {item.name === "Services" ? (
+                                <Box sx={{ p: 0, backgroundColor: '#fff' }}>
+                                  <ServicesSection isPopUp={true} />
+                                </Box>
+                              ) : (
+                                /* NORMAL DROPDOWN (COMPANY Menu etc.) */
+                                <List dense sx={{ py: 1 }}>
+                                  {item.subMenu.map((sub) => (
+                                    <ListItemButton key={sub.name} component={Link} href={sub.link} sx={dropdownItemStyles}>
+                                      <ListItemText primary={sub.name} primaryTypographyProps={{ fontSize: '0.9rem' }} />
+                                    </ListItemButton>
+                                  ))}
+                                </List>
+                              )}
+
                             </Paper>
                           </Fade>
                         )}
@@ -246,57 +270,155 @@ const Header = () => {
             </Toolbar>
           </Container>
         </AppBar>
-
-        {/* ================= MOBILE DRAWER ================= */}
-        <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-          <Box sx={{ width: 280 }}>
-            <Box sx={{ p: 2, backgroundColor: LOGO_BLUE, color: '#fff', textAlign: 'center' }}>
-              <Typography variant="h6" sx={{ fontWeight: 800 }}>NAVIGATION</Typography>
+{/* ================= MOBILE DRAWER (FINAL SOLVED) ================= */}
+   {/* ================= MOBILE DRAWER (UPDATED) ================= */}
+        <Drawer 
+          anchor="right" 
+          open={open} 
+          onClose={() => { setOpen(false); setMenuLevel("main"); setActiveService(null); }}
+          PaperProps={{ sx: { width: 300 } }}
+        >
+          <Box sx={{ 
+            height: "100vh", 
+            display: "flex", 
+            flexDirection: "column", 
+            backgroundColor: "#fff",
+            fontFamily: "'Montserrat', sans-serif" // Montserrat ఫాంట్ ఇక్కడ యాడ్ చేశాను
+          }}>
+            
+            {/* 1. FIXED HEADER */}
+            <Box sx={{ 
+              py: 3, 
+              px: 2, 
+              backgroundColor: "#085482", 
+              color: "#fff", 
+              textAlign: "center",
+              flexShrink: 0 
+            }}>
+              <Typography sx={{ 
+                fontWeight: 800, 
+                fontSize: "1.1rem", 
+                letterSpacing: 1,
+                fontFamily: "'Montserrat', sans-serif" 
+              }}>
+                {menuLevel === "main" ? "NAVIGATION" : menuLevel.toUpperCase()}
+              </Typography>
             </Box>
-            <List sx={{ p: 1 }}>
-              {navItems.map((item) => (
-                <React.Fragment key={item.name}>
-                  <ListItem disablePadding sx={{ mb: 0.5 }}>
-                    {item.dropDown ? (
-                      <ListItemButton
-                        onClick={() => toggleMobileDropdown(item.name)}
-                        sx={{ borderRadius: 1, color: '#085482' }}
-                      >
-                        <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
-                        {mobileDropdownOpen[item.name] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                      </ListItemButton>
-                    ) : (
-                      <ListItemButton
-                        component={Link}
-                        href={item.link}
-                        onClick={() => setOpen(false)}
-                        sx={{ borderRadius: 1, color: '#085482' }}
-                      >
-                        <ListItemText primary={item.name} primaryTypographyProps={{ fontWeight: 700 }} />
-                      </ListItemButton>
-                    )}
-                  </ListItem>
 
-                  {item.dropDown && (
-                    <Collapse in={mobileDropdownOpen[item.name]} timeout="auto" unmountOnExit>
-                      <List component="div" disablePadding sx={{ backgroundColor: '#f9f9f9', borderRadius: 1, mx: 1 }}>
-                        {item.subMenu.map((sub) => (
-                          <ListItemButton
-                            key={sub.name}
-                            component={Link}
-                            href={sub.link}
-                            onClick={() => setOpen(false)}
-                            sx={{ pl: 4 }}
-                          >
-                            <ListItemText primary={sub.name} primaryTypographyProps={{ fontSize: '0.85rem', color: '#555' }} />
-                          </ListItemButton>
-                        ))}
-                      </List>
-                    </Collapse>
-                  )}
-                </React.Fragment>
-              ))}
-            </List>
+            {/* 2. SCROLLABLE CONTENT AREA */}
+            <Box sx={{ flex: 1, overflowY: "auto" }}>
+              
+              {/* BACK BUTTON SECTION - సబ్ మెనూలో స్పష్టంగా కిందికి దించాను */}
+              {menuLevel !== "main" && (
+                <Box sx={{ mt: 8, px: 2 }}> {/* mt: 5 ఇచ్చాను, ఇరుక్కుపోకుండా ఉంటుంది */}
+                  <Button
+                    startIcon={<ArrowBackIcon />}
+                    onClick={() => {
+                      if (menuLevel === "serviceDetails") { setMenuLevel("services"); setActiveService(null); }
+                      else { setMenuLevel("main"); }
+                    }}
+                    sx={{ 
+                      color: "#085482", 
+                      fontWeight: 700, 
+                      textTransform: "none",
+                      backgroundColor: "rgba(8, 84, 130, 0.1)",
+                      width: "100%",
+                      justifyContent: "flex-start",
+                      py: 1.5,
+                      borderRadius: "8px",
+                      fontFamily: "'Montserrat', sans-serif",
+                      "&:hover": { backgroundColor: "rgba(8, 84, 130, 0.2)" }
+                    }}
+                  >
+                    Back to Previous
+                  </Button>
+                </Box>
+              )}
+
+              {/* LINKS AREA - కలర్ #085482 మరియు ఫాంట్ వెయిట్ 600 */}
+              <Box sx={{ mt: menuLevel === "main" ? 8 : 3, px: 1 }}> 
+                <List disablePadding>
+                  
+                  {/* LEVEL 1: MAIN MENU */}
+                  {menuLevel === "main" && navItems.map((item) => (
+                    <ListItem key={item.name} disablePadding sx={{ borderBottom: "1px solid #f0f0f0" }}>
+                      <ListItemButton 
+                        onClick={() => { 
+                          if (item.dropDown) setMenuLevel(item.name.toLowerCase()); 
+                          else window.location.href = item.link; 
+                        }} 
+                        sx={{ py: 2.5 }}
+                      >
+                        <ListItemText 
+                          primary={item.name} 
+                          primaryTypographyProps={{ 
+                            fontWeight: 600, 
+                            fontSize: "1rem", 
+                            color: "#085482", // లింక్ కలర్ మార్చాను
+                            fontFamily: "'Montserrat', sans-serif" 
+                          }} 
+                        />
+                        {item.dropDown && <Typography sx={{ color: "#085482", fontWeight: 900 }}>{">"}</Typography>}
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+
+                  {/* LEVEL 2: COMPANY SUB-LINKS */}
+                  {menuLevel === "company" && companyMenu.map((item) => (
+                    <ListItem key={item.name} disablePadding sx={{ borderBottom: "1px solid #f0f0f0" }}>
+                      <ListItemButton onClick={() => window.location.href = item.link} sx={{ py: 2.5 }}>
+                        <ListItemText 
+                          primary={item.name} 
+                          primaryTypographyProps={{ 
+                            fontWeight: 600, 
+                            color: "#085482", 
+                            fontFamily: "'Montserrat', sans-serif" 
+                          }} 
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+
+                  {/* LEVEL 2: SERVICES SUB-LINKS */}
+                  {menuLevel === "services" && Object.keys(servicesData).map((service) => (
+                    <ListItem key={service} disablePadding sx={{ borderBottom: "1px solid #f0f0f0" }}>
+                      <ListItemButton 
+                        onClick={() => { setActiveService(service); setMenuLevel("serviceDetails"); }} 
+                        sx={{ py: 2.5 }}
+                      >
+                        <ListItemText 
+                          primary={service} 
+                          primaryTypographyProps={{ 
+                            fontWeight: 600, 
+                            color: "#085482", 
+                            fontFamily: "'Montserrat', sans-serif" 
+                          }} 
+                        />
+                        <Typography sx={{ color: "#085482", fontWeight: 900 }}>{">"}</Typography>
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+
+                  {/* LEVEL 3: SERVICE DETAILS */}
+                  {menuLevel === "serviceDetails" && servicesData[activeService]?.techs.map((tech) => (
+                    <ListItem key={tech} disablePadding sx={{ borderBottom: "1px solid #f8f8f8" }}>
+                      <ListItemButton sx={{ pl: 4, py: 2 }} onClick={() => setOpen(false)}>
+                        <ListItemText 
+                          primary={tech} 
+                          primaryTypographyProps={{ 
+                            fontSize: "0.95rem", 
+                            fontWeight: 600, 
+                            color: "#085482", 
+                            fontFamily: "'Montserrat', sans-serif" 
+                          }} 
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+
+                </List>
+              </Box>
+            </Box>
           </Box>
         </Drawer>
       </Box>
