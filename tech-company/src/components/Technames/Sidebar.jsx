@@ -5,11 +5,14 @@ const categories = [
   { id: "frontend", label: "FRONTEND" },
   { id: "backend", label: "BACKEND" },
   { id: "frameworks", label: "FRAMEWORKS" },
-  { id: "mobile", label: "MOBILE" },
-  { id: "hi_tech", label: "HI-TECH" }, // Added to match screenshots
-  { id: "platforms_bi", label: "PLATFORMS / BI TOOLS" }, // Added to match screenshots
   { id: "cms_ecommerce", label: "CMS / ECOMMERCE" },
-  { id: "cloud_devops", label: "CLOUD / DEVOPS" },
+   { id: "cloud_devops", label: "CLOUD / DEVOPS" },
+     { id: "platforms_bi", label: "PLATFORMS / BI TOOLS" },
+  { id: "hi_tech", label: "HI-TECH" }, // Added to match screenshots
+ // Added to match screenshots
+  
+ 
+  { id: "mobile", label: "MOBILE" },
 ];
 
 export default function Sidebar({ active, onChange }) {
