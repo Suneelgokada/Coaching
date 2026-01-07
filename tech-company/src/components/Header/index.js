@@ -55,7 +55,7 @@ export const navItems = [
   { name: "COMPANY", link: "/about-us", dropDown: true, subMenu: companyMenu },
   { name: "Services", link: "/services", dropDown: true, subMenu: servicesMenu },
   { name: "TECHNOLOGIES", link: "/technames", dropDown: false },
-  { name: "PRODUCTS" },
+  { name: "PRODUCTS", link: "/products", dropDown: false },
   { name: "PORTFOLIO" },
   { name: "CAREERS", link: "/careers", dropDown: false },
   { name: "CONTACT US", link: "/contact", dropDown: false },

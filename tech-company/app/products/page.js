@@ -1,14 +1,13 @@
-import Products from "../../src/components/Products";
-
-export const metadata = {
-  title: "Products | Demo Page",
-  description: "Testing hi animation for git push",
-};
+import ProductsNavbar from "../../src/components/Products/ProductsNavbar";
+import Footer from "../../src/components/Footer";
+import ProductsScroller from "../../src/components/Products/ProductsScroller/ProductsScroller";
 
 export default function ProductsPage() {
   return (
     <>
-      <Products />
+      <ProductsNavbar />
+      <ProductsScroller />
+      <Footer />
     </>
   );
 }

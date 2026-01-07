@@ -42,7 +42,7 @@ export default function Sidebar({ active, onChange }) {
           }}
         />
 
-        {/* 2. Side Line Indicator */}
+        {/* 2. Side Line Indicator */}  
         <Box
           sx={{
             position: "absolute",

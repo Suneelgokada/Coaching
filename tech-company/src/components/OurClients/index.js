@@ -1,203 +1,123 @@
 "use client";
- 
-import { useEffect, useRef } from "react";
-import {
-  Box,
-  Typography,
-  Card,
-  Avatar,
-} from "@mui/material";
- 
+
+import { useEffect, useRef, useState } from "react";
+import { Box, Typography, Card, Avatar } from "@mui/material";
+
 const clients = [
-  {
-    name: "Holden Caulfield",
-    company: "E-commerce Brand",
-  },
-  {
-    name: "Henry Letham",
-    company: "FinTech Startup",
-  },
-  {
-    name: "Oskar Blinde",
-    company: "SaaS Company",
-  },
-  {
-    name: "John Doe",
-    company: "Healthcare Solutions",
-  },
-  {
-    name: "Martin Eden",
-    company: "EdTech Platform",
-  },
-  {
-    name: "Boris Kitua",
-    company: "Enterprise IT Services",
-  },
-  {
-    name: "Atticus Finch",
-    company: "Logistics Company",
-  },
-  {
-    name: "Alper Kamu",
-    company: "Cloud Infrastructure",
-  },
-  {
-    name: "Rodrigo Monchi",
-    company: "Product Company",
-  },
+  { name: "Holden Caulfield", company: "E-commerce Brand" },
+  { name: "Henry Letham", company: "FinTech Startup" },
+  { name: "Oskar Blinde", company: "SaaS Company" },
+  { name: "John Doe", company: "Healthcare Solutions" },
+  { name: "Martin Eden", company: "EdTech Platform" },
+  { name: "Boris Kitua", company: "Enterprise IT Services" },
+  { name: "Atticus Finch", company: "Logistics Company" },
+  { name: "Alper Kamu", company: "Cloud Infrastructure" },
+  { name: "Rodrigo Monchi", company: "Product Company" },
 ];
- 
-// Duplicate for infinite effect
-const infiniteClients = [...clients, ...clients];
- 
+
+const infiniteClients = [...clients, ...clients, ...clients];
+
 export default function OurClientsCarousel() {
   const sliderRef = useRef(null);
- 
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
   useEffect(() => {
     const slider = sliderRef.current;
+    if (!slider) return;
+
     let animationId;
-    let position = 0;
- 
-    const speed = 0.5; // adjust scroll speed
- 
+    let position = slider.scrollLeft;
+
     const animate = () => {
-      position += speed;
-      if (position >= slider.scrollWidth / 2) {
-        position = 0;
+      // Mouse tho drag chestunnappudu auto-scroll avvakudadu
+      if (!isDragging) {
+        position += 0.8; 
+        if (position >= slider.scrollWidth / 1.5) {
+          position = 0;
+        }
+        slider.scrollLeft = position;
+      } else {
+        // Drag chestunnappudu position ni update chestu undali, lekapothe drag vadilesaka jump avtundi
+        position = slider.scrollLeft;
       }
-      slider.scrollLeft = position;
       animationId = requestAnimationFrame(animate);
     };
- 
+
     animationId = requestAnimationFrame(animate);
- 
-    // Pause on hover
-    const stop = () => cancelAnimationFrame(animationId);
-    const start = () => requestAnimationFrame(animate);
- 
-    slider.addEventListener("mouseenter", stop);
-    slider.addEventListener("mouseleave", start);
- 
-    return () => {
-      cancelAnimationFrame(animationId);
-      slider.removeEventListener("mouseenter", stop);
-      slider.removeEventListener("mouseleave", start);
-    };
-  }, []);
- 
+    return () => cancelAnimationFrame(animationId);
+  }, [isDragging]);
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Drag sensitivity
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <Box
-      sx={{
-        width: "100%",
-        backgroundColor: "#ffffff",
-        py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 6 },
-      }}
-    >
-      {/* Title */}
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{
-          fontWeight: 700,
-          color: "#1a73e8",
-          mb: 2,
-        }}
-      >
+    <Box sx={{ width: "100%", py: 10, bgcolor: "white", overflow: "hidden" }}>
+      <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 6, color: "#1a73e8" }}>
         Our Clients
       </Typography>
- 
-      <Typography
-        align="center"
+
+      <Box
+        ref={sliderRef}
+        onMouseDown={handleMouseDown}
+        onMouseUp={stopDragging}
+        onMouseLeave={stopDragging}
+        onMouseMove={handleMouseMove}
         sx={{
-          maxWidth: 900,
-          mx: "auto",
-          mb: 6,
-          color: "#4b5563",
-          fontSize: 16,
+          display: "flex",
+          gap: 3,
+          overflowX: "hidden", // Dragging logic manual ga handle chestunnam kabatti idi hidden unchali
+          whiteSpace: "nowrap",
+          cursor: isDragging ? "grabbing" : "grab",
+          userSelect: "none",
+          px: 2,
+          py: 4,
+          WebkitOverflowScrolling: "touch", // Mobile smooth scroll kosam
         }}
       >
-        We partner with startups, enterprises, and global brands across industries
-        to deliver scalable, high-impact digital solutions.
-      </Typography>
- 
-      {/* Infinite Slider */}
-      <Box
-  ref={sliderRef}
-  sx={{
-    display: "flex",
-    gap: 3,
-    overflowX: "hidden",   // keep horizontal hidden
-    overflowY: "visible",  // ✅ allow cards to come out
-    whiteSpace: "nowrap",
-     py: 4,  
-    position: "relative",
-  }}
->
- 
         {infiniteClients.map((client, index) => (
-          <Card
+          <Box
             key={index}
             sx={{
-              minWidth: 260,
-              maxWidth: 260,
-              p: 4,
-              textAlign: "center",
-               zIndex: 999,
-              borderRadius: "16px",
-              border: "1px solid #0a1935ff",
-              boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
               flexShrink: 0,
-              transition: "0.3s ease",
-              "&:hover": {
-                transform: "translateY(-6px)",
-                boxShadow: "0 14px 40px rgba(0,0,0,0.15)",
-              },
+              pointerEvents: "none", // Mukhyam: Mouse clicks card lopala agipokunda
             }}
           >
-            {/* Profile Image */}
-            <Avatar
+            <Card
               sx={{
-                width: 72,
-                height: 72,
-                mx: "auto",
-                mb: 2,
-                bgcolor: "#e8f0fe",
-                color: "#1a73e8",
-                fontSize: 28,
-                fontWeight: 600,
+                width: 260,
+                p: 4,
+                textAlign: "center",
+                borderRadius: "16px",
+                border: "1px solid #0a19351a",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
               }}
             >
-              {client.name.charAt(0)}
-            </Avatar>
- 
-            {/* Name */}
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 600,
-                color: "#1f2937",
-              }}
-            >
-              {client.name}
-            </Typography>
- 
-            {/* Company */}
-            <Typography
-              sx={{
-                mt: 1,
-                color: "#1a73e8",
-                fontSize: 14,
-               
-                fontWeight: 500,
-              }}
-            >
-              {client.company}
-            </Typography>
-          </Card>
+              <Avatar sx={{ width: 72, height: 72, mx: "auto", mb: 2, bgcolor: "#e8f0fe", color: "#1a73e8" }}>
+                {client.name.charAt(0)}
+              </Avatar>
+              <Typography variant="h6" fontWeight={600}>{client.name}</Typography>
+              <Typography sx={{ color: "#1a73e8", fontSize: 14 }}>{client.company}</Typography>
+            </Card>
+          </Box>
         ))}
       </Box>
     </Box>
   );
 }
- 
