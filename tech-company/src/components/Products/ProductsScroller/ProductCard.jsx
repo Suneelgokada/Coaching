@@ -1,248 +1,8 @@
-"use client";
-
-import { useRef, useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
-
-// Sample Data
-const products = [
-  {
-    id: 1,
-    title: "Abhiram Nirman",
-    description:
-      "Premium real estate presentation website using rich visuals, modern layouts, and luxury color palette.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/AbhiramNirman.png",
-  },
-  {
-    id: 2,
-    title: "Chalo Gaadi App",
-    description:
-      "Designed a new in-app section with ecommerce-ready UI using existing components, structure and branding.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/ChaloGaadi.png",
-  },
-  {
-    id: 3,
-    title: "Email Template",
-    description:
-      "Responsive email template design in Figma. Balances visuals and text for clarity, ensuring effective brand communication, promotions, and engagement across devices and email clients.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/EmailTemplate.png",
-  },
-  {
-    id: 4,
-    title: "GenAITools",
-    description:
-      "Responsive web app for exploring generative AI tools. Features categories, filters, and demos with clean UI, smooth UX, and strong performance.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/GenAiTools.png",
-  },
-  {
-    id: 5,
-    title: "Inride Mobile App",
-    description:
-      "Mobile-first ride booking UI using MUI components with optimized flows, direct phone authentication, and intuitive navigation.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/InrideApp.png",
-  },
-  {
-    id: 6,
-    title: "NapNGo",
-    description:
-      "A concept-driven website that highlights value proposition and booking flow with strong branding and visual appeal.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/NapNGo.png",
-  },
-  {
-    id: 7,
-    title: "Nanddhan Steel Roofing",
-    description:
-      "A performance-focused company website designed to establish trust and increase customer reach in roofing and construction segments.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/NsteelRoofing.png",
-  },
-  {
-    id: 8,
-    title: "Friend's Portfolio Design",
-    description:
-      "Modern portfolio design in Figma featuring bold visuals, structured layouts, and interactive elements. Highlights projects with clarity and improves user engagement across devices.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/PortfolioFrnd.png",
-  },
-  {
-    id: 9,
-    title: "Result Insight Hub",
-    description:
-      "Clean academic dashboard design in Figma. Highlights grades, insights, and trends with structured layouts, improving comprehension, usability, and decision-making for students and educators.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/RIH.png",
-  },
-  {
-    id: 10,
-    title: "Restaurant Menu App",
-    description:
-      "Interactive coffee shop menu card designed in Figma. Focused on usability, clarity, and modern aesthetics to simplify browsing, enhance navigation, and improve customer ordering experience.8",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/RestaurantMenu.png",
-  },
-  {
-    id: 11,
-    title: "Shopify",
-    description:
-      "Conversion-focused Shopify design with engaging visuals, intuitive navigation, and responsive layouts. Enhances product browsing, usability, and user experience across devices.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/Shopify.png",
-  },
-  {
-    id: 12,
-    title: "Vishwanath Sports Club",
-    description:
-      "A complete UI overhaul with brand-aligned visuals and upgraded layout to support modern tourism and entertainment audiences.",
-    image: "https://himavarshabarla.vercel.app/assets/thumbnails/VSportsClub.png",
-  },
-  {
-    id: 13,
-    title: "Vishwanath Sports Club",
-    description:
-      "Complete UI overhaul with brand-aligned visuals and modern layout.",
-    image: "/products/p3.jpg",
-  },
-];
-
-export default function ProductCarousel() {
-  const sliderRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  // Dragging Logic
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-  };
-
-  const handleMouseLeave = () => setIsDragging(false);
-  const handleMouseUp = () => setIsDragging(false);
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Sensitivity
-    sliderRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  return (
-    <Box sx={{ bgcolor: "#ffffff", py: 10 }}>
-      {/* Container */}
-      <Box
-        ref={sliderRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        sx={{
-          display: "flex",
-          gap: 2,
-          overflowX: "auto",
-          px: 4,
-          cursor: isDragging ? "grabbing" : "grab",
-          userSelect: "none",
-          "&::-webkit-scrollbar": { display: "none" },
-          msOverflowStyle: "none",
-          scrollbarWidth: "none",
-        }}
-      >
-        {products.map((product, index) => (
-          <ProductCard key={index} product={product} index={index} />
-        ))}
-      </Box>
-    </Box>
-  );
-}
-
-function ProductCard({ product, index }) {
-  return (
-    <Box
-      sx={{
-        minWidth: 340,
-        height: "85vh",
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: 1.5,
-        backgroundColor: "#fff", // Main background white
-        color: "#000",          // Default text color black
-        flexShrink: 0,
-        border: "1px solid #f0f0f0",
-        transition: "0.3s ease",
-        "&:hover .image": {
-          opacity: 1,
-          transform: "scale(1.1)",
-        },
-        "&:hover .content-text": {
-          color: "#fff", // Hover chestunnappudu text white avthundi overlay valla
-        },
-      }}
-    >
-      {/* Background Image (Visible on Hover) */}
-      <Box
-        className="image"
-        sx={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `url(${product.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0,
-          transition: "0.5s ease",
-          zIndex: 0,
-        }}
-      />
-
-      {/* Hover Overlay (Dark gradient only on hover) */}
-      <Box
-        className="overlay"
-        sx={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%)",
-          opacity: 0,
-          zIndex: 1,
-          transition: "0.3s ease",
-          ".MuiBox-root:hover &": { opacity: 1 },
-        }}
-      />
-
-      {/* Content Text */}
-      <Box
-        className="content-text"
-        sx={{
-          position: "relative",
-          zIndex: 2,
-          p: 3,
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          pointerEvents: "none", // Allows dragging through text
-        }}
-      >
-        <Typography 
-          variant="h1" 
-          sx={{ 
-            fontSize: "5rem", 
-            fontWeight: 800, 
-            opacity: 0.1, 
-            lineHeight: 1,
-            mb: -2
-          }}
-        >
-          {index + 1}
-        </Typography>
-
-        <Typography variant="h5" sx={{ fontWeight: 700 }}>
-          {product.title}
-        </Typography>
-      </Box>
-    </Box>
-  );
-}
-
+// "use client";
 
 // import { Box, Typography } from "@mui/material";
 
 // export default function ProductCard({ product, index }) {
-
 //   return (
 //     <Box
 //       sx={{
@@ -251,24 +11,26 @@ function ProductCard({ product, index }) {
 //         position: "relative",
 //         overflow: "hidden",
 //         borderRadius: 1.5,
-//         backgroundColor: "#fff",      // 🔥 BG White
-//         color: "#000",                // Default text Black (Professional look)
-//         flexShrink: 0,
+//         backgroundColor: "#fff",      // 🔥 Bright White Background
+//         boxShadow: "0 4px 20px rgba(0,0,0,0.05)", // Card elevation kosam light shadow
 //         cursor: "pointer",
-//         border: "1px solid #f0f0f0",  // Light border for white theme
+//         flexShrink: 0,
+//         border: "1px solid #f0f0f0",  // White card border
+//         transition: "all 0.3s ease",
+
 //         "&:hover .image": {
 //           opacity: 1,
-//           transform: "scale(1.3)",
-//         },
-//         "&:hover .content-text": {
-//           color: "#fff",              // Hover lo image vacchinappudu text White avvali
+//           transform: "scale(1.2)",    // Smooth zoom
 //         },
 //         "&:hover .overlay": {
-//           opacity: 1,                 // Hover lo gradient overlay visibility
+//           opacity: 1,
 //         },
+//         "&:hover .text-content": {
+//           color: "#fff",              // Hover chesthe text White avthundi
+//         }
 //       }}
 //     >
-//       {/* Hover Image */}
+//       {/* Background Image (Visible only on Hover) */}
 //       <Box
 //         className="image"
 //         sx={{
@@ -277,51 +39,52 @@ function ProductCard({ product, index }) {
 //           backgroundImage: `url(${product.image})`,
 //           backgroundSize: "cover",
 //           backgroundPosition: "center",
-//           opacity: 0,                 // Default ga image kanipinchadu
+//           opacity: 0,
 //           transition: "0.5s ease",
 //           zIndex: 0,
 //         }}
 //       />
 
-//       {/* Hover Overlay - Modern Gradient */}
+//       {/* Dark Overlay (Hover lo brightness adjust chesi text ni highlight chestundi) */}
 //       <Box
 //         className="overlay"
 //         sx={{
 //           position: "absolute",
 //           inset: 0,
-//           background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%)",
-//           opacity: 0,                 // Default hide
+//           background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%)",
+//           opacity: 0,
 //           transition: "0.3s ease",
 //           zIndex: 1,
 //         }}
 //       />
 
-//       {/* Text Content */}
+//       {/* Text Section (Top lo display avvadaniki) */}
 //       <Box
-//         className="content-text"
+//         className="text-content"
 //         sx={{
 //           position: "relative",
 //           zIndex: 2,
-//           p: 3,
+//           p: 4,
 //           height: "100%",
 //           display: "flex",
 //           flexDirection: "column",
-//           justifyContent: "flex-end",
-//           transition: "color 0.3s ease", // Smooth color change
+//           justifyContent: "flex-start", // 🔥 Text ni Card paina (Top) ki move chesanu
+//           color: "#000",                // 🔥 Default text Black
+//           transition: "color 0.3s ease",
 //         }}
 //       >
-//         {/* Background Big Number */}
+//         {/* Card Number */}
 //         <Typography 
 //           variant="h1" 
 //           sx={{ 
-//             fontSize: "6rem", 
+//             fontSize: "4.5rem", 
 //             fontWeight: 900, 
-//             opacity: 0.08,             // Very subtle professional feel
-//             lineHeight: 0.8,
-//             mb: -1
+//             opacity: 0.1,               // Normal ga light ga background la untundi
+//             lineHeight: 1,
+//             mb: 1
 //           }}
 //         >
-//           {index + 1}
+//           {index + 1 < 10 ? `0${index + 1}` : index + 1}
 //         </Typography>
 
 //         {/* Product Title */}
@@ -329,7 +92,8 @@ function ProductCard({ product, index }) {
 //           variant="h5" 
 //           sx={{ 
 //             fontWeight: 700,
-//             letterSpacing: "-0.5px"
+//             textTransform: "uppercase",
+//             letterSpacing: "1px"
 //           }}
 //         >
 //           {product.title}
@@ -338,3 +102,547 @@ function ProductCard({ product, index }) {
 //     </Box>
 //   );
 // }
+// "use client";
+// import { Box, Typography } from "@mui/material";
+
+// export default function ProductCard({ product, index }) {
+//   return (
+//     <Box
+//       sx={{
+//         minWidth: { xs: 320, md: 400 }, 
+//         maxWidth: { xs: 320, md: 400 }, 
+//         height: "85vh",
+//         position: "relative",
+//         overflow: "hidden",
+//         borderRadius: 2,
+//         backgroundColor: "#fff",
+//         boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+//         cursor: "pointer",
+//         flexShrink: 0,
+//         border: "1px solid #f0f0f0",
+//         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+
+//         "&:hover .image": { opacity: 1, transform: "scale(1.15)" },
+//         "&:hover .overlay": { opacity: 1 },
+//         "&:hover .text-content": { color: "#ffffff" }, // 🔥 Pure Bright White on Hover
+//         "&:hover .desc-text": { color: "#ffffff", opacity: 0.9 } // 🔥 Bright White Desc
+//       }}
+//     >
+//       {/* Background Image */}
+//       <Box
+//         className="image"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           backgroundImage: `url(${product.image})`,
+//           backgroundSize: "cover",
+//           backgroundPosition: "center",
+//           opacity: 0,
+//           transition: "0.6s ease",
+//           zIndex: 0,
+//         }}
+//       />
+
+//       {/* Darker Overlay for Text Clarity on Hover */}
+//       <Box
+//         className="overlay"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%)",
+//           opacity: 0,
+//           transition: "0.4s ease",
+//           zIndex: 1,
+//         }}
+//       />
+
+//       {/* Text Section */}
+//       <Box
+//         className="text-content"
+//         sx={{
+//           position: "relative",
+//           zIndex: 2,
+//           p: 4,
+//           mt: 40, // 🔥 Text ni koncham kindhaki dhinchanu (Top Margin)
+//           height: "100%",
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-start",
+//           color: "#1a1a1a", // Stronger black for better normal visibility
+//           transition: "all 0.3s ease",
+//           boxSizing: "border-box", 
+//         }}
+//       >
+//         {/* Index Number */}
+//         <Typography 
+//           variant="h1" 
+//           sx={{ 
+//             fontSize: "5rem", 
+//             fontWeight: 900, 
+//             opacity: 0.12, // Subtle increase in visibility
+//             lineHeight: 1, 
+//             mb: 1 
+//           }}
+//         >
+//           {index + 1 < 10 ? `0${index + 1}` : index + 1}
+//         </Typography>
+
+//         {/* Title */}
+//         <Typography 
+//           variant="h5" 
+//           sx={{ 
+//             fontWeight: 800, // Extra bold for professional look
+//             textTransform: "uppercase", 
+//             letterSpacing: "1px",
+//             mb: 2,
+//             whiteSpace: "normal",
+//             wordBreak: "break-word",
+//             lineHeight: 1.3
+//           }}
+//         >
+//           {product.title}
+//         </Typography>
+
+//         {/* Description */}
+//         {product.description && (
+//           <Typography
+//             className="desc-text"
+//             variant="body2"
+//             sx={{
+//               fontWeight: 500, // Slightly heavier weight for brightness
+//               lineHeight: 1.6,
+//               color: "#444", 
+//               whiteSpace: "normal",
+//               overflow: "hidden",
+//               display: "-webkit-box",
+//               WebkitLineClamp: 6, // 6 lines allowed
+//               WebkitBoxOrient: "vertical",
+//               transition: "all 0.3s ease",
+//               textAlign: "left",
+//               fontSize: "0.95rem"
+//             }}
+//           >
+//             {product.description}
+//           </Typography>
+//         )}
+//       </Box>
+//     </Box>
+//   );
+// }
+
+// "use client";
+
+// import { Box, Typography } from "@mui/material";
+// import Rating from "@mui/material/Rating";
+
+// export default function ProductCard({ product, index }) {
+//   return (
+//     <Box
+//       sx={{
+//         width: 480,
+//         height: 700,
+//         flexShrink: 0,
+//         position: "relative",
+//         // borderRadius: 4,
+//         overflow: "hidden",
+//         backgroundColor: "#ffffff",
+//         boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
+//         cursor: "pointer",
+
+//         "&:hover .imageLayer": {
+//           opacity: 1,
+//           transform: "scale(1)",
+//         },
+//         "&:hover .overlay": {
+//           opacity: 1,
+//         },
+//         "&:hover .defaultContent": {
+//           opacity: 0,
+//         },
+//       }}
+//     >
+//       {/* DEFAULT CONTENT */}
+//       <Box
+//         className="defaultContent"
+//         sx={{
+//           height: "100%",
+//           p: 4,
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-end",
+//           transition: "opacity 0.4s ease",
+//           zIndex: 2,
+//           position: "relative",
+//         }}
+//       >
+//         {/* BIG NUMBER */}
+//         <Typography
+//           sx={{
+//             fontSize: "140px",
+//             fontWeight: 700,
+//             lineHeight: 1,
+//             color: "rgba(0,0,0,0.08)",
+//             position: "absolute",
+//             top: 24,
+//             left: 24,
+//           }}
+//         >
+//           {index + 1}
+//         </Typography>
+
+//         {/* TITLE */}
+//         <Typography variant="h6" fontWeight={600}>
+//           {product.title}
+//         </Typography>
+
+//         {/* ⭐ RATING */}
+//         <Rating
+//           value={product.rating || 4.5}
+//           precision={0.5}
+//           readOnly
+//           size="small"
+//           sx={{ mt: 0.8 }}
+//         />
+
+//         {/* DESCRIPTION */}
+//         <Typography
+//           variant="body2"
+//           color="text.secondary"
+//           sx={{ mt: 1 }}
+//         >
+//           {product.description}
+//         </Typography>
+//       </Box>
+
+//       {/* IMAGE */}
+//       <Box
+//         className="imageLayer"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           opacity: 0,
+//           transform: "scale(1.05)",
+//           transition: "all 0.5s ease",
+//           zIndex: 1,
+//         }}
+//       >
+//         <img
+//           src={product.image}
+//           alt={product.title}
+//           style={{
+//             width: "100%",
+//             height: "100%",
+//             objectFit: "cover",
+//           }}
+//         />
+//       </Box>
+
+//       {/* OVERLAY */}
+//       <Box
+//         className="overlay"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           background:
+//             "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25))",
+//           opacity: 0,
+//           transition: "opacity 0.4s ease",
+//           zIndex: 3,
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-end",
+//           p: 4,
+//         }}
+//       >
+//         <Typography variant="h6" fontWeight={600} sx={{ color: "#fff" }}>
+//           {product.title}
+//         </Typography>
+
+//         {/* ⭐ RATING (HOVER) */}
+//         <Rating
+//           value={product.rating || 4.5}
+//           precision={0.5}
+//           readOnly
+//           size="small"
+//           sx={{
+//             mt: 0.6,
+//             "& .MuiRating-iconFilled": { color: "#FFD700" },
+//           }}
+//         />
+
+//         <Typography
+//           variant="body2"
+//           sx={{ color: "rgba(255,255,255,0.85)", mt: 1 }}
+//         >
+//           {product.description}
+//         </Typography>
+//       </Box>
+//     </Box>
+//   );
+// }
+
+
+// "use client";
+
+// import { Box, Typography, Rating } from "@mui/material";
+
+// export default function ProductCard({ product, index, isMobile }) {
+//   return (
+//     <Box
+//       sx={{
+//         // 🔥 Responsive Width: Mobile lo full width, Desktop lo fixed
+//         width: { xs: "100%", md: 480 },
+//         // 🔥 Responsive Height: Desktop lo 90% of screen height
+//         height: { xs: "500px", md: "90vh" }, 
+        
+//         flexShrink: 0,
+//         position: "relative",
+//         overflow: "hidden",
+//         backgroundColor: "#ffffff",
+//         boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
+//         cursor: "pointer",
+//         borderRadius: isMobile ? 4 : 0,
+
+//         "&:hover .imageLayer": { opacity: 1, transform: "scale(1)" },
+//         "&:hover .overlay": { opacity: 1 },
+//         "&:hover .defaultContent": { opacity: { md: 0 } },
+//       }}
+//     >
+//       {/* DEFAULT CONTENT */}
+//       <Box
+//         className="defaultContent"
+//         sx={{
+//           height: "100%",
+//           p: 4,
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-end",
+//           transition: "opacity 0.4s ease",
+//           zIndex: 2,
+//           position: "relative",
+//           // Mobile lo content eppudu black text clarity undali kabatti background
+//           background: isMobile ? "rgba(255,255,255,0.8)" : "transparent",
+//         }}
+//       >
+//         <Typography
+//           sx={{
+//             fontSize: { xs: "80px", md: "140px" },
+//             fontWeight: 700,
+//             lineHeight: 1,
+//             color: "rgba(0,0,0,0.08)",
+//             position: "absolute",
+//             top: 24,
+//             left: 24,
+//           }}
+//         >
+//           {index + 1}
+//         </Typography>
+
+//         <Typography variant="h6" fontWeight={700} color="#000">
+//           {product.title}
+//         </Typography>
+
+//         <Rating value={product.rating || 4.5} precision={0.5} readOnly size="small" sx={{ mt: 0.8 }} />
+
+//         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+//           {product.description}
+//         </Typography>
+//       </Box>
+
+//       {/* IMAGE LAYER */}
+//       <Box
+//         className="imageLayer"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           opacity: isMobile ? 1 : 0, // Mobile lo image default ga kanapadali
+//           transform: isMobile ? "none" : "scale(1.05)",
+//           transition: "all 0.5s ease",
+//           zIndex: 1,
+//         }}
+//       >
+//         <img
+//           src={product.image}
+//           alt={product.title}
+//           style={{ width: "100%", height: "100%", objectFit: "cover" }}
+//         />
+//       </Box>
+
+//       {/* OVERLAY (Hover for Desktop, Static for Mobile text clarity) */}
+//       <Box
+//         className="overlay"
+//         sx={{
+//           position: "absolute",
+//           inset: 0,
+//           background: "linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3))",
+//           opacity: isMobile ? 1 : 0,
+//           transition: "opacity 0.4s ease",
+//           zIndex: 3,
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-end",
+//           p: 4,
+//         }}
+//       >
+//         <Typography variant="h5" fontWeight={700} sx={{ color: "#fff" }}>
+//           {product.title}
+//         </Typography>
+//         <Rating value={product.rating || 4.5} precision={0.5} readOnly size="small" sx={{ mt: 1, "& .MuiRating-iconFilled": { color: "#FFD700" } }} />
+//         <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.85)", mt: 1 }}>
+//           {product.description}
+//         </Typography>
+//       </Box>
+//     </Box>
+//   );
+// }
+
+
+"use client";
+
+import { Box, Typography } from "@mui/material";
+import Rating from "@mui/material/Rating";
+
+export default function ProductCard({ product, index }) {
+  return (
+    <Box
+      sx={{
+        /* DESKTOP (UNCHANGED) */
+        width: 480,
+        height: 600,
+        flexShrink: 0,
+        position: "relative",
+        overflow: "hidden",
+        backgroundColor: "#ffffff",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
+        cursor: "pointer",
+
+        "&:hover .imageLayer": {
+          opacity: 1,
+          transform: "scale(1)",
+        },
+        "&:hover .overlay": {
+          opacity: 1,
+        },
+        "&:hover .defaultContent": {
+          opacity: 0,
+        },
+
+        /* 📱 MOBILE (<=600px) */
+        "@media (max-width:600px)": {
+          width: "92vw",
+          height: 540,
+          margin: "24px auto",
+          cursor: "default",
+        },
+
+        /* 📱 TABLET (<=768px) */
+        "@media (max-width:768px)": {
+          width: "100%",   // ✅ full width like CompanyIntroCard image
+          height: 320,     // ✅ same height as CompanyIntroCard image
+          margin: "24px auto",
+          cursor: "default",
+        },
+      }}
+    >
+      {/* DEFAULT CONTENT */}
+      <Box
+        className="defaultContent"
+        sx={{
+          height: "100%",
+          p: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "140px",
+            fontWeight: 700,
+            lineHeight: 1,
+            color: "rgba(0,0,0,0.08)",
+            position: "absolute",
+            top: 24,
+            left: 24,
+          }}
+        >
+          {index + 1}
+        </Typography>
+
+        <Typography variant="h6" fontWeight={600}>
+          {product.title}
+        </Typography>
+
+        <Rating value={product.rating || 4.5} readOnly size="small" sx={{ mt: 0.8 }} />
+
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          {product.description}
+        </Typography>
+      </Box>
+
+      {/* IMAGE */}
+      <Box
+        className="imageLayer"
+        sx={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0,
+          transform: "scale(1.05)",
+          transition: "all 0.5s ease",
+          zIndex: 1,
+
+          "@media (max-width:600px)": {
+            opacity: 1,
+            transform: "scale(1)",
+          },
+          "@media (max-width:768px)": {
+            opacity: 1,
+            transform: "scale(1)",
+          },
+        }}
+      >
+        <img
+          src={product.image}
+          alt={product.title}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </Box>
+
+      {/* OVERLAY */}
+      <Box
+        className="overlay"
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25))",
+          opacity: 0,
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          p: 4,
+
+          "@media (max-width:600px)": {
+            opacity: 1,
+          },
+          "@media (max-width:768px)": {
+            opacity: 1,
+          },
+        }}
+      >
+        <Typography variant="h6" fontWeight={600} sx={{ color: "#fff" }}>
+          {product.title}
+        </Typography>
+
+        <Rating value={product.rating || 4.5} readOnly size="small" />
+
+        <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.85)", mt: 1 }}>
+          {product.description}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}

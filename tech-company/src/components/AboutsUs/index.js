@@ -61,7 +61,7 @@ export default function AboutUs() {
                 mx: { xs: "auto", sm: "unset" },
               }}
             >
-              At our Design Blocks, we are a collective <TabletBR />
+              At our Coding Roots, we are a collective <TabletBR />
               of talented individuals ignited by our <TabletBR />
               unwavering passion for transforming <TabletBR /> ideas into
               reality.

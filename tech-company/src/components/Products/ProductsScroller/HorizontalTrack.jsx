@@ -1,25 +1,32 @@
-
 "use client";
 
 import { Box } from "@mui/material";
+import CompanyIntroCard from "./CompanyIntroCard";
 import ProductCard from "./ProductCard";
 
-export default function HorizontalTrack({ products, trackRef }) {
+export default function HorizontalTrack({ companyIntro, products, isColumn }) {
   return (
     <Box
-      ref={trackRef}
       sx={{
         display: "flex",
-        alignItems: "center",
-        // gap: 1,
-
-        height: "100%",
-        px: 6,
-        willChange: "transform",
+        flexDirection: isColumn ? "column" : "row", // ✅ switch layout
+        alignItems: isColumn ? "stretch" : "center",
+        height: isColumn ? "auto" : "100vh",
+        width: isColumn ? "100%" : "max-content",
+        gap: 2,
       }}
     >
-      {products.map((p, i) => (
-        <ProductCard key={p.id} product={p} index={i} />
+      <CompanyIntroCard data={companyIntro} />
+
+      {products.map((product, index) => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          index={index}
+          sx={{
+            width: isColumn ? "100%" : "300px", // ✅ full width on mobile
+          }}
+        />
       ))}
     </Box>
   );

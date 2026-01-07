@@ -85,6 +85,19 @@ const Header = () => {
 
   return (
     <>
+    <Box 
+  sx={{ 
+    position: "sticky", 
+    color: "#085482",
+    top: 0, 
+    zIndex: 1300, 
+    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+    // 🔥 IMAGE LO UNNATU TOP BORDER ADD CHESHANU
+    borderTop: `5px solid`, // Border thickness 5px pettanu
+    borderImageSource: `linear-gradient(90deg, #00E676 0%, #085482 100%)`, // Hero section colors (Green to Blue)
+    borderImageSlice: 1,
+  }}
+></Box>
       {/* ================= TOP HEADER ================= */}
       <Box sx={{ position: "sticky", top: 0, zIndex: 1300, boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
         <AppBar position="static" elevation={0} sx={{ backgroundColor: "#fff", borderBottom: "1px solid #f0f0f0" }}>
