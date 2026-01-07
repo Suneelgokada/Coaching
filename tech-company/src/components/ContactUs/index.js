@@ -92,7 +92,7 @@ export default function ContactUs() {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={4} sx={{ background: "#fff", p: 2, borderRadius: 2 }}>
-          
+
           {/* Left Side: Google Map Integration */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Box
@@ -198,11 +198,23 @@ export default function ContactUs() {
                     mt: 3,
                     px: 5,
                     py: 1.2,
-                    bgcolor: LOGO_GREEN,
-                    "&:hover": { bgcolor: LOGO_GREEN, opacity: 0.9 },
+                    // 🔥 Coloring logic from previous button
+                    background: `linear-gradient(135deg, ${LOGO_BLUE} 0%, ${LOGO_GREEN} 100%)`,
+                    boxShadow: `0 10px 30px ${LOGO_BLUE}40`,
+
+                    "&:hover": {
+                      // 🔥 Hover lo colors reverse avthayi
+                      background: `linear-gradient(135deg, ${LOGO_GREEN} 0%, ${LOGO_BLUE} 100%)`,
+                      transform: "translateY(-3px)", // Chinna lift effect
+                      boxShadow: `0 15px 40px ${LOGO_BLUE}50`,
+                      opacity: 1 // opacity badulu gradient change vaduthunnam
+                    },
+
                     textTransform: "none",
-                    fontWeight: 600,
+                    fontWeight: 600, // Inka bold ga kanapadataniki
                     fontFamily: MONTSERRAT,
+                    borderRadius: 3, // Premium rounded look
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)", // Smooth transition
                   }}
                 >
                   Submit
