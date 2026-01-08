@@ -544,6 +544,45 @@ export default function ProductCard({ product, index }) {
         },
       }}
     >
+
+  {/* ⭐ LOGO TOP-RIGHT POSITION ⭐ */}
+{product.logo && (
+  <Box
+    sx={{
+      position: "absolute",
+      top: 24,
+      right: 24,
+      zIndex: 4,
+      // 1. Size ni ikkada penchutunnam (50 nundi 80-100 ki try cheyandi)
+      width: 90,  
+      height: 90,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      
+      /* Optional: Mobile lo koncham size thaggali anukunte */
+      "@media (max-width:600px)": {
+        width: 70,
+        height: 70,
+        top: 16,
+        right: 16,
+      },
+    }}
+  >
+    <img
+      src={product.logo}
+      alt="brand logo"
+      style={{ 
+        maxWidth: "100%", 
+        maxHeight: "100%", 
+        objectFit: "contain",
+        // 2. Inkochem zoom kavali ante 'scale' use cheyandi
+        transform: "scale(1.2)", 
+        filter: "drop-shadow(0px 6px 12px rgba(0,0,0,0.25))" 
+      }}
+    />
+  </Box>
+)}
       {/* DEFAULT CONTENT */}
       <Box
         className="defaultContent"
