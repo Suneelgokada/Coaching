@@ -114,5 +114,22 @@ export const products = [
       "Complete UI overhaul with brand-aligned visuals and a modern layout tailored for tourism, sports, and entertainment audiences.",
     image:
       "https://himavarshabarla.vercel.app/assets/thumbnails/VSportsClub.png",
+        logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850815/logo-HJQU3g0R_hrww1d.png",
   },
+  {
+    id: 13,
+    title: "Shreedhanya Website",
+    description:"Premium design and represented their with best user experience.",
+    image:"https://shreedhanyaprojects.com/assets/bg-DmBz5Uyl.svg",
+    logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850988/sridhanya.png-removebg-preview_1_uxqprc.png",
+  },
+    {
+    id: 14,
+    title: "Siva Sivani High School",
+    description:"A modern website design for a high school with enhanced user experience reach with better seo keywords.",
+    image:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767849157/Screenshot_203_atmaea.png",
+     logo:" https://res.cloudinary.com/dp5ttq85f/image/upload/v1767851264/sshslogo-removebg-preview_n2tazj.png",
+  },
+ 
+
 ];
