@@ -417,9 +417,9 @@
 // }
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Container, Typography, Avatar, Stack } from "@mui/material";
-import { motion } from "framer-motion";
+import {motion, useMotionValue, animate } from "framer-motion";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
 /* ================= TESTIMONIAL DATA ================= */
@@ -450,8 +450,31 @@ const testimonials = [
 const rowTestimonials = [...testimonials, ...testimonials];
 
 const TestimonialMarquee = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const montserrat = "'Montserrat', sans-serif";
+    const montserrat = "'Montserrat', sans-serif";
+
+  const x = useMotionValue(0);
+  const [controls, setControls] = useState(null);
+
+  /* 🔁 AUTO MOTION */
+  useEffect(() => {
+    startAutoScroll();
+    return () => controls?.stop();
+    // eslint-disable-next-line
+  }, []);
+
+  const startAutoScroll = () => {
+    const animation = animate(x, [0, -1200], {
+      ease: "linear",
+      duration: 35,
+      repeat: Infinity,
+      repeatType: "loop",
+    });
+    setControls(animation);
+  };
+
+  const stopAutoScroll = () => {
+    controls?.stop();
+  };
 
   return (
     <Box sx={{ py: 10, bgcolor: "#fff", overflow: "hidden" }}>
@@ -474,40 +497,45 @@ const TestimonialMarquee = () => {
       </Container>
 
       {/* ================= MARQUEE ================= */}
-      <Box
-        sx={{ display: "flex", width: "max-content" }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+ <Box sx={{ display: "flex", width:"contain"}}>
         <motion.div
-          animate={{ x: isHovered ? undefined : [0, -1920] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 40,
-              ease: "linear",
-            },
+          style={{
+            display: "flex",
+            gap: "32px",
+            cursor: "grab",
+            x,
           }}
-          style={{ display: "flex", gap: "32px" }}
+          drag="x"
+          dragElastic={0.15}
+          dragConstraints={{ left: -1200, right: 0 }}
+          whileTap={{ cursor: "grabbing" }}
+          onMouseEnter={stopAutoScroll}
+          onMouseLeave={startAutoScroll}
+          onDragStart={stopAutoScroll}
+          onDragEnd={startAutoScroll}
         >
           {rowTestimonials.map((item, index) => (
             <Box
               key={index}
               sx={{
-                width: { xs: "320px", md: "450px" },
+                minWidth: { xs: "320px", md: "450px" },
                 bgcolor: "#F3F4F6",
                 p: 4,
                 borderRadius: "16px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                cursor: "pointer",
-                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                transition:
+                  "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+
+                /* 🔥 FIXED BORDER (NO TOP MISS) */
                 "&:hover": {
                   bgcolor: "#004D71",
                   transform: "translateY(-15px) scale(1.02)",
-                  boxShadow: "0 20px 40px rgba(0, 77, 113, 0.25)",
+                  boxShadow: `
+                    inset 0 0 0 2px rgba(255,255,255,0.35),
+                    0 20px 40px rgba(0, 77, 113, 0.25)
+                  `,
                   "& .quote-icon, & .quote-text, & .name, & .desig": {
                     color: "#fff",
                   },

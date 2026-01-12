@@ -314,176 +314,629 @@
 //   );
 // }
 
+// "use client";
+
+// import { Box, Container, Typography, Chip } from "@mui/material";
+// import BrushIcon from "@mui/icons-material/Brush";
+// import LanguageIcon from '@mui/icons-material/Language';
+// import TabletMacIcon from '@mui/icons-material/TabletMac';
+// import ColorLensIcon from '@mui/icons-material/ColorLens';
+// import PsychologyIcon from '@mui/icons-material/Psychology';
+// import MemoryIcon from '@mui/icons-material/Memory';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+
+// const services = [
+//   {
+//     icon: "/assets/graphic.png",
+//     title: "UI / UX Design",
+//     desc: "Designing intuitive, user-friendly interfaces that enhance user experience.",
+//     img:"/assets/img1.jpeg"
+//   },
+//   {
+//     icon: "/assets/ui.png",
+//     title: "Graphic Designing",
+//     desc: "Creating visually compelling designs that strengthen brand identity.",
+//   },
+//   {
+//     icon: "/assets/web.png",
+//     title: "Web & WebApp Development",
+//     desc: "Building scalable, SEO-friendly, high-performance web applications.",
+//   },
+//   {
+//     icon: "/assets/mobile.png",
+//     title: "Mobile App Development",
+//     desc: "Developing secure and high-performance mobile applications across platforms.",
+//   },
+//   {
+//     icon: "/assets/ai.png",
+//     title: "AI Agents",
+//     desc: "Intelligent AI agents for automation, analytics, and smart workflows.",
+//   },
+//   {
+//     icon: "/assets/iot.png",
+//     title: "IoT Solutions",
+//     desc: "Smart connected systems with real-time data processing and automation.",
+//   },
+// ];
+
+// export default function ServicesCards() {
+//   const PRIMARY_COLOR = "#085482";
+//   const MONTSERRAT = "'Montserrat', sans-serif";
+
+//   return (
+//     <Box 
+//       sx={{ 
+//         py: { xs: 8, md: 12 }, 
+//         bgcolor: "#F8FAFC", // స్వల్పమైన గ్రే బ్యాక్‌గ్రౌండ్ వైట్ కార్డ్స్ బాగా కనిపించడానికి
+//         position: "relative",
+//       }}
+//     >
+//       <Container maxWidth="lg">
+//         {/* Header Section */}
+//         <Box sx={{ textAlign: "center", mb: 8 }}>
+//           <Chip
+//             icon={<RocketLaunchIcon sx={{ fontSize: 18, color: `${PRIMARY_COLOR} !important` }} />}
+//             label="TECH EXPERTISE"
+//             sx={{
+//               mb: 3, px: 2, py: 2.5, height: "auto",
+//               background: "rgba(8, 84, 130, 0.1)",
+//               border: `1px solid rgba(8, 84, 130, 0.2)`,
+//               borderRadius: "50px", color: PRIMARY_COLOR, fontWeight: 700,
+//               fontFamily: MONTSERRAT,
+//             }}
+//           />
+//           <Typography
+//             variant="h2"
+//             sx={{
+//               fontSize: { xs: "32px", md: "42px" },
+//               fontWeight: 600,
+//               color: PRIMARY_COLOR,
+//               fontFamily: MONTSERRAT,
+//               mb: 2,
+//             }}
+//           >
+//             Innovative Solutions for <span style={{ color: "#2D7D2D" }}>Modern Businesses</span>
+//           </Typography>
+//           <Typography sx={{ color: "rgba(8, 84, 130, 0.7)", maxWidth: "700px", mx: "auto", fontSize: "16px", fontWeight:500, fontFamily: MONTSERRAT }}>
+//             Delivering high-performance digital transformation services to accelerate your industry growth.
+//           </Typography>
+//         </Box>
+
+//         {/* Flex Grid Container */}
+//         <Box
+//           sx={{
+//             display: "flex",
+//             flexWrap: "wrap",
+//             gap: "24px",
+//             justifyContent: "center",
+//           }}
+//         >
+//           {services.map((item, index) => (
+//             <Box
+//               key={index}
+//               sx={{
+//                 width: { xs: "100%", sm: "calc(50% - 24px)", md: "calc(33.33% - 24px)" },
+//                 backgroundColor: "#ffffff", // వైట్ బ్యాక్‌గ్రౌండ్
+//                 borderRadius: "20px",
+//                 p: 4,
+//                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
+//                 display: "flex",
+//                 flexDirection: "column",
+//                 alignItems: "center", // ఐకాన్ మరియు టెక్స్ట్ సెంటర్ చేయడానికి
+//                 textAlign: "center", // టెక్స్ట్ సెంటర్ చేయడానికి
+//                 transition: "all 0.3s ease-in-out",
+//                 border: "1px solid rgba(0, 0, 0, 0.05)",
+//                 minHeight: "350px",
+//                 "&:hover": {
+//                   transform: "translateY(-10px)",
+//                   boxShadow: `0 20px 40px rgba(8, 84, 130, 0.15)`,
+//                   borderColor: PRIMARY_COLOR,
+//                 },
+//               }}
+//             >
+//               {/* Icon Container */}
+//                <Box
+//                 sx={{
+//                   display: "flex",
+//                   justifyContent: "center",
+//                   alignItems: "center",
+//                   mb: 3,
+//                 }}
+//               >
+//                 <Box
+//                   component="img"
+//                   src={item.icon}
+//                   alt={item.title}
+//                   sx={{
+//                     width:
+//                       item.title === "Mobile App Development" || item.title === "UI / UX Design"
+//                         ? "180px"
+//                         : "140px",
+//                     height:
+//                       item.title === "Mobile App Development" || item.title === "UI / UX Design"
+//                         ? "180px"
+//                         : "140px",
+//                     objectFit: "contain",
+//                   }}
+//                 />
+//               </Box>
+
+//               <Typography
+//                 variant="h6"
+//                 sx={{
+//                   fontSize: "22px",
+//                   fontWeight: 700,
+//                   color: PRIMARY_COLOR, // బ్లూ కలర్ టెక్స్ట్
+//                   mb: 2,
+//                   fontFamily: MONTSERRAT,
+//                 }}
+//               >
+//                 {item.title}
+//               </Typography>
+
+//               <Typography
+//                 sx={{
+//                   fontSize: "15px",
+//                   lineHeight: 1.7,
+//                   color: "#54738c", // సాఫ్ట్ బ్లూ-గ్రే టెక్స్ట్ రీడబిలిటీ కోసం
+//                   fontFamily: MONTSERRAT,
+//                   flexGrow: 1,
+//                 }}
+//               >
+//                 {item.desc}
+//               </Typography>
+//             </Box>
+//           ))}
+//         </Box>
+//       </Container>
+//     </Box>
+//   );
+// }
+
+// "use client";
+
+// import { Box, Container, Typography, Chip } from "@mui/material";
+// import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+
+// const services = [
+//   {
+//     bg: "/assets/ui.jpeg",
+//     title: "UI / UX Design",
+//     desc: "Modern, user-centric interfaces with smooth user experiences.",
+//     icon: "/assets/ui-ux.png",
+//   },
+//   {
+//     bg: "/assets/graphic.jpeg",
+//     title: "Graphic Designing",
+//     desc: "Creating visually compelling designs that strengthen brand identity.",
+//     icon: "/assets/graphicicon.png",
+//   },
+//   {
+//     bg: "/assets/web.jpeg",
+//     title: "Web & WebApp Development",
+//     desc: "Building scalable, SEO-friendly, high-performance web applications.",
+//     icon: "/assets/web.png",
+//   },
+// {
+//   bg: "/assets/mobile.jpeg",
+//   title: "Mobile App Development",
+//   desc: "Developing high-performance mobile applications with seamless user experiences.",
+//   icon: "/assets/mobile.png",
+// },
+// {
+//   bg: "/assets/ai.jpeg",
+//   title: "AI Agents",
+//   desc: "Building intelligent AI agents to automate processes and enhance decision-making.",
+//   icon: "/assets/tabelulegs.png",
+// },
+// {
+//   bg: "/assets/iot.jpeg",
+//   title: "IoT Solutions",
+//   desc: "Creating smart IoT solutions with real-time connectivity and automation.",
+//   icon: "/assets/iot copy.png",
+// },
+
+// ];
+
+
+// export default function ServicesCards() {
+//   const PRIMARY_COLOR = "#085482";
+//   const TEXT_COLOR="#00e676"
+//   const FONT = "'Montserrat', sans-serif";
+
+//   return (
+//     <Box sx={{ py: 12, bgcolor: "#F8FAFC" }}>
+//       <Container maxWidth="lg">
+
+//         {/* HEADER */}
+//         <Box sx={{ textAlign: "center", mb: 8 }}>
+//           <Chip
+//             icon={<RocketLaunchIcon sx={{ color: PRIMARY_COLOR }} />}
+//             label="TECH EXPERTISE"
+//             sx={{
+//               mb: 3,
+//               px: 3,
+//               py: 1.5,
+//               bgcolor: "rgba(8,84,130,0.1)",
+//               border: "1px solid rgba(8,84,130,0.2)",
+//               fontFamily: FONT,
+//               fontWeight: 700,
+//             }}
+//           />
+//           <Typography
+//             sx={{
+//               fontSize: { xs: 30, md: 42 },
+//               fontWeight: 600,
+//               fontFamily: FONT,
+//               color: PRIMARY_COLOR,
+//             }}
+//           >
+//             Innovative Solutions for{" "}
+//             <span style={{ color: "#2D7D2D" }}>Modern Businesses</span>
+//           </Typography>
+//         </Box>
+
+//         {/* CARDS */}
+//         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
+//           {services.map((item, i) => (
+//             <Box
+//               key={i}
+//               sx={{
+//                 width: { xs: "100%", md: "calc(33.33% - 16px)" },
+//                 height: 420,
+//                 position: "relative",
+//                 borderRadius: "24px",
+//                 overflow: "hidden",
+//                 cursor: "pointer",
+//                 backgroundImage: `url(${item.bg})`,
+//                 backgroundSize: "cover",
+//                 backgroundPosition: "center",
+//                 boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+
+//                 "&:hover .glass": {
+//                   transform: "translateY(0)",
+//                   opacity: 1,
+//                 },
+
+//                 "&:hover .titleTop": {
+//                   opacity: 0,
+//                   transform: "translateY(-10px)",
+//                 },
+//               }}
+//             >
+//               {/* TOP LEFT TITLE (DEFAULT) */}
+//               <Typography
+//                 className="titleTop"
+//                 sx={{
+//                   position: "absolute",
+//                   top: 24,
+//                   left: 24,
+//                   zIndex: 2,
+//                   color: "#fff",
+//                   fontSize: 22,
+//                   fontWeight: 700,
+//                   fontFamily: FONT,
+//                   transition: "all 0.4s ease",
+//                   textShadow: "0 4px 12px rgba(0,0,0,0.6)",
+//                 }}
+//               >
+//                  {item.title.replace("Design", "")}
+//               <span className="gradientText">Design</span>
+
+//               </Typography>
+
+//               {/* GLASS OVERLAY */}
+//               <Box
+//                 className="glass"
+//                 sx={{
+//                   position: "absolute",
+//                   inset: 0,
+//                   zIndex: 3,
+//                   display: "flex",
+//                   flexDirection: "column",
+//                   justifyContent: "center",
+//                   alignItems: "center",
+//                   textAlign: "center",
+//                   px: 4,
+
+//                 background: "rgba(0,0,0,0.25)",
+
+//                   backdropFilter: "blur(14px)",
+//                   WebkitBackdropFilter: "blur(14px)",
+
+//                   transform: "translateY(100%)",
+//                   opacity: 0,
+//                   transition: "all 0.5s ease",
+//                 }}
+//               >
+//                 <Box
+//                   component="img"
+//                   src={item.icon}
+//                   alt={item.title}
+//                   sx={{
+//                     width: 120,
+//                     height: 120,
+//                     mb: 2,
+//                     objectFit: "contain",
+//                     filter: "brightness(0) invert(1)",
+//                     fontFamily: FONT,
+
+//                   }}
+//                 />
+//                 <Typography
+//   sx={{
+//     fontSize: 26,
+//     fontWeight: 700,
+//     mb: 2,
+//     fontFamily: FONT,
+//     color: TEXT_COLOR, // UI / UX white
+
+
+//     "& .designGradient": {
+//       background: "linear-gradient(135deg, #00E676 0%, #66FFA6 100%)",
+//       WebkitBackgroundClip: "text",
+//       WebkitTextFillColor: "transparent",
+//       backgroundClip: "text",
+//       fontWeight: 800,
+//       textShadow: " 0 0 10px rgba(0,230,118,0.6), 0 0 25px rgba(0,230,118,0.4)",
+//     //  background: linear-gradient("  135deg,#00E676 0%,#66FFA6 50%, #00E676 100%")
+
+//     },
+//   }}
+// >
+//   {item.title}
+// </Typography>
+
+
+//                 <Typography
+//                   sx={{
+//                     fontSize: 15,
+//                     lineHeight: 1.6,
+//                     color: "rgba(255,255,255,0.9)",
+//                     fontFamily: FONT,
+//                   }}
+//                 >
+//                   {item.desc}
+//                 </Typography>
+//               </Box>
+//             </Box>
+//           ))}
+//         </Box>
+//       </Container>
+//     </Box>
+//   );
+// }
+
 "use client";
 
 import { Box, Container, Typography, Chip } from "@mui/material";
-import BrushIcon from "@mui/icons-material/Brush";
-import LanguageIcon from '@mui/icons-material/Language';
-import TabletMacIcon from '@mui/icons-material/TabletMac';
-import ColorLensIcon from '@mui/icons-material/ColorLens';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import MemoryIcon from '@mui/icons-material/Memory';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 const services = [
   {
-    icon: "/assets/graphic.png",
+    bg: "/assets/ui.jpeg",
     title: "UI / UX Design",
-    desc: "Designing intuitive, user-friendly interfaces that enhance user experience.",
+    desc: "Modern, user-centric interfaces with smooth user experiences.",
+    icon: "/assets/ui-ux.png",
   },
   {
-    icon: "/assets/ui.png",
+    bg: "/assets/graphic.jpeg",
     title: "Graphic Designing",
     desc: "Creating visually compelling designs that strengthen brand identity.",
+    icon: "/assets/graphicicon.png",
   },
   {
-    icon: "/assets/web.png",
+    bg: "/assets/web.jpeg",
     title: "Web & WebApp Development",
     desc: "Building scalable, SEO-friendly, high-performance web applications.",
+    icon: "/assets/web.png",
   },
   {
-    icon: "/assets/mobile.png",
+    bg: "/assets/mobile.jpeg",
     title: "Mobile App Development",
-    desc: "Developing secure and high-performance mobile applications across platforms.",
+    desc: "Developing high-performance mobile applications with seamless user experiences.",
+    icon: "/assets/mobile.png",
   },
   {
-    icon: "/assets/ai.png",
+    bg: "/assets/ai.jpeg",
     title: "AI Agents",
-    desc: "Intelligent AI agents for automation, analytics, and smart workflows.",
+    desc: "Building intelligent AI agents to automate processes and enhance decision-making.",
+    icon: "/assets/tabelulegs.png",
   },
   {
-    icon: "/assets/iot.png",
+    bg: "/assets/iot.jpeg",
     title: "IoT Solutions",
-    desc: "Smart connected systems with real-time data processing and automation.",
+    desc: "Creating smart IoT solutions with real-time connectivity and automation.",
+    icon: "/assets/iot copy.png",
   },
 ];
 
 export default function ServicesCards() {
   const PRIMARY_COLOR = "#085482";
-  const MONTSERRAT = "'Montserrat', sans-serif";
+  const FONT = "'Montserrat', sans-serif";
+
+  // 🔥 ICON STYLES
+  const getIconStyles = (title) => {
+    switch (title) {
+      case "UI / UX Design":
+        return { width: 140, height: 140, filter: "brightness(0) invert(1) drop-shadow(0 0 20px rgba(0,230,118,0.6))" };
+      case "Graphic Designing":
+        return { width: 100, height: 100, filter: "brightness(0) invert(1)" };
+      case "Mobile App Development":
+        return { width: 150, height: 150, filter: "brightness(0) invert(1)" };
+      case "AI Agents":
+        return { width: 150, height: 150, filter: "brightness(0) invert(1) drop-shadow(0 0 25px rgba(0,230,118,0.5))" };
+      default:
+        return { width: 120, height: 120, filter: "brightness(0) invert(1)" };
+    }
+  };
+
+  // 🔥 TITLE RENDERER
+  const renderTitleWithAccent = (title) => {
+    const words = title.split(" ");
+    if (words.length === 1) return title;
+    const lastWord = words.pop();
+    return (
+      <>
+        {words.join(" ")}{" "}
+        <span className="gradient">{lastWord}</span>
+      </>
+    );
+  };
 
   return (
-    <Box 
-      sx={{ 
-        py: { xs: 8, md: 12 }, 
-        bgcolor: "#F8FAFC", // స్వల్పమైన గ్రే బ్యాక్‌గ్రౌండ్ వైట్ కార్డ్స్ బాగా కనిపించడానికి
-        position: "relative",
-      }}
-    >
+    <Box sx={{ py: 12, bgcolor: "#F8FAFC" }}>
       <Container maxWidth="lg">
-        {/* Header Section */}
+        {/* HEADER */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
           <Chip
-            icon={<RocketLaunchIcon sx={{ fontSize: 18, color: `${PRIMARY_COLOR} !important` }} />}
+            icon={<RocketLaunchIcon sx={{ color: PRIMARY_COLOR }} />}
             label="TECH EXPERTISE"
             sx={{
-              mb: 3, px: 2, py: 2.5, height: "auto",
-              background: "rgba(8, 84, 130, 0.1)",
-              border: `1px solid rgba(8, 84, 130, 0.2)`,
-              borderRadius: "50px", color: PRIMARY_COLOR, fontWeight: 700,
-              fontFamily: MONTSERRAT,
+              mb: 3, px: 3, py: 1.5,
+              bgcolor: "rgba(8,84,130,0.1)",
+              border: "1px solid rgba(8,84,130,0.2)",
+              fontFamily: FONT,
+              fontWeight: 700,
             }}
           />
           <Typography
-            variant="h2"
             sx={{
-              fontSize: { xs: "32px", md: "42px" },
+              fontSize: { xs: 30, md: 42 },
               fontWeight: 600,
+              fontFamily: FONT,
               color: PRIMARY_COLOR,
-              fontFamily: MONTSERRAT,
-              mb: 2,
             }}
           >
             Innovative Solutions for <span style={{ color: "#2D7D2D" }}>Modern Businesses</span>
           </Typography>
-          <Typography sx={{ color: "rgba(8, 84, 130, 0.7)", maxWidth: "700px", mx: "auto", fontSize: "16px", fontWeight:500, fontFamily: MONTSERRAT }}>
-            Delivering high-performance digital transformation services to accelerate your industry growth.
-          </Typography>
         </Box>
 
-        {/* Flex Grid Container */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "24px",
-            justifyContent: "center",
-          }}
-        >
-          {services.map((item, index) => (
+        {/* CARDS */}
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
+          {services.map((item, i) => (
             <Box
-              key={index}
+              key={i}
               sx={{
-                width: { xs: "100%", sm: "calc(50% - 24px)", md: "calc(33.33% - 24px)" },
-                backgroundColor: "#ffffff", // వైట్ బ్యాక్‌గ్రౌండ్
-                borderRadius: "20px",
-                p: 4,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center", // ఐకాన్ మరియు టెక్స్ట్ సెంటర్ చేయడానికి
-                textAlign: "center", // టెక్స్ట్ సెంటర్ చేయడానికి
-                transition: "all 0.3s ease-in-out",
-                border: "1px solid rgba(0, 0, 0, 0.05)",
-                minHeight: "350px",
-                "&:hover": {
-                  transform: "translateY(-10px)",
-                  boxShadow: `0 20px 40px rgba(8, 84, 130, 0.15)`,
-                  borderColor: PRIMARY_COLOR,
-                },
+                width: { xs: "100%", md: "calc(33.33% - 16px)" },
+                height: 420,
+                position: "relative",
+                borderRadius: "24px",
+                overflow: "hidden",
+                cursor: "pointer",
+                backgroundImage: `url(${item.bg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+
+                "&:hover .glass": { transform: "translateY(0)", opacity: 1 },
+                "&:hover .titleButtonWrapper": { opacity: 0, transform: "translate(-50%, -10px)" },
               }}
             >
-              {/* Icon Container */}
-               <Box
+              {/* 🔥 TOP CENTER BUTTON (Visible before hover) */}
+              <Box
+                className="titleButtonWrapper"
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  mb: 3,
+                  position: "absolute",
+                  bottom: 30,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  zIndex: 2,
+                  transition: "all 0.4s ease",
+                  width: "fit-content",
                 }}
               >
+                <Box
+                  sx={{
+                    px: 3,
+                    py: 1,
+                    borderRadius: "50px",
+                    background: "rgba(8, 84, 130, 0.9)", // Dark Primary with high opacity
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: { xs: 13, sm: 15 },
+                      fontWeight: 700,
+                      fontFamily: FONT,
+                      color: "#fff",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                </Box>
+              </Box>
+
+              {/* GLASS OVERLAY (Visible on hover) */}
+              <Box
+                className="glass"
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 3,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  px: 4,
+                  background: "rgba(0,0,0,0.35)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  transform: "translateY(100%)",
+                  opacity: 0,
+                  transition: "all 0.5s ease",
+                }}
+              >
+                {/* ICON */}
                 <Box
                   component="img"
                   src={item.icon}
                   alt={item.title}
                   sx={{
-                    width:
-                      item.title === "Mobile App Development" || item.title === "UI / UX Design"
-                        ? "180px"
-                        : "140px",
-                    height:
-                      item.title === "Mobile App Development" || item.title === "UI / UX Design"
-                        ? "180px"
-                        : "140px",
+                    mb: 2,
                     objectFit: "contain",
+                    ...getIconStyles(item.title),
                   }}
                 />
+
+                {/* TITLE WITH LAST WORD ACCENT */}
+                <Typography
+                  sx={{
+                    fontSize: 26,
+                    fontWeight: 700,
+                    mb: 2,
+                    fontFamily: FONT,
+                    color: "#ffffff",
+                    "& .gradient": {
+                      background: "linear-gradient(135deg, #00E676 0%, #66FFA6 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontWeight: 800,
+                    },
+                  }}
+                >
+                  {renderTitleWithAccent(item.title)}
+                </Typography>
+
+                {/* DESCRIPTION */}
+                <Typography
+                  sx={{
+                    fontSize: 15,
+                    lineHeight: 1.6,
+                    color: "rgba(255,255,255,0.9)",
+                    fontFamily: FONT,
+                  }}
+                >
+                  {item.desc}
+                </Typography>
               </Box>
-
-              <Typography
-                variant="h6"
-                sx={{
-                  fontSize: "22px",
-                  fontWeight: 700,
-                  color: PRIMARY_COLOR, // బ్లూ కలర్ టెక్స్ట్
-                  mb: 2,
-                  fontFamily: MONTSERRAT,
-                }}
-              >
-                {item.title}
-              </Typography>
-
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  lineHeight: 1.7,
-                  color: "#54738c", // సాఫ్ట్ బ్లూ-గ్రే టెక్స్ట్ రీడబిలిటీ కోసం
-                  fontFamily: MONTSERRAT,
-                  flexGrow: 1,
-                }}
-              >
-                {item.desc}
-              </Typography>
             </Box>
           ))}
         </Box>

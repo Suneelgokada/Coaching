@@ -7,8 +7,8 @@ const categories = [
   { id: "frameworks", label: "FRAMEWORKS" },
   { id: "cms_ecommerce", label: "CMS / ECOMMERCE" },
    { id: "cloud_devops", label: "CLOUD / DEVOPS" },
-     { id: "platforms_bi", label: "PLATFORMS / BI TOOLS" },
-  { id: "hi_tech", label: "HI-TECH" }, // Added to match screenshots
+  //    { id: "platforms_bi", label: "PLATFORMS / BI TOOLS" },
+  // { id: "hi_tech", label: "HI-TECH" }, // Added to match screenshots
  // Added to match screenshots
   
  
@@ -42,12 +42,11 @@ export default function Sidebar({ active, onChange }) {
           }}
         />
 
-        {/* 2. Side Line Indicator */}  
         <Box
           sx={{
             position: "absolute",
             left: 0,
-            top: (activeIndex * 48) + 5, // Box center lo undataniki adjust chesa
+            top: (activeIndex * 48) + 5, 
             width: "4px",
             height: "30px",
             backgroundColor: mainColor,

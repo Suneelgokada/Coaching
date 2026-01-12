@@ -40,19 +40,19 @@ const categoryTemplates = {
       "High-quality mobile application development across platforms with performance optimization and user-focused design.",
   },
 
-  hi_tech: {
-    years: "4+",
-    experts: "8+",
-    description:
-      "Cutting-edge technology solutions built using modern architectures, real-time systems, and high-performance platforms.",
-  },
+  // hi_tech: {
+  //   years: "4+",
+  //   experts: "8+",
+  //   description:
+  //     "Cutting-edge technology solutions built using modern architectures, real-time systems, and high-performance platforms.",
+  // },
 
-  platforms_bi: {
-    years: "5+",
-    experts: "9+",
-    description:
-      "Enterprise platforms and BI tools implementation for workflow automation, analytics, and business intelligence.",
-  },
+  // platforms_bi: {
+  //   years: "5+",
+  //   experts: "9+",
+  //   description:
+  //     "Enterprise platforms and BI tools implementation for workflow automation, analytics, and business intelligence.",
+  // },
 
   cms_ecommerce: {
     years: "6+",

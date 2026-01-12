@@ -1,18 +1,19 @@
 // src/components/Products/ProductsScroller/productsData.js
 
 export const companyIntro = {
-  title: "Our Work",
-  subtitle: "Designing digital experiences with clarity & purpose",
+  title: "Websites",
+  subtitle: "Building scalable platforms with precision & impact",
   description:
-    "Description: We deliver premium web design, software solutions, and marketing expertise to global brands. At Coding Roots, our talented collective is driven by an unwavering passion for transforming your creative ideas into high-quality digital realities with speed and precision.",
-   values: [
-  "Discovery",
-  "Research",
-  "Planning",
-  "Collaboration",
-  "Execution",
-  "Delivery",
-],
+    " We craft responsive websites, e‑commerce portals, and corporate platforms for diverse industries. At Coding Roots, our expert team blends creativity with robust engineering to deliver reliable, user‑friendly, and visually premium web solutions that elevate your brand presence.",
+  values: [
+    "Ideation",
+    "Wireframes",
+    "UI/UX",
+    "Development",
+    "Testing",
+    "Launch",
+  ],
+
 
   image:
     "https://himavarshabarla.vercel.app/assets/thumbnails/AbhiramNirman.png",
@@ -29,12 +30,21 @@ export const products = [
   },
   {
     id: 2,
-    title: "Chalo Gaadi App",
+    title: "Nanddhan Steel Roofing",
     description:
-      "Ecommerce-ready in-app UI section designed using existing components, structure, and branding for consistency and scalability.",
+      "Performance-focused corporate website designed to build trust and increase reach in the roofing and construction sector.",
     image:
-      "https://himavarshabarla.vercel.app/assets/thumbnails/ChaloGaadi.png",
+      "https://himavarshabarla.vercel.app/assets/thumbnails/NsteelRoofing.png",
   },
+    
+  // {
+  //   id: 2,
+  //   title: "Chalo Gaadi App",
+  //   description:
+  //     "Ecommerce-ready in-app UI section designed using existing components, structure, and branding for consistency and scalability.",
+  //   image:
+  //     "https://himavarshabarla.vercel.app/assets/thumbnails/ChaloGaadi.png",
+  // },
   {
     id: 3,
     title: "Email Template Design",
@@ -45,36 +55,46 @@ export const products = [
   },
   {
     id: 4,
+    title: "Vishwanath Sports Club",
+    description:
+      "Complete UI overhaul with brand-aligned visuals and a modern layout tailored for tourism, sports, and entertainment audiences.",
+    image:
+      "https://himavarshabarla.vercel.app/assets/thumbnails/VSportsClub.png",
+        logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850815/logo-HJQU3g0R_hrww1d.png",
+  },
+  {
+    id: 5,
     title: "GenAI Tools",
     description:
       "Responsive web application for exploring generative AI tools with categories, filters, demos, and a clean, high-performance UI.",
     image:
       "https://himavarshabarla.vercel.app/assets/thumbnails/GenAiTools.png",
   },
-  {
-    id: 5,
-    title: "Inride Mobile App",
-    description:
-      "Mobile-first ride booking UI built with MUI, featuring optimized flows, direct phone authentication, and intuitive navigation.",
-    image:
-      "https://himavarshabarla.vercel.app/assets/thumbnails/InrideApp.png",
-  },
+  
   {
     id: 6,
+    title: "Shreedhanya Website",
+    description:"Premium design and represented their with best user experience.",
+    image:"https://shreedhanyaprojects.com/assets/bg-DmBz5Uyl.svg",
+    logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850988/sridhanya.png-removebg-preview_1_uxqprc.png",
+  },
+  // {
+  //   id: 5,
+  //   title: "Inride Mobile App",
+  //   description:
+  //     "Mobile-first ride booking UI built with MUI, featuring optimized flows, direct phone authentication, and intuitive navigation.",
+  //   image:
+  //     "https://himavarshabarla.vercel.app/assets/thumbnails/InrideApp.png",
+  // },
+  {
+    id: 7,
     title: "NapNGo",
     description:
       "Concept-driven website highlighting value proposition and booking flow with strong branding and visual storytelling.",
     image:
       "https://himavarshabarla.vercel.app/assets/thumbnails/NapNGo.png",
   },
-  {
-    id: 7,
-    title: "Nanddhan Steel Roofing",
-    description:
-      "Performance-focused corporate website designed to build trust and increase reach in the roofing and construction sector.",
-    image:
-      "https://himavarshabarla.vercel.app/assets/thumbnails/NsteelRoofing.png",
-  },
+  
   {
     id: 8,
     title: "Portfolio Design",
@@ -107,24 +127,9 @@ export const products = [
     image:
       "https://himavarshabarla.vercel.app/assets/thumbnails/Shopify.png",
   },
-  {
-    id: 12,
-    title: "Vishwanath Sports Club",
-    description:
-      "Complete UI overhaul with brand-aligned visuals and a modern layout tailored for tourism, sports, and entertainment audiences.",
-    image:
-      "https://himavarshabarla.vercel.app/assets/thumbnails/VSportsClub.png",
-        logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850815/logo-HJQU3g0R_hrww1d.png",
-  },
-  {
-    id: 13,
-    title: "Shreedhanya Website",
-    description:"Premium design and represented their with best user experience.",
-    image:"https://shreedhanyaprojects.com/assets/bg-DmBz5Uyl.svg",
-    logo:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767850988/sridhanya.png-removebg-preview_1_uxqprc.png",
-  },
+
     {
-    id: 14,
+    id: 12,
     title: "Siva Sivani High School",
     description:"A modern website design for a high school with enhanced user experience reach with better seo keywords.",
     image:"https://res.cloudinary.com/dp5ttq85f/image/upload/v1767849157/Screenshot_203_atmaea.png",

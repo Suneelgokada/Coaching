@@ -59,7 +59,7 @@ const OurExpertise = () => {
               letterSpacing: 2,
             }}
           >
-            Our Expertise
+            Our Clients
           </Typography>
         </Box>
 

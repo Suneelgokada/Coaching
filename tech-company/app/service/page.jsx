@@ -6,7 +6,7 @@ export default function ServicesPage() {
   return (
     <main>
       <Header />
-      {/* Ikkada nuvvu munde rasina professional services code call avthundi */}
+
       <ServicesSection/> 
       <Footer />
     </main>

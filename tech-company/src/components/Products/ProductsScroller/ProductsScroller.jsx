@@ -579,6 +579,139 @@
 //     </>
 //   );
 // }
+// "use client";
+
+// import { Box, useMediaQuery } from "@mui/material";
+// import { useEffect, useRef, useState } from "react";
+// import { motion } from "framer-motion";
+
+// import ProductsNavbar from "../ProductsNavbar";
+// import HorizontalTrack from "./HorizontalTrack";
+// import { companyIntro, products } from "./productData";
+
+// export default function ProductsScroller() {
+//   const containerRef = useRef(null);
+//   const trackRef = useRef(null);
+
+//   // ✅ Custom breakpoint: 768px
+//   const isBelow768 = useMediaQuery("(max-width:768px)");
+
+//   const [translateX, setTranslateX] = useState(0);
+//   const [scrollHeight, setScrollHeight] = useState("100vh");
+//   const [scrollProgress, setScrollProgress] = useState(0);
+
+//   /* =========================
+//      RESET STATES ON <=768px
+//   ========================= */
+//   useEffect(() => {
+//     if (isBelow768) {
+//       setTranslateX(0);
+//       setScrollProgress(0);
+//       setScrollHeight("auto");
+//     }
+//   }, [isBelow768]);
+
+//   /* =========================
+//      DESKTOP ONLY: SET SCROLL HEIGHT
+//   ========================= */
+//   useEffect(() => {
+//     if (isBelow768) return;
+//     if (!trackRef.current) return;
+
+//     const totalScrollWidth = trackRef.current.scrollWidth;
+//     const viewportWidth = window.innerWidth;
+
+//     const requiredScrollHeight =
+//       totalScrollWidth - viewportWidth + window.innerHeight;
+
+//     setScrollHeight(`${requiredScrollHeight}px`);
+//   }, [isBelow768]);
+
+//   /* =========================
+//      DESKTOP ONLY: SCROLL HANDLER
+//   ========================= */
+//   useEffect(() => {
+//     if (isBelow768) return;
+
+//     const handleScroll = () => {
+//       if (!containerRef.current || !trackRef.current) return;
+
+//       const scrollTop = window.scrollY;
+//       const containerTop = containerRef.current.offsetTop;
+//       const scrollDistance = scrollTop - containerTop;
+
+//       if (scrollDistance < 0) return;
+
+//       const maxTranslate =
+//         trackRef.current.scrollWidth - window.innerWidth;
+
+//       const clampedScroll = Math.min(scrollDistance, maxTranslate);
+
+//       setTranslateX(-clampedScroll);
+
+//       const progress = Math.min(clampedScroll / maxTranslate, 1);
+//       setScrollProgress(progress);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, [isBelow768]);
+
+//   return (
+//     <>
+//       <ProductsNavbar scrollProgress={scrollProgress} />
+
+//       {/* 📱 MOBILE + TABLET (<=768px) */}
+//       {isBelow768 ? (
+//         <Box sx={{ mt: 2 }}>
+//           <HorizontalTrack
+//             companyIntro={companyIntro}
+//             products={products}
+//             isColumn={true} // ✅ vertical layout
+//           />
+//         </Box>
+//       ) : (
+//         /* 🖥 DESKTOP ONLY (>768px) */
+//         <Box
+//           ref={containerRef}
+//           sx={{
+//             height: scrollHeight,
+//             position: "relative",
+//           }}
+//         >
+//           <Box
+//             sx={{
+//               position: "sticky",
+//               top: 0,
+//               height: "100vh",
+//               overflow: "clip",
+//             }}
+//           >
+//             <motion.div
+//               ref={trackRef}
+//               animate={{ x: translateX }}
+//               transition={{
+//                 type: "spring",
+//                 stiffness: 40,
+//                 damping: 30,
+//                 mass: 0.3,
+//               }}
+//               style={{ willChange: "transform" }}
+//             >
+//               <HorizontalTrack
+//                 companyIntro={companyIntro}
+//                 products={products}
+//                 isColumn={false} // ✅ horizontal layout
+//               />
+//             </motion.div>
+//           </Box>
+//         </Box>
+//       )}
+//     </>
+//   );
+// }
+
+
 "use client";
 
 import { Box, useMediaQuery } from "@mui/material";
@@ -593,16 +726,13 @@ export default function ProductsScroller() {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
 
-  // ✅ Custom breakpoint: 768px
   const isBelow768 = useMediaQuery("(max-width:768px)");
 
   const [translateX, setTranslateX] = useState(0);
   const [scrollHeight, setScrollHeight] = useState("100vh");
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  /* =========================
-     RESET STATES ON <=768px
-  ========================= */
+  /* RESET ON MOBILE */
   useEffect(() => {
     if (isBelow768) {
       setTranslateX(0);
@@ -611,9 +741,7 @@ export default function ProductsScroller() {
     }
   }, [isBelow768]);
 
-  /* =========================
-     DESKTOP ONLY: SET SCROLL HEIGHT
-  ========================= */
+  /* DESKTOP: SET SCROLL HEIGHT */
   useEffect(() => {
     if (isBelow768) return;
     if (!trackRef.current) return;
@@ -627,9 +755,7 @@ export default function ProductsScroller() {
     setScrollHeight(`${requiredScrollHeight}px`);
   }, [isBelow768]);
 
-  /* =========================
-     DESKTOP ONLY: SCROLL HANDLER
-  ========================= */
+  /* DESKTOP: SCROLL HANDLER */
   useEffect(() => {
     if (isBelow768) return;
 
@@ -642,9 +768,7 @@ export default function ProductsScroller() {
 
       if (scrollDistance < 0) return;
 
-      const maxTranslate =
-        trackRef.current.scrollWidth - window.innerWidth;
-
+      const maxTranslate = trackRef.current.scrollWidth - window.innerWidth;
       const clampedScroll = Math.min(scrollDistance, maxTranslate);
 
       setTranslateX(-clampedScroll);
@@ -661,50 +785,234 @@ export default function ProductsScroller() {
     <>
       <ProductsNavbar scrollProgress={scrollProgress} />
 
-      {/* 📱 MOBILE + TABLET (<=768px) */}
+      {/* 📱 MOBILE + TABLET */}
       {isBelow768 ? (
-        <Box sx={{ mt: 2 }}>
+        <Box
+          sx={{
+            mt: 2,
+            background: "linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%)",
+            position: "relative",
+            overflow: "hidden",
+            
+            /* Subtle animated background */
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 50%)
+              `,
+              pointerEvents: "none",
+            },
+          }}
+        >
           <HorizontalTrack
             companyIntro={companyIntro}
             products={products}
-            isColumn={true} // ✅ vertical layout
+            isColumn={true}
           />
         </Box>
       ) : (
-        /* 🖥 DESKTOP ONLY (>768px) */
+        /* 🖥 DESKTOP - PREMIUM SCROLL EXPERIENCE */
         <Box
           ref={containerRef}
           sx={{
             height: scrollHeight,
             position: "relative",
+            background: "linear-gradient(180deg, #f5f7fa 0%, #ffffff 50%, #f5f7fa 100%)",
+            
+            /* Animated background pattern */
+            "&::before": {
+              content: '""',
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 50%)
+              `,
+              animation: "float 20s ease-in-out infinite",
+              pointerEvents: "none",
+              zIndex: 0,
+            },
+            
+            "@keyframes float": {
+              "0%, 100%": {
+                transform: "translate(0, 0) scale(1)",
+              },
+              "33%": {
+                transform: "translate(30px, -30px) scale(1.1)",
+              },
+              "66%": {
+                transform: "translate(-20px, 20px) scale(0.9)",
+              },
+            },
           }}
         >
+          {/* Progress indicator - premium thin line */}
+          <Box
+            sx={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: 3,
+              background: "rgba(255,255,255,0.3)",
+              backdropFilter: "blur(10px)",
+              zIndex: 1000,
+            }}
+          >
+            <motion.div
+              style={{
+                height: "100%",
+                background: "linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899)",
+                transformOrigin: "left",
+                boxShadow: "0 0 20px rgba(99, 102, 241, 0.5)",
+              }}
+              animate={{ scaleX: scrollProgress }}
+              transition={{ duration: 0.1 }}
+            />
+          </Box>
+
+          {/* Sticky container with premium effects */}
           <Box
             sx={{
               position: "sticky",
               top: 0,
               height: "100vh",
               overflow: "clip",
+              display: "flex",
+              alignItems: "center",
+              zIndex: 1,
             }}
           >
+            {/* Floating decorative elements */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "20%",
+                left: "5%",
+                width: 300,
+                height: 300,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)",
+                filter: "blur(40px)",
+                animation: "pulse 8s ease-in-out infinite",
+                pointerEvents: "none",
+                zIndex: 0,
+                
+                "@keyframes pulse": {
+                  "0%, 100%": { transform: "scale(1)", opacity: 0.5 },
+                  "50%": { transform: "scale(1.2)", opacity: 0.8 },
+                },
+              }}
+            />
+
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: "10%",
+                right: "10%",
+                width: 400,
+                height: 400,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)",
+                filter: "blur(50px)",
+                animation: "pulse 10s ease-in-out infinite",
+                animationDelay: "2s",
+                pointerEvents: "none",
+                zIndex: 0,
+              }}
+            />
+
+            {/* Main scrolling track with premium spring animation */}
             <motion.div
               ref={trackRef}
               animate={{ x: translateX }}
               transition={{
                 type: "spring",
-                stiffness: 40,
-                damping: 30,
-                mass: 0.3,
+                stiffness: 50,
+                damping: 35,
+                mass: 0.5,
+                restDelta: 0.001,
               }}
-              style={{ willChange: "transform" }}
+              style={{
+                willChange: "transform",
+                position: "relative",
+                zIndex: 1,
+              }}
             >
               <HorizontalTrack
                 companyIntro={companyIntro}
                 products={products}
-                isColumn={false} // ✅ horizontal layout
+                isColumn={false}
               />
             </motion.div>
           </Box>
+
+          {/* Scroll hint indicator - appears at start */}
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: scrollProgress > 0.1 ? 0 : 1 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: "fixed",
+              bottom: 40,
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 100,
+              pointerEvents: "none",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 1,
+                px: 3,
+                py: 2,
+                borderRadius: 3,
+                backdropFilter: "blur(10px)",
+                background: "rgba(255,255,255,0.9)",
+                border: "1px solid rgba(255,255,255,0.5)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+                animation: "bounce 2s ease-in-out infinite",
+                
+                "@keyframes bounce": {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(-10px)" },
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  color: "#64748b",
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                }}
+              >
+                Scroll to explore
+              </Box>
+              <Box
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#6366f1",
+                }}
+              >
+                ↓
+              </Box>
+            </Box>
+          </motion.div>
         </Box>
       )}
     </>

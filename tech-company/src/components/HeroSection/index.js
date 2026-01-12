@@ -555,7 +555,7 @@ export default function HeroSection() {
           top: 0, left: 0, right: 0, bottom: 0,
           background: {
             xs: "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
-            md: "none" // Desktop lo image clear ga undali
+            md: "none" 
           },
           zIndex: 1,
         }
@@ -631,7 +631,7 @@ export default function HeroSection() {
           <Button 
             variant="contained"
             component={Link}
-            href="/training"
+            href=""
             sx={{ 
               // Responsive width and padding for 375px/425px
               width: { xs: "fit-content", sm: "auto" },
@@ -649,7 +649,7 @@ export default function HeroSection() {
               }
             }}
           >
-            Explore Training Programs →
+            
           </Button>
         </Box>
       </Container>

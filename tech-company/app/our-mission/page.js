@@ -4,9 +4,9 @@ import AboutUsLayout from "../../src/components/AboutsUs/index";
 import OurMission from "../../src/components/OurMission";
 
 export const metadata = {
-  title: "About VTC",
+  title: "Our Mission",
   description:
-    "VTC Corporation – Excellence in Building Materials. 15+ years of legacy, 40+ global brand partners, and a commitment to quality that lasts generations",
+    "",
 };
 
 export default function AboutUsPage() {

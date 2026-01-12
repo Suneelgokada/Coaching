@@ -27,6 +27,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { servicesData } from "../service/servicedata";
 import ServicesSection from "../service/ServicesSection";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 /* ================= COLORS (LOGO BASED) ================= */
 const LOGO_GREEN = "#2D7D2D";
 const LOGO_BLUE = "#00ED64";
@@ -36,11 +37,8 @@ const NAV_BLUE = "#085482";
 
 
 const companyMenu = [
-  { name: "About Us", link: "/about-us" },
-  { name: "Methodology", link: "/methodology" },
-  { name: "Our Clients", link: "/ourclients" },
-  { name: "Our Mission", link: "/our-mission" },
-  { name: "Testimonials", link: "/testimonials" },
+
+
 ];
 
 const servicesMenu = [
@@ -50,12 +48,21 @@ const servicesMenu = [
 ];
 
 
+
+const portfolioMenu = [
+  { name: "Website", link: "/products" },
+  { name: "Social Media", link: "" },
+   { name: "Logos & Branding", link: "" },
+
+
+];
+
 export const navItems = [
   { name: "HOME", link: "/", dropDown: false },
   { name: "COMPANY", link: "/about-us", dropDown: true, subMenu: companyMenu },
   { name: "Services", link: "/services", dropDown: true, subMenu: servicesMenu },
   { name: "TECHNOLOGIES", link: "/technames", dropDown: false },
-  { name: "PORTFOLIO", link: "/products", dropDown: false },
+  { name: "PORTFOLIO", link:"/products" , dropDown: true, subMenu: portfolioMenu },
   { name: "CAREERS", link: "/careers", dropDown: false },
   { name: "CONTACT US", link: "/contact", dropDown: false },
 ];
